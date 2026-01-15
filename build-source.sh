@@ -4,6 +4,13 @@ set -e
 # Usage: ./build-source.sh [bpi-r4]
 # Currently hardcoded for BPI-R4 logic but structure allows expansion.
 
+# Auto-enter Nix Shell if available (fixes CI runners missing headers)
+if [ -z "$IN_NIX_SHELL" ] && command -v nix-shell >/dev/null; then
+    echo "❄️  Nix detected. re-executing inside reproducible environment..."
+    export IN_NIX_SHELL=1
+    exec nix-shell --command "$0 $*"
+fi
+
 SOURCE_DIR="openwrt-source"
 # Correct OpenWrt fork for BPI-R4 (FrankW's patches are here)
 REPO_URL="https://github.com/frank-w/openwrt.git"
