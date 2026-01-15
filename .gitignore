@@ -1,0 +1,12 @@
+# Build artifacts
+openwrt-imagebuilder-*
+builder-*.tar.xz
+builder-*.tar.zst
+bin/
+
+# Temporary files
+files_overlay/
+
+# Source Build
+openwrt-source/
+logs/
