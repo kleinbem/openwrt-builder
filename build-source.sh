@@ -48,7 +48,14 @@ echo "CONFIG_TARGET_mediatek_filogic_DEVICE_bananapi_bpi-r4=y" >> .config
 echo "CONFIG_TARGET_KERNEL_PARTSIZE=128" >> .config     # 128MB Kernel (Safe for future-proofing)
 echo "CONFIG_TARGET_ROOTFS_PARTSIZE=2048" >> .config    # 2GB RootFS (Plenty for Podman/LXC)
 
-# 2. Optimization
+# 2. Kernel Features (BBR, BTRFS, ZRAM)
+echo "CONFIG_TCP_CONG_BBR=y" >> .config                # BBR Congestion Control
+echo "CONFIG_DEFAULT_BBR=y" >> .config                 # Set BBR as default
+echo "CONFIG_BTRFS_FS=y" >> .config                    # BTRFS Filesystem Support
+echo "CONFIG_ZRAM=y" >> .config                        # ZRAM (Compressed RAM Block Device)
+echo "CONFIG_ZSMALLOC=y" >> .config                    # Memory allocator for ZRAM
+
+# 3. Optimization
 echo "CONFIG_DEVEL=y" >> .config                         # Enable advanced options
 echo "CONFIG_CCACHE=y" >> .config                        # Enable compiler cache locally
 make defconfig
