@@ -8,6 +8,8 @@ set -e
 if [ -z "$IN_OpenWrt_FHS" ] && command -v nix-build >/dev/null; then
     echo "❄️  Nix detected. Building FHS environment..."
     export IN_OpenWrt_FHS=1
+    # Allow building as root (fakeroot)
+    export FORCE_UNSAFE_CONFIGURE=1
     # Build the FHS wrapper
     # We use --no-out-link to avoid cluttering the workspace
     FHS=$(nix-build shell.nix --no-out-link -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz)
