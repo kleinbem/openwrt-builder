@@ -14,14 +14,32 @@ if [ -z "$IN_OpenWrt_FHS" ] && command -v nix-build >/dev/null; then
     # We use --no-out-link to avoid cluttering the workspace
     FHS=$(nix-build shell.nix --no-out-link -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz)
     
-    # Execute the script INSIDE the FHS wrapper with fakeroot
-    # fakeroot is needed because some OpenWrt packages (like ppp) try to 
-    # install files with setuid (4550) permissions, which fails for a regular user.
-    echo "🔄 Re-executing inside FHS container with fakeroot: $FHS"
-    exec "$FHS/bin/openwrt-builder-env" fakeroot "$0" "$@"
+    # Execute the script INSIDE the FHS wrapper
+    echo "🔄 Re-executing inside FHS container: $FHS"
+    exec "$FHS/bin/openwrt-builder-env" "$0" "$@"
 fi
 
 SOURCE_DIR="openwrt-source"
+
+# --- FAST FAIL SMOKE TEST & FIXES ---
+echo "🛠️ Applying fixes and running smoke tests..."
+
+# Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
+if [ -f "$SOURCE_DIR/package/network/services/ppp/Makefile" ]; then
+    echo "🔧 Patching ppp Makefile to remove setuid permissions..."
+    sed -i 's/4550/0755/g' "$SOURCE_DIR/package/network/services/ppp/Makefile"
+fi
+
+# Smoke Test: Build ppp first (Fast Fail)
+if [ -d "$SOURCE_DIR" ]; then
+    echo "🔥 Running Smoke Test: Building ppp..."
+    make -C "$SOURCE_DIR" package/network/services/ppp/compile -j$(nproc) || {
+        echo "❌ Smoke Test Failed: ppp build error"
+        exit 1
+    }
+    echo "✅ Smoke Test Passed!"
+fi
+# ------------------------------------
 # Correct OpenWrt fork for BPI-R4 (FrankW's patches are here)
 REPO_URL="https://github.com/frank-w/openwrt.git"
 BRANCH="bpi-r4-wifi-be14" # Using the Wi-Fi 7 enabled branch
