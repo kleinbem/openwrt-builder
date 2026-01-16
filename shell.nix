@@ -9,40 +9,58 @@
   targetPkgs =
     pkgs:
     (with pkgs; [
-      # Core build tools
+      # Core build tools (The Kitchen Sink)
       gnumake
       gcc11
-      perl
-      wget
-      unzip
-      git
-      file
-      which
-      rsync
+      binutils
       patch
       diffutils
+      file
+      which
+      time
+      getopt # Essential utilities
+      rsync
+      tar
+      gzip
+      bzip2
+      xz
+      zstd
+      cpio
+      unzip
+      flock
+      fakeroot # Just in case host tools need it
+
+      # System Utilities
+      util-linux # Provides setsid, logger, etc.
+      procps # Provides ps, kill
+      coreutils
 
       # Build system
       gawk
+      sed
+      grep
       flex
       bison
       gettext
       quilt
       swig
 
-      # Python
-      (python311.withPackages (ps: [ ps.setuptools ]))
+      # Python (Bundled with Setuptools/Distutils)
+      (python311.withPackages (ps: [
+        ps.setuptools
+        ps.pyelftools
+      ]))
 
-      # Libraries
+      # Perl (Standard)
+      perl
+
+      # Libraries (Headers included via .dev)
       ncurses
-      ncurses.dev # Explicitly include headers
+      ncurses.dev
       zlib
       zlib.dev
       openssl
       openssl.dev
-
-      # Utilities
-      zstd
     ]);
 
   # Disable hardening for host tools (elfutils fix)
