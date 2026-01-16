@@ -23,6 +23,7 @@ pkgs.mkShell {
     bison
     gettext
     quilt
+    swig
 
     # Python
     python311
