@@ -12,20 +12,8 @@ if [ -z "$IN_OpenWrt_FHS" ] && command -v nix-build >/dev/null; then
     # We use --no-out-link to avoid cluttering the workspace
     FHS=$(nix-build shell.nix --no-out-link -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz)
     
-    BUILD_CMD="$FHS/bin/openwrt-builder-env"
-    
-    echo "🔍 Debugging Host Namespace Capabilities:"
-    echo "   User: $(id)"
-    echo "   Sysctl userns: $(sysctl kernel.unprivileged_userns_clone 2>/dev/null || echo 'FAIL-READ')"
-    if unshare -U echo "   Unshare test: SUCCESS"; then
-        echo "   (Host allows user namespaces)"
-    else
-        echo "   Unshare test: FAILED (Host blocking namespaces)"
-    fi
-    
-    # Execute the script INSIDE the FHS wrapper
     echo "🔄 Re-executing inside FHS container: $FHS"
-    exec "$BUILD_CMD" "$0" "$@"
+    exec "$FHS/bin/openwrt-builder-env" "$0" "$@"
 fi
 
 SOURCE_DIR="openwrt-source"
