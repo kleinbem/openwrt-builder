@@ -20,7 +20,7 @@
       time
       getopt # Essential utilities
       rsync
-      tar
+      gnutar
       gzip
       bzip2
       xz
