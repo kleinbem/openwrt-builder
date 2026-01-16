@@ -12,8 +12,11 @@ if [ -z "$IN_OpenWrt_FHS" ] && command -v nix-build >/dev/null; then
     # We use --no-out-link to avoid cluttering the workspace
     FHS=$(nix-build shell.nix --no-out-link -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz)
     
-    echo "🔄 Re-executing inside FHS container: $FHS"
-    exec "$FHS/bin/openwrt-builder-env" "$0" "$@"
+    # Execute the script INSIDE the FHS wrapper with fakeroot
+    # fakeroot is needed because some OpenWrt packages (like ppp) try to 
+    # install files with setuid (4550) permissions, which fails for a regular user.
+    echo "🔄 Re-executing inside FHS container with fakeroot: $FHS"
+    exec "$FHS/bin/openwrt-builder-env" fakeroot "$0" "$@"
 fi
 
 SOURCE_DIR="openwrt-source"
