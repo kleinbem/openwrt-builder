@@ -6,7 +6,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     # Core build tools
     gnumake
-    gcc12
+    gcc11
     perl
     wget
     unzip
@@ -38,6 +38,7 @@ pkgs.mkShell {
     # Utilities
     zstd
   ];
+  hardeningDisable = [ "format" ];
 
   shellHook = ''
     echo "Welcome to the OpenWrt Builder Environment"
