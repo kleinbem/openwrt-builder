@@ -25,8 +25,9 @@ pkgs.mkShell {
     quilt
 
     # Python
-    python3
-    python3Packages.setuptools # Provides distutils in newer python versions
+    python311
+    python311Packages.setuptools # Provides distutils fallback
+    # python311Packages.distutils # Legacy if needed, but 3.11 still has it partially or via setuptools better
 
     # Libraries
     ncurses
