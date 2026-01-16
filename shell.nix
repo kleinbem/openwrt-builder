@@ -1,5 +1,5 @@
 {
-  pkgs ? import <nixpkgs> { },
+  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz") { },
 }:
 
 pkgs.mkShell {
@@ -27,7 +27,6 @@ pkgs.mkShell {
     # Python
     python3
     python3Packages.setuptools # Provides distutils in newer python versions
-    python3Packages.distutils # Explicit fallback if available
 
     # Libraries
     ncurses
