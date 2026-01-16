@@ -6,7 +6,7 @@ pkgs.mkShell {
   buildInputs = with pkgs; [
     # Core build tools
     gnumake
-    gcc
+    gcc12
     perl
     wget
     unzip
