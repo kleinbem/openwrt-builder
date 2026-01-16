@@ -10,3 +10,6 @@ files_overlay/
 # Source Build
 openwrt-source/
 logs/
+*.log
+debug_*.log
+logs_debug/

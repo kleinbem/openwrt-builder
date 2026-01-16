@@ -1,0 +1,1575 @@
+Build from Source (FrankW Fork)	UNKNOWN STEP	﻿2026-01-15T23:42:41.3659921Z Current runner version: '2.330.0'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3665814Z Runner name: 'nixos-bpi-builder'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3666459Z Runner group name: 'Default'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3667353Z Machine name: 'nixos-nvme'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3669414Z ##[group]GITHUB_TOKEN Permissions
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3672223Z Contents: read
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3672682Z Metadata: read
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3673123Z Packages: read
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3673570Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3676257Z Secret source: Actions
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.3676930Z Prepare workflow directory
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.4215285Z Prepare all required actions
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.4282388Z Getting action download info
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:41.8988751Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.3248996Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9012170Z Complete job name: Build from Source (FrankW Fork)
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9721093Z ##[group]Run actions/checkout@v4
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9722318Z with:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9723061Z   repository: kleinbem/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9724422Z   token: ***
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9725119Z   ssh-strict: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9725844Z   ssh-user: git
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9726585Z   persist-credentials: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9727549Z   clean: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9728298Z   sparse-checkout-cone-mode: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9729214Z   fetch-depth: 1
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9729923Z   fetch-tags: false
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9730671Z   show-progress: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9731466Z   lfs: false
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9732173Z   submodules: false
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9732968Z   set-safe-directory: true
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:42.9734152Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0879338Z Syncing repository: kleinbem/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0882451Z ##[group]Getting Git version info
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0884270Z Working directory is '/run/github-runner/openwrt-builder/openwrt-builder/openwrt-builder'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0887187Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git version
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0888668Z git version 2.52.0
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0891360Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0897959Z Temporarily overriding HOME='/run/github-runner/openwrt-builder/_temp/4f9e6719-4797-4be4-b66a-2965e8db3a66' before making global git config changes
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0900840Z Adding repository directory to the temporary git global config as a safe directory
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0904111Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --global --add safe.directory /run/github-runner/openwrt-builder/openwrt-builder/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0908595Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --get remote.origin.url
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0925485Z https://github.com/kleinbem/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0944845Z ##[group]Removing previously created refs, to avoid conflicts
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0949982Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0968630Z refs/heads/main
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.0975389Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git checkout --detach
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1007721Z HEAD is now at 7db7dac fix: Enable manual workflow dispatch trigger
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1049189Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git branch --delete --force main
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1071948Z Deleted branch main (was 7db7dac).
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1103657Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1106013Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule status
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1461978Z ##[group]Cleaning the repository
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.1467203Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git clean -ffdx
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3858594Z Removing openwrt-source/
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3873007Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git reset --hard HEAD
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3914987Z HEAD is now at 7db7dac fix: Enable manual workflow dispatch trigger
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3921451Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3923654Z ##[group]Disabling automatic garbage collection
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3928185Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local gc.auto 0
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3957311Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3961333Z ##[group]Setting up auth
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.3964181Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.4000716Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.4277764Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.4315057Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.4613403Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.4660821Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.5113150Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.5157651Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.5160299Z ##[group]Fetching the repository
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.5175219Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +b162c893cbed7529910c8c1383cec9337e0e5cde:refs/remotes/origin/main
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8121638Z From https://github.com/kleinbem/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8124075Z  + 7db7dac...b162c89 b162c893cbed7529910c8c1383cec9337e0e5cde -> origin/main  (forced update)
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8152125Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8153689Z ##[group]Determining the checkout info
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8155658Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8159386Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git sparse-checkout disable
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8200396Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --unset-all extensions.worktreeConfig
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8230836Z ##[group]Checking out the ref
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8234586Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git checkout --progress --force -B main refs/remotes/origin/main
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8270833Z Warning: you are leaving 1 commit behind, not connected to
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8273690Z any of your branches:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8277095Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8278321Z   7db7dac fix: Enable manual workflow dispatch trigger
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8281262Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8282220Z If you want to keep it by creating a new branch, this may be a good time
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8284189Z to do so with:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8284805Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8285353Z  git branch <new-branch-name> 7db7dac
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8286270Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8309667Z Switched to a new branch 'main'
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8321925Z branch 'main' set up to track 'origin/main'.
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8326812Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8456239Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git log -1 --format=%H
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8516531Z b162c893cbed7529910c8c1383cec9337e0e5cde
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8859440Z ##[group]Run ./build-source.sh
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8861387Z [36;1m./build-source.sh[0m
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8876186Z shell: /nix/store/hkbylipx1iiawqdcjv858p501wv81bpm-bash-interactive-5.3p3/bin/bash -e {0}
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.8879011Z ##[endgroup]
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9041458Z ❄️  Nix detected. re-executing inside reproducible environment...
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9274601Z error:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9276771Z        … while calling the 'import' builtin
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9279990Z          at /run/github-runner/openwrt-builder/openwrt-builder/openwrt-builder/shell.nix:2:10:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9282896Z             1| {
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9284697Z             2|   pkgs ? import <nixpkgs> { },
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9286509Z              |          ^
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9287893Z             3| }:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9288672Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9289550Z        … while realising the context of a path
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9291217Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9292175Z        … while calling the 'findFile' builtin
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9295332Z          at /run/github-runner/openwrt-builder/openwrt-builder/openwrt-builder/shell.nix:2:17:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9298326Z             1| {
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9299675Z             2|   pkgs ? import <nixpkgs> { },
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9301410Z              |                 ^
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9302907Z             3| }:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9303656Z 
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9305336Z        error: file 'nixpkgs' was not found in the Nix search path (add it using $NIX_PATH or -I)
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9335056Z ##[error]Process completed with exit code 1.
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:43.9600846Z Post job cleanup.
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0675784Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git version
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0711780Z git version 2.52.0
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0761394Z Temporarily overriding HOME='/run/github-runner/openwrt-builder/_temp/ecc83b8e-4665-47b4-9f1c-5d02c10a2e3c' before making global git config changes
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0763612Z Adding repository directory to the temporary git global config as a safe directory
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0768416Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --global --add safe.directory /run/github-runner/openwrt-builder/openwrt-builder/openwrt-builder
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0802545Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.0860775Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1155653Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1189495Z http.https://github.com/.extraheader
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1201677Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1225817Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1635703Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.1703314Z [command]/nix/store/fryiyyhhilpqhx2wc4b6l5gnxc8w18rg-git-2.52.0/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build from Source (FrankW Fork)	UNKNOWN STEP	2026-01-15T23:42:44.2330836Z Cleaning up orphan processes
+validate	UNKNOWN STEP	﻿2026-01-15T23:42:42.2877897Z Current runner version: '2.331.0'
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2900374Z ##[group]Runner Image Provisioner
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2901340Z Hosted Compute Agent
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2902008Z Version: 20251211.462
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2902592Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2903303Z Build Date: 2025-12-11T16:28:49Z
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2903999Z Worker ID: {1d8383df-3e2b-475a-8d7f-43004a76052b}
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2904709Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2905220Z ##[group]Operating System
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2905810Z Ubuntu
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2906447Z 24.04.3
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2906891Z LTS
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2907420Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2907921Z ##[group]Runner Image
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2908515Z Image: ubuntu-24.04
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2909044Z Version: 20260111.209.1
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2910069Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260111.209/images/ubuntu/Ubuntu2404-Readme.md
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2911534Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260111.209
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2912600Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2913730Z ##[group]GITHUB_TOKEN Permissions
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2915732Z Contents: read
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2916465Z Metadata: read
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2917070Z Packages: read
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2917565Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2919543Z Secret source: Actions
+validate	UNKNOWN STEP	2026-01-15T23:42:42.2920192Z Prepare workflow directory
+validate	UNKNOWN STEP	2026-01-15T23:42:42.3232007Z Prepare all required actions
+validate	UNKNOWN STEP	2026-01-15T23:42:42.3268409Z Getting action download info
+validate	UNKNOWN STEP	2026-01-15T23:42:42.7542367Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+validate	UNKNOWN STEP	2026-01-15T23:42:42.9722434Z Complete job name: validate
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0493876Z ##[group]Run actions/checkout@v3
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0494690Z with:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0495109Z   repository: kleinbem/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0495787Z   token: ***
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0496355Z   ssh-strict: true
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0496794Z   persist-credentials: true
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0497250Z   clean: true
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0497649Z   sparse-checkout-cone-mode: true
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0498132Z   fetch-depth: 1
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0498522Z   fetch-tags: false
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0498904Z   lfs: false
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0499278Z   submodules: false
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0499687Z   set-safe-directory: true
+validate	UNKNOWN STEP	2026-01-15T23:42:43.0500373Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1357504Z Syncing repository: kleinbem/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1359208Z ##[group]Getting Git version info
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1359989Z Working directory is '/home/runner/work/openwrt-builder/openwrt-builder'
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1361019Z [command]/usr/bin/git version
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1454141Z git version 2.52.0
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1480370Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1494104Z Temporarily overriding HOME='/home/runner/work/_temp/05ac84c4-9cf2-4dc5-8e48-3ac047559fd3' before making global git config changes
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1495525Z Adding repository directory to the temporary git global config as a safe directory
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1497589Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/openwrt-builder/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1534757Z Deleting the contents of '/home/runner/work/openwrt-builder/openwrt-builder'
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1538554Z ##[group]Initializing the repository
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1541383Z [command]/usr/bin/git init /home/runner/work/openwrt-builder/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1646362Z hint: Using 'master' as the name for the initial branch. This default branch name
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1647686Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1649375Z hint: to use in all of your new repositories, which will suppress this warning,
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1650749Z hint: call:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1651445Z hint:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1652329Z hint: 	git config --global init.defaultBranch <name>
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1653216Z hint:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1654063Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1655061Z hint: 'development'. The just-created branch can be renamed via this command:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1655846Z hint:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1656481Z hint: 	git branch -m <name>
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1657040Z hint:
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1657690Z hint: Disable this message with "git config set advice.defaultBranchName false"
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1658905Z Initialized empty Git repository in /home/runner/work/openwrt-builder/openwrt-builder/.git/
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1661111Z [command]/usr/bin/git remote add origin https://github.com/kleinbem/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1694215Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1694972Z ##[group]Disabling automatic garbage collection
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1696932Z [command]/usr/bin/git config --local gc.auto 0
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1722345Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1723028Z ##[group]Setting up auth
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1727394Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	UNKNOWN STEP	2026-01-15T23:42:43.1752786Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2143614Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2168531Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2382657Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2413120Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2414383Z ##[group]Fetching the repository
+validate	UNKNOWN STEP	2026-01-15T23:42:43.2422969Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +b162c893cbed7529910c8c1383cec9337e0e5cde:refs/remotes/origin/main
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5927949Z remote: Enumerating objects: 33, done.        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5929701Z remote: Counting objects:   3% (1/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5930772Z remote: Counting objects:   6% (2/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5931662Z remote: Counting objects:   9% (3/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5932272Z remote: Counting objects:  12% (4/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5933054Z remote: Counting objects:  15% (5/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5933649Z remote: Counting objects:  18% (6/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5934257Z remote: Counting objects:  21% (7/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5934844Z remote: Counting objects:  24% (8/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5935467Z remote: Counting objects:  27% (9/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5936046Z remote: Counting objects:  30% (10/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5936923Z remote: Counting objects:  33% (11/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5937536Z remote: Counting objects:  36% (12/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5938152Z remote: Counting objects:  39% (13/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5938742Z remote: Counting objects:  42% (14/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5939334Z remote: Counting objects:  45% (15/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5939919Z remote: Counting objects:  48% (16/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5940495Z remote: Counting objects:  51% (17/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5941074Z remote: Counting objects:  54% (18/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5941654Z remote: Counting objects:  57% (19/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5942260Z remote: Counting objects:  60% (20/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5942939Z remote: Counting objects:  63% (21/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5943553Z remote: Counting objects:  66% (22/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5944138Z remote: Counting objects:  69% (23/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5944722Z remote: Counting objects:  72% (24/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5945303Z remote: Counting objects:  75% (25/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5945899Z remote: Counting objects:  78% (26/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5946956Z remote: Counting objects:  81% (27/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5947745Z remote: Counting objects:  84% (28/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5948345Z remote: Counting objects:  87% (29/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5948936Z remote: Counting objects:  90% (30/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5949507Z remote: Counting objects:  93% (31/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5950202Z remote: Counting objects:  96% (32/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5950790Z remote: Counting objects: 100% (33/33)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5951394Z remote: Counting objects: 100% (33/33), done.        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5952035Z remote: Compressing objects:   4% (1/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5952655Z remote: Compressing objects:   9% (2/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5953251Z remote: Compressing objects:  14% (3/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5953848Z remote: Compressing objects:  19% (4/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5954446Z remote: Compressing objects:  23% (5/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5955053Z remote: Compressing objects:  28% (6/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5955663Z remote: Compressing objects:  33% (7/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5956446Z remote: Compressing objects:  38% (8/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5957069Z remote: Compressing objects:  42% (9/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5957666Z remote: Compressing objects:  47% (10/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5958269Z remote: Compressing objects:  52% (11/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5958877Z remote: Compressing objects:  57% (12/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5959482Z remote: Compressing objects:  61% (13/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5960078Z remote: Compressing objects:  66% (14/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5960851Z remote: Compressing objects:  71% (15/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5961483Z remote: Compressing objects:  76% (16/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5962102Z remote: Compressing objects:  80% (17/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5962690Z remote: Compressing objects:  85% (18/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5963298Z remote: Compressing objects:  90% (19/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5963898Z remote: Compressing objects:  95% (20/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5964499Z remote: Compressing objects: 100% (21/21)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.5965137Z remote: Compressing objects: 100% (21/21), done.        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6099697Z remote: Total 33 (delta 0), reused 30 (delta 0), pack-reused 0 (from 0)        
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6167622Z From https://github.com/kleinbem/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6168420Z  * [new ref]         b162c893cbed7529910c8c1383cec9337e0e5cde -> origin/main
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6200258Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6200994Z ##[group]Determining the checkout info
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6203120Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6204348Z ##[group]Checking out the ref
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6208907Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6268713Z Switched to a new branch 'main'
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6271173Z branch 'main' set up to track 'origin/main'.
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6277632Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6310333Z [command]/usr/bin/git log -1 --format='%H'
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6331809Z 'b162c893cbed7529910c8c1383cec9337e0e5cde'
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6516881Z ##[group]Run bash -n build.sh
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6517511Z [36;1mbash -n build.sh[0m
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6518009Z [36;1mls profiles/*.conf[0m
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6554123Z shell: /usr/bin/bash -e {0}
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6554633Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6655119Z profiles/bpi-r4.conf
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6720208Z ##[group]Run source profiles/bpi-r4.conf
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6721319Z [36;1msource profiles/bpi-r4.conf[0m
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6722615Z [36;1mif [ -z "$BUILDER_URL" ]; then echo "Missing BUILDER_URL"; exit 1; fi[0m
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6724131Z [36;1mif [ -z "$BOARD" ]; then echo "Missing BOARD"; exit 1; fi[0m
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6767955Z shell: /usr/bin/bash -e {0}
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6768839Z ##[endgroup]
+validate	UNKNOWN STEP	2026-01-15T23:42:43.6925680Z Post job cleanup.
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7643215Z [command]/usr/bin/git version
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7677109Z git version 2.52.0
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7719230Z Temporarily overriding HOME='/home/runner/work/_temp/fd89f6b0-9c1b-4f66-9880-614ffee29025' before making global git config changes
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7721106Z Adding repository directory to the temporary git global config as a safe directory
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7723131Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/openwrt-builder/openwrt-builder
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7753379Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+validate	UNKNOWN STEP	2026-01-15T23:42:43.7783090Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+validate	UNKNOWN STEP	2026-01-15T23:42:43.8004872Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+validate	UNKNOWN STEP	2026-01-15T23:42:43.8023924Z http.https://github.com/.extraheader
+validate	UNKNOWN STEP	2026-01-15T23:42:43.8037599Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+validate	UNKNOWN STEP	2026-01-15T23:42:43.8116634Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+validate	UNKNOWN STEP	2026-01-15T23:42:43.8411260Z Cleaning up orphan processes
+build-firmware	UNKNOWN STEP	﻿2026-01-15T23:42:50.6828980Z Current runner version: '2.331.0'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6854669Z ##[group]Runner Image Provisioner
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6855487Z Hosted Compute Agent
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6856012Z Version: 20251211.462
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6856679Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6857594Z Build Date: 2025-12-11T16:28:49Z
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6858450Z Worker ID: {192ac234-7912-4fc7-8dbc-39cd8580b54d}
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6859098Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6859729Z ##[group]Operating System
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6860267Z Ubuntu
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6860738Z 22.04.5
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6861248Z LTS
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6861661Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6862139Z ##[group]Runner Image
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6862708Z Image: ubuntu-22.04
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6863226Z Version: 20260112.2.1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6864163Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260112.2/images/ubuntu/Ubuntu2204-Readme.md
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6865730Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260112.2
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6866690Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6867849Z ##[group]GITHUB_TOKEN Permissions
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6870630Z Contents: read
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6871217Z Metadata: read
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6871732Z Packages: read
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6872210Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6874612Z Secret source: Actions
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.6875681Z Prepare workflow directory
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.7227578Z Prepare all required actions
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:50.7268470Z Getting action download info
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.0544922Z Download action repository 'actions/checkout@v3' (SHA:f43a0e5ff2bd294095638e18286ca9a3d1956744)
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.2439018Z Download action repository 'actions/cache@v3' (SHA:6f8efc29b200d32929f49075959781ed54ec270c)
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.4916044Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7115215Z Complete job name: build-firmware
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7845238Z ##[group]Run actions/checkout@v3
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7846312Z with:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7846932Z   repository: kleinbem/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7847842Z   token: ***
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7848632Z   ssh-strict: true
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7849226Z   persist-credentials: true
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7849863Z   clean: true
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7850441Z   sparse-checkout-cone-mode: true
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7851107Z   fetch-depth: 1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7851666Z   fetch-tags: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7852241Z   lfs: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7852786Z   submodules: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7853380Z   set-safe-directory: true
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.7854271Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8725106Z Syncing repository: kleinbem/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8727164Z ##[group]Getting Git version info
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8728377Z Working directory is '/home/runner/work/openwrt-builder/openwrt-builder'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8729741Z [command]/usr/bin/git version
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8796313Z git version 2.52.0
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8822642Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8836673Z Temporarily overriding HOME='/home/runner/work/_temp/b9152f98-2a89-4f37-980f-8ab15b2e867b' before making global git config changes
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8838507Z Adding repository directory to the temporary git global config as a safe directory
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8840312Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/openwrt-builder/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8871058Z Deleting the contents of '/home/runner/work/openwrt-builder/openwrt-builder'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8874777Z ##[group]Initializing the repository
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8877627Z [command]/usr/bin/git init /home/runner/work/openwrt-builder/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8974887Z hint: Using 'master' as the name for the initial branch. This default branch name
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8976379Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8977633Z hint: to use in all of your new repositories, which will suppress this warning,
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8979581Z hint: call:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8980318Z hint:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8981362Z hint: 	git config --global init.defaultBranch <name>
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8982997Z hint:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8984389Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8986381Z hint: 'development'. The just-created branch can be renamed via this command:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8988071Z hint:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8989627Z hint: 	git branch -m <name>
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8990715Z hint:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8992089Z hint: Disable this message with "git config set advice.defaultBranchName false"
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8994183Z Initialized empty Git repository in /home/runner/work/openwrt-builder/openwrt-builder/.git/
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.8997155Z [command]/usr/bin/git remote add origin https://github.com/kleinbem/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9024344Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9026037Z ##[group]Disabling automatic garbage collection
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9027510Z [command]/usr/bin/git config --local gc.auto 0
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9054420Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9056067Z ##[group]Setting up auth
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9060741Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9090165Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9415199Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9444572Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9671242Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9705399Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9707122Z ##[group]Fetching the repository
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:51.9715167Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --progress --no-recurse-submodules --depth=1 origin +b162c893cbed7529910c8c1383cec9337e0e5cde:refs/remotes/origin/main
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1830583Z remote: Enumerating objects: 33, done.        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1831950Z remote: Counting objects:   3% (1/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1832834Z remote: Counting objects:   6% (2/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1833582Z remote: Counting objects:   9% (3/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1834332Z remote: Counting objects:  12% (4/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1835071Z remote: Counting objects:  15% (5/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1835934Z remote: Counting objects:  18% (6/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1837166Z remote: Counting objects:  21% (7/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1838103Z remote: Counting objects:  24% (8/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1839272Z remote: Counting objects:  27% (9/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1840045Z remote: Counting objects:  30% (10/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1840824Z remote: Counting objects:  33% (11/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1841586Z remote: Counting objects:  36% (12/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1842361Z remote: Counting objects:  39% (13/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1843262Z remote: Counting objects:  42% (14/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1844078Z remote: Counting objects:  45% (15/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1844886Z remote: Counting objects:  48% (16/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1845690Z remote: Counting objects:  51% (17/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1846470Z remote: Counting objects:  54% (18/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1847196Z remote: Counting objects:  57% (19/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1847908Z remote: Counting objects:  60% (20/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1848865Z remote: Counting objects:  63% (21/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1849569Z remote: Counting objects:  66% (22/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1850551Z remote: Counting objects:  69% (23/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1851253Z remote: Counting objects:  72% (24/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1851965Z remote: Counting objects:  75% (25/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1852778Z remote: Counting objects:  78% (26/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1853650Z remote: Counting objects:  81% (27/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1854582Z remote: Counting objects:  84% (28/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1855568Z remote: Counting objects:  87% (29/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1856456Z remote: Counting objects:  90% (30/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1857351Z remote: Counting objects:  93% (31/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1858357Z remote: Counting objects:  96% (32/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1859265Z remote: Counting objects: 100% (33/33)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1860237Z remote: Counting objects: 100% (33/33), done.        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1861261Z remote: Compressing objects:   4% (1/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1862226Z remote: Compressing objects:   9% (2/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1863262Z remote: Compressing objects:  14% (3/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1864307Z remote: Compressing objects:  19% (4/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1865374Z remote: Compressing objects:  23% (5/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1866677Z remote: Compressing objects:  28% (6/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1867815Z remote: Compressing objects:  33% (7/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1869209Z remote: Compressing objects:  38% (8/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1870287Z remote: Compressing objects:  42% (9/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1871366Z remote: Compressing objects:  47% (10/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1872449Z remote: Compressing objects:  52% (11/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1873534Z remote: Compressing objects:  57% (12/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1874611Z remote: Compressing objects:  61% (13/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1875690Z remote: Compressing objects:  66% (14/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1876944Z remote: Compressing objects:  71% (15/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1878063Z remote: Compressing objects:  76% (16/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1879290Z remote: Compressing objects:  80% (17/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1880343Z remote: Compressing objects:  85% (18/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1881413Z remote: Compressing objects:  90% (19/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1882461Z remote: Compressing objects:  95% (20/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1883529Z remote: Compressing objects: 100% (21/21)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1884796Z remote: Compressing objects: 100% (21/21), done.        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.1983405Z remote: Total 33 (delta 0), reused 30 (delta 0), pack-reused 0 (from 0)        
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2053745Z From https://github.com/kleinbem/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2056005Z  * [new ref]         b162c893cbed7529910c8c1383cec9337e0e5cde -> origin/main
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2087713Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2088892Z ##[group]Determining the checkout info
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2090303Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2091143Z ##[group]Checking out the ref
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2094347Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2152412Z Switched to a new branch 'main'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2155348Z branch 'main' set up to track 'origin/main'.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2161654Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2194653Z [command]/usr/bin/git log -1 --format='%H'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2216740Z 'b162c893cbed7529910c8c1383cec9337e0e5cde'
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2426018Z ##[group]Run sudo apt-get update
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2426883Z [36;1msudo apt-get update[0m
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2428059Z [36;1msudo apt-get install -y build-essential clang flex bison g++ gawk \[0m
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2430083Z [36;1m  gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev \[0m
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2431767Z [36;1m  python3-distutils rsync unzip zlib1g-dev file wget python3[0m
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2520631Z shell: /usr/bin/bash -e {0}
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.2521539Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.3544964Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.3909987Z Hit:2 http://azure.archive.ubuntu.com/ubuntu jammy InRelease
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.3937803Z Get:6 https://packages.microsoft.com/repos/azure-cli jammy InRelease [3596 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.3954309Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.3978030Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.4020326Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.4138400Z Get:7 https://packages.microsoft.com/ubuntu/22.04/prod jammy InRelease [3632 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.5627227Z Get:8 https://packages.microsoft.com/repos/azure-cli jammy/main amd64 Packages [3018 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.6490379Z Get:9 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3163 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.6676675Z Get:10 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 c-n-f Metadata [19.1 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.6685748Z Get:11 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1246 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.6759012Z Get:12 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [311 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.6818320Z Get:13 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 c-n-f Metadata [30.1 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.8749334Z Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-security/main amd64 Packages [2903 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.8909273Z Get:15 http://azure.archive.ubuntu.com/ubuntu jammy-security/main amd64 c-n-f Metadata [14.1 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.8950221Z Get:16 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1009 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.9009370Z Get:17 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe Translation-en [222 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.9030936Z Get:18 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 c-n-f Metadata [22.4 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.9657549Z Get:19 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main amd64 Packages [287 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:52.9734165Z Get:20 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main arm64 Packages [112 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:57.1974084Z Fetched 9732 kB in 1s (7936 kB/s)
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.1846081Z Reading package lists...
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.2448064Z Reading package lists...
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.4876712Z Building dependency tree...
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.4888356Z Reading state information...
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6840422Z bison is already the newest version (2:3.8.2+dfsg-1build1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6841251Z build-essential is already the newest version (12.9ubuntu3).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6841815Z build-essential set to manually installed.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6842446Z flex is already the newest version (2.6.4-8build2).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6842955Z g++ is already the newest version (4:11.2.0-1ubuntu1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6843559Z file is already the newest version (1:5.41-3ubuntu0.1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6844186Z gawk is already the newest version (1:5.1.0-1ubuntu0.1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6844790Z gawk set to manually installed.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6845306Z libssl-dev is already the newest version (3.0.2-0ubuntu1.20).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6846020Z python3 is already the newest version (3.10.6-1~22.04.1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6846767Z python3-distutils is already the newest version (3.10.8-1~22.04).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6848471Z rsync is already the newest version (3.2.7-0ubuntu0.22.04.4).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6849231Z unzip is already the newest version (6.0-26ubuntu3.2).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6849903Z wget is already the newest version (1.21.2-2ubuntu1.1).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6850674Z zlib1g-dev is already the newest version (1:1.2.11.dfsg-2ubuntu9.2).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6851430Z git is already the newest version (1:2.52.0-0ppa1~ubuntu22.04.3).
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6852089Z The following additional packages will be installed:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6853114Z   g++-11-multilib gcc-11-multilib lib32asan6 lib32atomic1 lib32gcc-11-dev
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6853929Z   lib32gomp1 lib32itm1 lib32quadmath0 lib32stdc++-11-dev lib32ubsan1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6854761Z   libc6-dev-i386 libc6-dev-x32 libc6-x32 libx32asan6 libx32atomic1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6855405Z   libx32gcc-11-dev libx32gcc-s1 libx32gomp1 libx32itm1 libx32quadmath0
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6856096Z   libx32stdc++-11-dev libx32stdc++6 libx32ubsan1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6856873Z Suggested packages:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6857402Z   lib32stdc++6-11-dbg libx32stdc++6-11-dbg gettext-doc autopoint
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.6858064Z   libasprintf-dev libgettextpo-dev
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7288518Z The following NEW packages will be installed:
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7289412Z   clang g++-11-multilib g++-multilib gcc-11-multilib gcc-multilib gettext
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7290100Z   lib32asan6 lib32atomic1 lib32gcc-11-dev lib32gomp1 lib32itm1 lib32quadmath0
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7291017Z   lib32stdc++-11-dev lib32ubsan1 libc6-dev-i386 libc6-dev-x32 libc6-x32
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7292314Z   libncurses5-dev libx32asan6 libx32atomic1 libx32gcc-11-dev libx32gcc-s1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7293197Z   libx32gomp1 libx32itm1 libx32quadmath0 libx32stdc++-11-dev libx32stdc++6
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7296632Z   libx32ubsan1
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7464119Z 0 upgraded, 28 newly installed, 0 to remove and 16 not upgraded.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7464668Z Need to get 21.0 MB of archives.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7893402Z After this operation, 91.9 MB of additional disk space will be used.
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7894089Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.7894925Z Get:2 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 clang amd64 1:14.0-55~exp2 [3558 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.8160465Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev-i386 amd64 2.35-0ubuntu3.11 [1445 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.8559831Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-x32 amd64 2.35-0ubuntu3.11 [2978 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.9069242Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev-x32 amd64 2.35-0ubuntu3.11 [1632 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.9465465Z Get:6 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32gcc-s1 amd64 12.3.0-1ubuntu1~22.04.2 [54.0 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:58.9733135Z Get:7 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32gomp1 amd64 12.3.0-1ubuntu1~22.04.2 [133 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.0005933Z Get:8 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32gomp1 amd64 12.3.0-1ubuntu1~22.04.2 [127 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.0302291Z Get:9 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32itm1 amd64 12.3.0-1ubuntu1~22.04.2 [32.0 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.0569194Z Get:10 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32itm1 amd64 12.3.0-1ubuntu1~22.04.2 [30.2 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.0831488Z Get:11 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32atomic1 amd64 12.3.0-1ubuntu1~22.04.2 [8512 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.1099562Z Get:12 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32atomic1 amd64 12.3.0-1ubuntu1~22.04.2 [10.2 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.1362978Z Get:13 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32asan6 amd64 11.4.0-1ubuntu1~22.04.2 [2154 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.1802171Z Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32asan6 amd64 11.4.0-1ubuntu1~22.04.2 [2128 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.2239476Z Get:15 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32ubsan1 amd64 12.3.0-1ubuntu1~22.04.2 [959 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.2588523Z Get:16 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32stdc++6 amd64 12.3.0-1ubuntu1~22.04.2 [682 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.2914784Z Get:17 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32ubsan1 amd64 12.3.0-1ubuntu1~22.04.2 [963 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.3267771Z Get:18 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32quadmath0 amd64 12.3.0-1ubuntu1~22.04.2 [244 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.3547435Z Get:19 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32quadmath0 amd64 12.3.0-1ubuntu1~22.04.2 [156 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.4500509Z Get:20 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32gcc-11-dev amd64 11.4.0-1ubuntu1~22.04.2 [2339 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.6624257Z Get:21 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32gcc-11-dev amd64 11.4.0-1ubuntu1~22.04.2 [2106 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.7102409Z Get:22 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11-multilib amd64 11.4.0-1ubuntu1~22.04.2 [880 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.7361159Z Get:23 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32stdc++-11-dev amd64 11.4.0-1ubuntu1~22.04.2 [989 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.7726465Z Get:24 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libx32stdc++-11-dev amd64 11.4.0-1ubuntu1~22.04.2 [906 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.8067443Z Get:25 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 g++-11-multilib amd64 11.4.0-1ubuntu1~22.04.2 [894 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.8326314Z Get:26 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 gcc-multilib amd64 4:11.2.0-1ubuntu1 [1382 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.8585113Z Get:27 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 g++-multilib amd64 4:11.2.0-1ubuntu1 [854 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.8861233Z Get:28 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 gettext amd64 0.21-4ubuntu4 [868 kB]
+build-firmware	UNKNOWN STEP	2026-01-15T23:42:59.9195466Z Get:29 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libncurses5-dev amd64 6.3-2ubuntu0.1 [790 B]
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.2438707Z Fetched 21.0 MB in 1s (17.7 MB/s)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.2687668Z Selecting previously unselected package clang.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.2999394Z (Reading database ... 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.2999743Z (Reading database ... 5%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.2999980Z (Reading database ... 10%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3000253Z (Reading database ... 15%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3000503Z (Reading database ... 20%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3000886Z (Reading database ... 25%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3001238Z (Reading database ... 30%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3001588Z (Reading database ... 35%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3001919Z (Reading database ... 40%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3002258Z (Reading database ... 45%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.3002594Z (Reading database ... 50%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.4280123Z (Reading database ... 55%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.6409012Z (Reading database ... 60%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:00.8786810Z (Reading database ... 65%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:01.0391104Z (Reading database ... 70%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:01.2757609Z (Reading database ... 75%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:01.5354705Z (Reading database ... 80%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:01.7939686Z (Reading database ... 85%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.0109652Z (Reading database ... 90%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2488498Z (Reading database ... 95%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2489034Z (Reading database ... 100%
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2489517Z (Reading database ... 266735 files and directories currently installed.)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2547994Z Preparing to unpack .../00-clang_1%3a14.0-55~exp2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2580913Z Unpacking clang (1:14.0-55~exp2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.2901241Z Selecting previously unselected package libc6-dev-i386.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.3072467Z Preparing to unpack .../01-libc6-dev-i386_2.35-0ubuntu3.11_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.3083979Z Unpacking libc6-dev-i386 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.3695013Z Selecting previously unselected package libc6-x32.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.3876666Z Preparing to unpack .../02-libc6-x32_2.35-0ubuntu3.11_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.3901371Z Unpacking libc6-x32 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.4961829Z Selecting previously unselected package libc6-dev-x32.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.5134511Z Preparing to unpack .../03-libc6-dev-x32_2.35-0ubuntu3.11_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.5145125Z Unpacking libc6-dev-x32 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.5670152Z Selecting previously unselected package libx32gcc-s1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.5840659Z Preparing to unpack .../04-libx32gcc-s1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.5851380Z Unpacking libx32gcc-s1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6079497Z Selecting previously unselected package lib32gomp1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6248604Z Preparing to unpack .../05-lib32gomp1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6257963Z Unpacking lib32gomp1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6498659Z Selecting previously unselected package libx32gomp1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6669672Z Preparing to unpack .../06-libx32gomp1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6679948Z Unpacking libx32gomp1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.6935918Z Selecting previously unselected package lib32itm1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7104743Z Preparing to unpack .../07-lib32itm1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7115092Z Unpacking lib32itm1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7344426Z Selecting previously unselected package libx32itm1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7515481Z Preparing to unpack .../08-libx32itm1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7526791Z Unpacking libx32itm1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7758417Z Selecting previously unselected package lib32atomic1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7927419Z Preparing to unpack .../09-lib32atomic1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.7937897Z Unpacking lib32atomic1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8167155Z Selecting previously unselected package libx32atomic1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8335438Z Preparing to unpack .../10-libx32atomic1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8346543Z Unpacking libx32atomic1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8571418Z Selecting previously unselected package lib32asan6.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8744594Z Preparing to unpack .../11-lib32asan6_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.8756531Z Unpacking lib32asan6 (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.9242017Z Selecting previously unselected package libx32asan6.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.9411095Z Preparing to unpack .../12-libx32asan6_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.9421478Z Unpacking libx32asan6 (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:02.9911275Z Selecting previously unselected package lib32ubsan1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0083089Z Preparing to unpack .../13-lib32ubsan1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0093939Z Unpacking lib32ubsan1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0431126Z Selecting previously unselected package libx32stdc++6.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0602102Z Preparing to unpack .../14-libx32stdc++6_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0612693Z Unpacking libx32stdc++6 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.0909939Z Selecting previously unselected package libx32ubsan1.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1076265Z Preparing to unpack .../15-libx32ubsan1_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1089879Z Unpacking libx32ubsan1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1431461Z Selecting previously unselected package lib32quadmath0.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1600744Z Preparing to unpack .../16-lib32quadmath0_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1610915Z Unpacking lib32quadmath0 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.1866979Z Selecting previously unselected package libx32quadmath0.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2039762Z Preparing to unpack .../17-libx32quadmath0_12.3.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2051348Z Unpacking libx32quadmath0 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2286805Z Selecting previously unselected package lib32gcc-11-dev.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2459000Z Preparing to unpack .../18-lib32gcc-11-dev_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2467001Z Unpacking lib32gcc-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.2975556Z Selecting previously unselected package libx32gcc-11-dev.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.3143745Z Preparing to unpack .../19-libx32gcc-11-dev_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.3153823Z Unpacking libx32gcc-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.3635831Z Selecting previously unselected package gcc-11-multilib.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.3804213Z Preparing to unpack .../20-gcc-11-multilib_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.3817562Z Unpacking gcc-11-multilib (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4020237Z Selecting previously unselected package lib32stdc++-11-dev.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4193166Z Preparing to unpack .../21-lib32stdc++-11-dev_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4203149Z Unpacking lib32stdc++-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4794693Z Selecting previously unselected package libx32stdc++-11-dev.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4962326Z Preparing to unpack .../22-libx32stdc++-11-dev_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.4971911Z Unpacking libx32stdc++-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.5512394Z Selecting previously unselected package g++-11-multilib.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.5680300Z Preparing to unpack .../23-g++-11-multilib_11.4.0-1ubuntu1~22.04.2_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.5691549Z Unpacking g++-11-multilib (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.5905896Z Selecting previously unselected package gcc-multilib.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6076125Z Preparing to unpack .../24-gcc-multilib_4%3a11.2.0-1ubuntu1_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6086368Z Unpacking gcc-multilib (4:11.2.0-1ubuntu1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6292383Z Selecting previously unselected package g++-multilib.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6464286Z Preparing to unpack .../25-g++-multilib_4%3a11.2.0-1ubuntu1_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6474849Z Unpacking g++-multilib (4:11.2.0-1ubuntu1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6690456Z Selecting previously unselected package gettext.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6874001Z Preparing to unpack .../26-gettext_0.21-4ubuntu4_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.6884796Z Unpacking gettext (0.21-4ubuntu4) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.8447256Z Selecting previously unselected package libncurses5-dev:amd64.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.8616215Z Preparing to unpack .../27-libncurses5-dev_6.3-2ubuntu0.1_amd64.deb ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.8626825Z Unpacking libncurses5-dev:amd64 (6.3-2ubuntu0.1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9093158Z Setting up gettext (0.21-4ubuntu4) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9122743Z Setting up libc6-dev-i386 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9148616Z Setting up lib32itm1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9177438Z Setting up lib32ubsan1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9206035Z Setting up libc6-x32 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9243897Z Setting up libc6-dev-x32 (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9271760Z Setting up lib32gomp1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9297101Z Setting up clang (1:14.0-55~exp2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9891601Z Setting up libx32gomp1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9923456Z Setting up lib32asan6 (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9947733Z Setting up libncurses5-dev:amd64 (6.3-2ubuntu0.1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9974059Z Setting up lib32quadmath0 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:03.9999551Z Setting up libx32quadmath0 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0024693Z Setting up lib32atomic1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0051442Z Setting up libx32atomic1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0079295Z Setting up libx32gcc-s1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0106242Z Setting up libx32itm1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0133980Z Setting up libx32asan6 (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0160761Z Setting up libx32stdc++6 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0187025Z Setting up libx32ubsan1 (12.3.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0214320Z Setting up libx32gcc-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0244959Z Setting up libx32stdc++-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0271161Z Setting up lib32gcc-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0300158Z Setting up lib32stdc++-11-dev (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0326230Z Setting up gcc-11-multilib (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0361194Z Setting up gcc-multilib (4:11.2.0-1ubuntu1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0390537Z Setting up g++-11-multilib (11.4.0-1ubuntu1~22.04.2) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0417162Z Setting up g++-multilib (4:11.2.0-1ubuntu1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.0449556Z Processing triggers for install-info (6.8-4build1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.5285180Z Processing triggers for libc-bin (2.35-0ubuntu3.11) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.5649770Z Processing triggers for man-db (2.10.2-1) ...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:04.5675900Z Not building database; man-db/auto-update is not 'true'.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1985165Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1985702Z Running kernel seems to be up-to-date.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1986170Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1986349Z No services need to be restarted.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1986676Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1986848Z No containers need to be restarted.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1987179Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1987392Z No user sessions are running outdated binaries.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1987801Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:05.1988585Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8000408Z ##[group]Run actions/cache@v3
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8000684Z with:
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8000872Z   path: openwrt-imagebuilder-*
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8001132Z   key: Linux-openwrt-builder-bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8001388Z   enableCrossOsArchive: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8001618Z   fail-on-cache-miss: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8001826Z   lookup-only: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:06.8002012Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:07.0511586Z Cache hit for: Linux-openwrt-builder-bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:08.1507705Z Received 138412032 of 1728696404 (8.0%), 131.5 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:09.1530143Z Received 331350016 of 1728696404 (19.2%), 157.5 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:10.2142848Z Received 536870912 of 1728696404 (31.1%), 166.9 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:11.2201730Z Received 742391808 of 1728696404 (42.9%), 174.0 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:12.2163200Z Received 939524096 of 1728696404 (54.3%), 176.7 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:13.2229874Z Received 1136656384 of 1728696404 (65.8%), 178.4 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:14.2295661Z Received 1342177280 of 1728696404 (77.6%), 180.7 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:15.2294993Z Received 1535115264 of 1728696404 (88.8%), 181.1 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.2255217Z Received 1728696404 of 1728696404 (100.0%), 181.6 MBs/sec
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.2258033Z Cache Size: ~1649 MB (1728696404 B)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.2466665Z [command]/usr/bin/tar -xf /home/runner/work/_temp/0d883256-1552-4c1f-bb54-af2b3ad94180/cache.tzst -P -C /home/runner/work/openwrt-builder/openwrt-builder --use-compress-program unzstd
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6980016Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libpcap1-1.10.5-r3.49593fbe.apk: time stamp 2446-05-10 22:38:55 is 13263864938.302746665 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6983168Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/apk-mbedtls-3.0.2-r2.3ad93272.apk: time stamp 2446-05-10 22:38:55 is 13263864938.302477721 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6984868Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libseccomp-2.5.5-r1.11ec8aca.apk: time stamp 2446-05-10 22:38:55 is 13263864938.302377865 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6986679Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-multiprocessing-3.13.9-r2.1189cc11.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301996391 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6988715Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nls-iso8859-1-6.12.65-r1.5169e6b3.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301932782 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6990418Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luasocket-3.1.0-r2.9cd44ab8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.30177685 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6992672Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libucode20230711-2025.12.01~f7c2b97a-r1.6b2a4cba.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301576826 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6994461Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lxc-start-6.0.5-r1.b298d621.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301467091 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6996098Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/zlib-1.3.1-r1.45f9c085.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301320156 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6997656Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libffi-3.4.7-r1.978e0f87.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301191245 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.6999575Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-ubus-2025.12.01~f7c2b97a-r1.4965b0cf.apk: time stamp 2446-05-10 22:38:55 is 13263864938.301088262 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7001386Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/losetup-2.41.3-r1.bc9d72e3.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300952869 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7003101Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/jshn-2025.12.08~7928f171-r1.aff75fd8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300896454 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7005266Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-hw-safexcel-6.12.65-r1.b4e1eafa.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300694726 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7006658Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-fs-2025.12.01~f7c2b97a-r1.122af4e2.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300630225 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7007932Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-uuid-3.13.9-r2.61fd258a.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300566085 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7009241Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-ppp-6.12.65-r1.96524286.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300489763 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7010964Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-decimal-3.13.9-r2.f9db8d71.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300154255 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7012795Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-log-2025.12.01~f7c2b97a-r1.fff98431.apk: time stamp 2446-05-10 22:38:55 is 13263864938.300016277 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7014583Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/netifd-2025.10.20~777f5942-r2.3fa120f6.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299628041 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7016327Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-2025.12.01~f7c2b97a-r1.20113f6d.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299493309 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7018255Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/liblucihttp0-2023.03.15~9b5b683f-r1.5f564a3e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299361252 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7020103Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libuclient20201210-2025.10.03~dc909ca7-r2.28822f32.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299300889 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7022096Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/attendedsysupgrade-common-9.c5e8d979.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299250665 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7023951Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/eip197-mini-firmware-20251125-r1.d94d2a68.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299207033 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7025765Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/rpcd-mod-file-2025.12.03~ffb9961c-r1.b35f2046.apk: time stamp 2446-05-10 22:38:55 is 13263864938.29912529 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7027470Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/fdisk-2.41.3-r1.f5abb17c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.299003753 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7029263Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/fit-check-sign-2025.10-r1.8ad3ca88.apk: time stamp 2446-05-10 22:38:55 is 13263864938.298773883 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7031446Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/wifi-scripts-1.0-r1.ce60948e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.298526069 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7032998Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-hwmon-pwmfan-6.12.65-r1.4ccc21a2.apk: time stamp 2446-05-10 22:38:55 is 13263864938.298459405 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7034754Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/dropbear-2025.89-r1.210a8ff5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.298041102 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7036564Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-proto-ipv6-26.012.79498~2eb0501.af58d2dc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.297668305 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7038474Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/pciutils-3.14.0-r1.9fe6a8be.apk: time stamp 2446-05-10 22:38:55 is 13263864938.297556255 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7040042Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/wpad-basic-mbedtls-2025.08.26~ca266cc2-r1.c9130a13.apk: time stamp 2446-05-10 22:38:55 is 13263864938.296449335 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7129795Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/git-2.50.1-r1.0b8d4c5c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.287499983 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7133069Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-mod-network-26.012.79498~2eb0501.d8ec3bf9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.287228696 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7141186Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libbz2-1.0-1.0.8-r1.c3b2acba.apk: time stamp 2446-05-10 22:38:55 is 13263864938.287062432 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7143240Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-rtnl-2025.12.01~f7c2b97a-r1.e80a2665.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286951926 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7145250Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libnl-tiny1-2025.12.02~40493a65-r1.823c5689.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286852169 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7150992Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libmnl0-1.0.5-r1.289455dd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286779573 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7153353Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-geniv-6.12.65-r1.59b36490.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286721524 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7155225Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libblobmsg-json20251208-2025.12.08~7928f171-r1.7f70b13f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286667473 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7157101Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/px5g-mbedtls-11.5f1de243.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286610146 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7159262Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libustream-mbedtls20201210-2025.10.03~5a81c108-r1.4fdb2145.apk: time stamp 2446-05-10 22:38:55 is 13263864938.286474783 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7161195Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libatomic1-14.3.0-r5.343c320c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.28576645 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7162389Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libcurl4-8.15.0-r2.ec4dd833.apk: time stamp 2446-05-10 22:38:55 is 13263864938.28530654 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7164000Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-seqiv-6.12.65-r1.247eeebc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.285241679 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7165847Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/usbutils-017-r1.4bed0c93.apk: time stamp 2446-05-10 22:38:55 is 13263864938.28510331 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7166929Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/uboot-envtools-2025.10-r1.e589dcdc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.284906001 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7174730Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-logging-3.13.9-r2.6d24ec29.apk: time stamp 2446-05-10 22:38:55 is 13263864938.284515079 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7178708Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-pppox-6.12.65-r1.b862e711.apk: time stamp 2446-05-10 22:38:55 is 13263864938.284449657 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7180779Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/tcpdump-4.99.5-r1.01361a43.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283896452 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7183097Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libuci20250120-2025.12.02~66127cd7-r1.5a8f7cbd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283810201 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7185169Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ethtool-full-6.15-r1.4a294c9e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283424239 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7187669Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/urandom-seed-3.d526c4f9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283373915 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7189626Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/liblucihttp-ucode-2023.03.15~9b5b683f-r1.4ee6fd50.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283315626 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7191393Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/curl-8.15.0-r2.1bd50c25.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283170414 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7193889Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nft-offload-6.12.65-r1.375e0ddf.apk: time stamp 2446-05-10 22:38:55 is 13263864938.283103529 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7195787Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-theme-bootstrap-26.012.79498~2eb0501.ec066a5a.apk: time stamp 2446-05-10 22:38:55 is 13263864938.282719961 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7197687Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/odhcpd-ipv6only-2025.12.18~3fda5f8b-r1.f7ba0b33.apk: time stamp 2446-05-10 22:38:55 is 13263864938.282606249 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7200225Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-codecs-3.13.9-r2.cb170206.apk: time stamp 2446-05-10 22:38:55 is 13263864938.281401004 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7203201Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-app-attendedsysupgrade-26.012.79498~2eb0501.efc6e02d.apk: time stamp 2446-05-10 22:38:55 is 13263864938.281049927 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7205519Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-macvlan-6.12.65-r1.9ac1e284.apk: time stamp 2446-05-10 22:38:55 is 13263864938.280896831 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7206919Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/f2fsck-1.16.0-r4.155321dd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.280660509 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7209012Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-leds-gpio-6.12.65-r1.bfffc724.apk: time stamp 2446-05-10 22:38:55 is 13263864938.280536988 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7213769Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/liblxc-6.0.5-r1.473946d2.apk: time stamp 2446-05-10 22:38:55 is 13263864938.279772387 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7215532Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-mod-status-26.012.79498~2eb0501.d43237d8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.279642695 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7217287Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libreadline8-8.3-r1.b39d6386.apk: time stamp 2446-05-10 22:38:55 is 13263864938.279391214 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7219365Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/rpcd-mod-iwinfo-2025.12.03~ffb9961c-r1.a7a2a296.apk: time stamp 2446-05-10 22:38:55 is 13263864938.279326633 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7221212Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-sha1-6.12.65-r1.e5032246.apk: time stamp 2446-05-10 22:38:55 is 13263864938.279268545 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7222936Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libsqlite3-0-3.51.2-r1.170216c8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.27839468 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7224645Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-dbm-3.13.9-r2.aa60f069.apk: time stamp 2446-05-10 22:38:55 is 13263864938.278297508 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7226483Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/cgi-io-2025.12.11~658b14bd-r1.0656162b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.278238117 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7233691Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/nftables-json-1.1.6-r1.2e6b9b7e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277499496 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7236550Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libpci-3.14.0-r1.6110c1e4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277395211 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7238463Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libnfnetlink0-1.0.2-r1.f553fe17.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277330109 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7240317Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-conntrack-6.12.65-r1.4a16a109.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277206217 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7242227Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-lib-uqr-26.012.79498~2eb0501.d0e7eb0c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277122781 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7244214Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libjson-script20251208-2025.12.08~7928f171-r1.eaf3a13c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277065434 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7246523Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/fitblk-2.82ddd0c4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.277005051 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7250556Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-sqlite3-3.13.9-r2.9feb4bdc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.276859075 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7253889Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-3.13.9-r2.1d1b3d67.apk: time stamp 2446-05-10 22:38:55 is 13263864938.276732318 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7256723Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-rtc-pcf8563-6.12.65-r1.78e05e64.apk: time stamp 2446-05-10 22:38:55 is 13263864938.276618625 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7258806Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/procd-ujail-2025.10.04~3b3501ab-r1.079e032f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.275306721 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7260714Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-eeprom-at24-6.12.65-r1.5b6e1748.apk: time stamp 2446-05-10 22:38:55 is 13263864938.275229958 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7265410Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-uloop-2025.12.01~f7c2b97a-r1.a71e7c6f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.275134068 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7267416Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-lib-curve25519-6.12.65-r1.a7700eeb.apk: time stamp 2446-05-10 22:38:55 is 13263864938.275037568 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7269467Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mac80211-6.12.65.6.18-r1.58cd0d5c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.274125401 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7271214Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ubi-utils-2.3.0-r1.2e327f64.apk: time stamp 2446-05-10 22:38:55 is 13263864938.273736384 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7274542Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/pciids-0.387-r1.59e4d09f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.272919846 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7279838Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mt76-connac-6.12.65.2025.11.06~eb567bc7-r2.8ba34520.apk: time stamp 2446-05-10 22:38:55 is 13263864938.272715844 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7282029Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nft-nat-6.12.65-r1.1488ad22.apk: time stamp 2446-05-10 22:38:55 is 13263864938.272524607 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7283997Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-lib-chacha20poly1305-6.12.65-r1.f96d5936.apk: time stamp 2446-05-10 22:38:55 is 13263864938.272415984 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7287061Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-lib-poly1305-6.12.65-r1.ea507b73.apk: time stamp 2446-05-10 22:38:55 is 13263864938.272239744 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7289444Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-ncurses-3.13.9-r2.bb7a6549.apk: time stamp 2446-05-10 22:38:55 is 13263864938.271866967 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7291246Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-nat-6.12.65-r1.deeb51ca.apk: time stamp 2446-05-10 22:38:55 is 13263864938.271711466 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7293063Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-unittest-3.13.9-r2.8a2d066d.apk: time stamp 2446-05-10 22:38:55 is 13263864938.271341704 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7295011Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/usign-2025.10.03~c4c72b1b-r1.0953edd7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.271194929 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7449825Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/tailscale-1.92.3-r1.fdd5953b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.255469895 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7451716Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libubus20251202-2025.12.02~3cc98db1-r1.d76c8467.apk: time stamp 2446-05-10 22:38:55 is 13263864938.255299937 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7453749Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libkmod-32-r1.b2ab56da.apk: time stamp 2446-05-10 22:38:55 is 13263864938.254844516 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7455466Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/uhttpd-mod-lua-2025.10.03~ebb92e6b-r1.f801b784.apk: time stamp 2446-05-10 22:38:55 is 13263864938.254752213 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7457206Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libuuid1-2.41.3-r1.68465459.apk: time stamp 2446-05-10 22:38:55 is 13263864938.254665911 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7459007Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/liblzma-5.8.1-r1.dd1cc932.apk: time stamp 2446-05-10 22:38:55 is 13263864938.254289327 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7469444Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libpcre2-10.47-r1.60e97770.apk: time stamp 2446-05-10 22:38:55 is 13263864938.253800062 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7472536Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-openssl-3.13.9-r2.a39b2413.apk: time stamp 2446-05-10 22:38:55 is 13263864938.253530948 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7474342Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-authenc-6.12.65-r1.cf8f0fcd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.253459865 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7475977Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/mtd-27.ad6c710c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.253390936 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7477639Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-mod-system-26.012.79498~2eb0501.3947d1a7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.253219265 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7479570Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/mkf2fs-1.16.0-r4.fdbce5b7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.252992431 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7481259Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/firewall4-2025.03.17~b6e51575-r1.23eadec1.apk: time stamp 2446-05-10 22:38:55 is 13263864938.252632047 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7484048Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libdbus-1.16.2-r3.b321f240.apk: time stamp 2446-05-10 22:38:55 is 13263864938.252130086 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7486024Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libsmartcols1-2.41.3-r1.992ff8d6.apk: time stamp 2446-05-10 22:38:55 is 13263864938.251673341 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7489051Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/uclient-fetch-2025.10.03~dc909ca7-r2.54bb32fd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.251339246 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7495015Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libncurses6-6.4-r3.fa77c79a.apk: time stamp 2446-05-10 22:38:55 is 13263864938.250716333 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7500221Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/getrandom-2025.10.30~6f78fa49-r1.359370d5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.250505539 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7503493Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/jsonfilter-2025.10.04~f4fe702d-r1.b96818f9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.250256733 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7506671Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-lib-crc32c-6.12.65-r1.173568e4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.250157938 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7508675Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-ipt-core-6.12.65-r1.00f3bb04.apk: time stamp 2446-05-10 22:38:55 is 13263864938.2500626 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7511173Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/rpcd-mod-rpcsys-2025.12.03~ffb9961c-r1.5c343e8b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.249952093 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7513168Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libgdbm-1.25-r1.13749d69.apk: time stamp 2446-05-10 22:38:55 is 13263864938.249580829 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7519867Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mt7996e-6.12.65.2025.11.06~eb567bc7-r2.d9f1ee45.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248932266 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7522007Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-usb-storage-6.12.65-r1.ad1975c7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248733444 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7523785Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libudev-zero-1.0.3-r2.940ead75.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248649346 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7525514Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-udptunnel4-6.12.65-r1.155edb0e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248576109 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7527347Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libubox20251208-2025.12.08~7928f171-r1.1ed35214.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248465483 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7529402Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libgpg-error-1.58-r1.2e84f6c1.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248295765 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7531106Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-sfp-6.12.65-r1.bc291f51.apk: time stamp 2446-05-10 22:38:55 is 13263864938.248171723 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7541230Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/liblua5.1.5-5.1.5-r11.69dc5e37.apk: time stamp 2446-05-10 22:38:55 is 13263864938.247947914 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7544432Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libgmp10-6.3.0-r2.65077eb7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.247451526 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7555992Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libpython3-3.13-3.13.9-r2.02d0e1be.apk: time stamp 2446-05-10 22:38:55 is 13263864938.244928065 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7603774Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mt7996-233-firmware-6.12.65.2025.11.06~eb567bc7-r2.60bd80da.apk: time stamp 2446-05-10 22:38:55 is 13263864938.240321548 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7609998Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-base-3.13.9-r2.3deb681c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.239828275 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7617689Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-base-26.012.79498~2eb0501.b71bdadd.apk: time stamp 2446-05-10 22:38:55 is 13263864938.23951566 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7651852Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-light-3.13.9-r2.f76e3130.apk: time stamp 2446-05-10 22:38:55 is 13263864938.235433444 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7657728Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lxc-common-6.0.5-r1.9b07dda8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.235343916 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7659809Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libiwinfo20230701-2026.01.14~f5dd57a8-r1.95837fca.apk: time stamp 2446-05-10 22:38:55 is 13263864938.235220425 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7661978Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-veth-6.12.65-r1.ae9a4a8b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.235094029 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7707113Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mt7996-firmware-6.12.65.2025.11.06~eb567bc7-r2.b8ddf51f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.229551589 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7711455Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/nano-8.7-r1.14e324ba.apk: time stamp 2446-05-10 22:38:55 is 13263864938.22908718 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7714281Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-uci-2025.12.01~f7c2b97a-r1.bd793988.apk: time stamp 2446-05-10 22:38:55 is 13263864938.228992583 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7717630Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-mt76-core-6.12.65.2025.11.06~eb567bc7-r2.524c312b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.22880953 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7721137Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-conntrack-netlink-6.12.65-r1.195ab1d1.apk: time stamp 2446-05-10 22:38:55 is 13263864938.228702641 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7723050Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/resize2fs-1.47.3-r1.afd6a7d9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.228459566 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7727314Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-usb-core-6.12.65-r1.4957e4cb.apk: time stamp 2446-05-10 22:38:55 is 13263864938.227759096 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7729150Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/uhttpd-mod-ubus-2025.10.03~ebb92e6b-r1.348a8622.apk: time stamp 2446-05-10 22:38:55 is 13263864938.227671141 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7730423Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libe2p2-1.47.3-r1.c28d4c90.apk: time stamp 2446-05-10 22:38:55 is 13263864938.227568519 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7731588Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-pppoe-6.12.65-r1.f2c62e11.apk: time stamp 2446-05-10 22:38:55 is 13263864938.227448284 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7733934Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/wireless-regdb-2025.10.07-r1.7966911b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.227390997 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7752092Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-readline-3.13.9-r2.6534e38b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.226981842 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7753977Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/mt7988-wo-firmware-20251125-r1.2694a192.apk: time stamp 2446-05-10 22:38:55 is 13263864938.226747072 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7755789Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-usb3-6.12.65-r1.ca712712.apk: time stamp 2446-05-10 22:38:55 is 13263864938.226674296 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7759077Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libgcrypt-1.11.2-r1.1a0491b3.apk: time stamp 2446-05-10 22:38:55 is 13263864938.226005676 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7760926Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-proto-ppp-26.012.79498~2eb0501.96a37667.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225940914 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7762798Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libext2fs2-1.47.3-r1.72092f31.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225651202 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7764561Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/umdns-2025.10.04~2f75344f-r1.86e15b81.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225565482 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7766334Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-html-1.1ff6bb53.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225492936 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7768100Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-i2c-mux-pca954x-6.12.65-r1.26403768.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225435308 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7770054Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nls-utf8-6.12.65-r1.fd37caa3.apk: time stamp 2446-05-10 22:38:55 is 13263864938.225381838 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7772141Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-pydoc-3.13.9-r2.12efd08c.apk: time stamp 2446-05-10 22:38:55 is 13263864938.224636176 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7773843Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/wget-ssl-1.25.0-r2.48567a1f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.223992161 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7775649Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-urllib-3.13.9-r2.75ff326b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.223717477 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7777535Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lxc-auto-6.0.5-r1.89fe2590.apk: time stamp 2446-05-10 22:38:55 is 13263864938.223608964 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7779408Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libmbedtls21-3.6.5-r1.35467819.apk: time stamp 2446-05-10 22:38:55 is 13263864938.222841398 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7781191Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-udptunnel6-6.12.65-r1.3ff46dfb.apk: time stamp 2446-05-10 22:38:55 is 13263864938.222753043 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7783023Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-fs-vfat-6.12.65-r1.2aae3217.apk: time stamp 2446-05-10 22:38:55 is 13263864938.222597713 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7784915Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libf2fs6-1.16.0-r4.5dab4436.apk: time stamp 2446-05-10 22:38:55 is 13263864938.222455977 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7786542Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/htop-3.4.1-r1.32892e20.apk: time stamp 2446-05-10 22:38:55 is 13263864938.222150025 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7788403Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/odhcp6c-2025.12.29~8abb4506-r1.f791e1b5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.221995876 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7790180Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/procd-2025.10.04~3b3501ab-r1.2843442a.apk: time stamp 2446-05-10 22:38:55 is 13263864938.221736622 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7791908Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/busybox-1.37.0-r6.dda16fba.apk: time stamp 2446-05-10 22:38:55 is 13263864938.2212333 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7793620Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/fstools-2025.10.03~12858e28-r1.4c84ff22.apk: time stamp 2446-05-10 22:38:55 is 13263864938.221125639 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7795391Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ppp-2.5.2-r2.83519ce7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.220748764 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7797132Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libudebug-2025.10.21~75f39cd4.7e51bbea.apk: time stamp 2446-05-10 22:38:55 is 13263864938.220666861 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7799094Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libusb-1.0-0-1.0.29-r1.a103601b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.220464332 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7803482Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/e2fsprogs-1.47.3-r1.740b371e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.220026703 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7805341Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nfnetlink-6.12.65-r1.617694d4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.219953206 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7810768Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libevdev-1.13.4-r1.bc7143f4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.219748663 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7815349Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-flow-6.12.65-r1.a72d38ba.apk: time stamp 2446-05-10 22:38:55 is 13263864938.219533089 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7817090Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/dawn-2025.11.07~7414c34a-r1.2b55729f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.219297299 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7846488Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libopenssl3-3.5.4-r2.77653ab9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.215616483 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7850319Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libnftnl11-1.3.1-r1.2c65a280.apk: time stamp 2446-05-10 22:38:55 is 13263864938.215389097 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7853086Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/terminfo-6.4-r3.33c74ad5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.215316061 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7859161Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-xml-3.13.9-r2.5fa611d6.apk: time stamp 2446-05-10 22:38:55 is 13263864938.214446735 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7861866Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ppp-mod-pppoe-2.5.2-r2.d85374d7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.214340005 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7864634Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libss2-1.47.3-r1.93ad001e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.214264053 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7867725Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libnettle8-3.10.2-r1.41cf05d0.apk: time stamp 2446-05-10 22:38:55 is 13263864938.213433109 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7871239Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-gpio-button-hotplug-6.12.65-r5.cd41ab38.apk: time stamp 2446-05-10 22:38:55 is 13263864938.213332941 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7874662Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-usb-xhci-mtk-6.12.65-r1.7ad94746.apk: time stamp 2446-05-10 22:38:55 is 13263864938.21324677 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7876884Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libblkid1-2.41.3-r1.9cb7ca2f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.21284586 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7879228Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-log-6.12.65-r1.4b142ef0.apk: time stamp 2446-05-10 22:38:55 is 13263864938.212755651 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7880998Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ubox-2025.10.30~6f78fa49-r1.32aecbf2.apk: time stamp 2446-05-10 22:38:55 is 13263864938.212571677 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7883418Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/jansson4-2.14.1-r1.c98f0005.apk: time stamp 2446-05-10 22:38:55 is 13263864938.212342278 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7885182Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libfdisk1-2.41.3-r1.2403e78f.apk: time stamp 2446-05-10 22:38:55 is 13263864938.211907956 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7899816Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-des-6.12.65-r1.f2e22ca8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.211719263 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7901622Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libcomerr0-1.47.3-r1.b30b33dc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.211582687 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7903234Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lua-5.1.5-r11.1dbd4e47.apk: time stamp 2446-05-10 22:38:55 is 13263864938.21111392 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7904861Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ubus-2025.12.02~3cc98db1-r1.abfb7ee8.apk: time stamp 2446-05-10 22:38:55 is 13263864938.210972726 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7906528Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-tun-6.12.65-r1.88e1a4b0.apk: time stamp 2446-05-10 22:38:55 is 13263864938.210846009 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7908478Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-crypto-lib-chacha20-6.12.65-r1.6d35f6cc.apk: time stamp 2446-05-10 22:38:55 is 13263864938.210764667 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7910166Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/iw-6.17-r1.18e91dde.apk: time stamp 2446-05-10 22:38:55 is 13263864938.210583808 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7911754Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-email-3.13.9-r2.c8596c21.apk: time stamp 2446-05-10 22:38:55 is 13263864938.210106506 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7913427Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/rpcd-2025.12.03~ffb9961c-r1.b8b9b814.apk: time stamp 2446-05-10 22:38:55 is 13263864938.209914226 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7915162Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nft-fib-6.12.65-r1.a33148d9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.209845086 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7917186Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-cfg80211-6.12.65.6.18-r1.6317a626.apk: time stamp 2446-05-10 22:38:55 is 13263864938.209192826 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7919092Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/logd-2025.10.30~6f78fa49-r1.2efb6cc4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.20905569 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7922627Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/usbids-0.387-r1.a98368c9.apk: time stamp 2446-05-10 22:38:55 is 13263864938.20852686 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7932121Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lxc-templates-6.0.5-r1.3ad9aa2e.apk: time stamp 2446-05-10 22:38:55 is 13263864938.20834508 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7934021Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/prometheus-node-exporter-lua-2025.11.22-r1.b46cbadf.apk: time stamp 2446-05-10 22:38:55 is 13263864938.207967795 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7935890Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/uci-2025.12.02~66127cd7-r1.7021d114.apk: time stamp 2446-05-10 22:38:55 is 13263864938.207910067 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7937699Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ucode-mod-digest-2025.12.01~f7c2b97a-r1.7635da81.apk: time stamp 2446-05-10 22:38:55 is 13263864938.207845175 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7939926Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-asyncio-3.13.9-r2.266c55b5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.207272484 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7944804Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/dnsmasq-full-2.91-r2.26882580.apk: time stamp 2446-05-10 22:38:55 is 13263864938.206647575 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7947534Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nf-ipt-6.12.65-r1.62a5a09a.apk: time stamp 2446-05-10 22:38:55 is 13263864938.206429958 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7950368Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libgcc1-14.3.0-r5.3da1a899.apk: time stamp 2446-05-10 22:38:55 is 13263864938.206140767 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7951971Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libcap-2.69-r1.ab45a1b5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.205955089 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7953806Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-ctypes-3.13.9-r2.7503575d.apk: time stamp 2446-05-10 22:38:55 is 13263864938.20546341 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7955653Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/luci-app-package-manager-26.012.79498~2eb0501.82d180f0.apk: time stamp 2446-05-10 22:38:55 is 13263864938.205275817 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.7957516Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-nft-core-6.12.65-r1.7af4defa.apk: time stamp 2446-05-10 22:38:55 is 13263864938.204931214 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8003579Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-pip-23.3.1-r1.fb29ed6b.apk: time stamp 2446-05-10 22:38:55 is 13263864938.200032498 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8011081Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/python3-lzma-3.13.9-r2.c898b5d5.apk: time stamp 2446-05-10 22:38:55 is 13263864938.19947198 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8013198Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/fwtool-2025.10.03~04cd252e-r1.4c301fc6.apk: time stamp 2446-05-10 22:38:55 is 13263864938.199392 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8015073Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/hostapd-common-2025.08.26~ca266cc2-r1.3a17ff26.apk: time stamp 2446-05-10 22:38:55 is 13263864938.199326468 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8016838Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-slhc-6.12.65-r1.42e4f283.apk: time stamp 2446-05-10 22:38:55 is 13263864938.199269 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8018673Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/ubusd-2025.12.02~3cc98db1-r1.0dcf06d1.apk: time stamp 2446-05-10 22:38:55 is 13263864938.199190373 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8020186Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-i2c-mux-6.12.65-r1.2d2b0ae7.apk: time stamp 2446-05-10 22:38:55 is 13263864938.199063545 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8021683Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-wireguard-6.12.65-r1.f1702011.apk: time stamp 2446-05-10 22:38:55 is 13263864938.198967646 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8022780Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/lxc-stop-6.0.5-r1.721758ef.apk: time stamp 2446-05-10 22:38:55 is 13263864938.198833145 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8024031Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libiwinfo-data-2026.01.14~f5dd57a8-r1.c8abbcda.apk: time stamp 2446-05-10 22:38:55 is 13263864938.198722097 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8025593Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/kmod-ipt-nat-6.12.65-r1.eed44388.apk: time stamp 2446-05-10 22:38:55 is 13263864938.198659209 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:16.8026822Z /usr/bin/tar: openwrt-imagebuilder-bpi-r4/dl/libnghttp2-14-1.66.0-r1.6772ecd4.apk: time stamp 2446-05-10 22:38:55 is 13263864938.19832794 s in the future
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:20.7260246Z Cache restored successfully
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0320834Z Cache restored from key: Linux-openwrt-builder-bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0458834Z ##[group]Run ./build.sh bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0459218Z [36;1m./build.sh bpi-r4[0m
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0523823Z shell: /usr/bin/bash -e {0}
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0524131Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0633249Z 🔧 Loading Profile: bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0634360Z [1/5] Checking for Image Builder...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0635772Z [2/5] Merging Files...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.0695550Z [3/5] Cleaning previous builds...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.2188801Z rm -rf /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/tmp /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/dl /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/root-mediatek /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/bin/targets/mediatek/filogic
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.3418698Z [4/5] Building Firmware for bananapi_bpi-r4...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.4233046Z Building images for mediatek - Bananapi BPi-R4
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.4252643Z Packages: base-files libc libgcc busybox dropbear mtd uci netifd fstools htop tcpdump nano git curl wget-ssl python3 python3-pip kmod-sfp kmod-hwmon-pwmfan ethtool-full pciutils usbutils kmod-usb-storage kmod-fs-ext4 kmod-fs-vfat hostapd-utils dawn tailscale prometheus-node-exporter-lua kmod-tun kmod-wireguard kmod-ipt-nat kmod-nft-nat lxc lxc-templates lxc-auto kmod-veth kmod-macvlan losetup resize2fs fdisk luci luci-ssl dnsmasq-full apk-mbedtls base-files ca-bundle dropbear e2fsprogs f2fsck firewall4 fitblk fstools kernel kmod-crypto-hw-safexcel kmod-eeprom-at24 kmod-gpio-button-hotplug kmod-hwmon-pwmfan kmod-i2c-mux-pca954x kmod-leds-gpio kmod-mt7996-233-firmware kmod-mt7996-firmware kmod-nft-offload kmod-rtc-pcf8563 kmod-sfp kmod-usb3 libc libgcc libustream-mbedtls logd mkf2fs mt7988-wo-firmware mtd netifd nftables odhcp6c odhcpd-ipv6only ppp ppp-mod-pppoe procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls "base-files=1681~bd1cf1b18a" "libc=1.2.5-r5" "kernel=6.12.65~aa4948ece684816486d1fa5040ce0bb3-r1"
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:21.4263187Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:22.9417104Z OK: 0 B in 0 packages
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:22.9502843Z Package list missing or not up-to-date, generating it.
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:22.9683947Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:22.9699565Z Building package index...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.1834030Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.1849325Z Installing packages...
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.2558520Z (  1/294) Installing libgcc1 (14.3.0-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.3800788Z (  2/294) Installing libc (1.2.5-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.3856049Z (  3/294) Installing libmbedtls21 (3.6.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.5230319Z (  4/294) Installing libubox20251208 (2025.12.08~7928f171-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.6454570Z (  5/294) Installing libuclient20201210 (2025.10.03~dc909ca7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.7625026Z (  6/294) Installing uclient-fetch (2025.10.03~dc909ca7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:30.8834745Z (  7/294) Installing zlib (1.3.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.0113623Z (  8/294) Installing apk-mbedtls (3.0.2-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.2551452Z (  9/294) Installing busybox (1.37.0-r6)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.5371413Z ( 10/294) Installing ubi-utils (2.3.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.6781039Z ( 11/294) Installing libubus20251202 (2025.12.02~3cc98db1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.7955688Z ( 12/294) Installing libuci20250120 (2025.12.02~66127cd7-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:31.9228552Z ( 13/294) Installing libjson-c5 (0.18-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.0442453Z ( 14/294) Installing libblobmsg-json20251208 (2025.12.08~7928f171-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.1654670Z ( 15/294) Installing ubusd (2025.12.02~3cc98db1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.2908915Z ( 16/294) Installing ubus (2025.12.02~3cc98db1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.4085322Z ( 17/294) Installing ubox (2025.10.30~6f78fa49-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.5485274Z ( 18/294) Installing fstools (2025.10.03~12858e28-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.6710170Z ( 19/294) Installing fwtool (2025.10.03~04cd252e-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.7939319Z ( 20/294) Installing jsonfilter (2025.10.04~f4fe702d-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:32.9144365Z ( 21/294) Installing jshn (2025.12.08~7928f171-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.0369045Z ( 22/294) Installing libnl-tiny1 (2025.12.02~40493a65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.1662071Z ( 23/294) Installing libudebug (2025.10.21~75f39cd4)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.2858681Z ( 24/294) Installing libucode20230711 (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.4114997Z ( 25/294) Installing ucode (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.5349277Z ( 26/294) Installing ucode-mod-fs (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.6534294Z ( 27/294) Installing ucode-mod-ubus (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.7891778Z ( 28/294) Installing ucode-mod-uci (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:33.9101138Z ( 29/294) Installing ucode-mod-uloop (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.0367603Z ( 30/294) Installing netifd (2025.10.20~777f5942-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.1683722Z ( 31/294) Installing openwrt-keyring (2025.12.10~f0670054-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.2920226Z ( 32/294) Installing libjson-script20251208 (2025.12.08~7928f171-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.4132507Z ( 33/294) Installing procd (2025.10.04~3b3501ab-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.5392307Z ( 34/294) Installing procd-seccomp (2025.10.04~3b3501ab-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.6655226Z ( 35/294) Installing usign (2025.10.03~c4c72b1b-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.7826755Z ( 36/294) Installing base-files (1681~bd1cf1b18a)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:34.7936296Z ( 37/294) Installing ca-bundle (20250419-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.2336374Z ( 38/294) Installing libnghttp2-14 (1.66.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.3583624Z ( 39/294) Installing libcurl4 (8.15.0-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.5039248Z ( 40/294) Installing curl (8.15.0-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.6322571Z ( 41/294) Installing libgpg-error (1.58-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.7782383Z ( 42/294) Installing libgcrypt (1.11.2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:35.9154887Z ( 43/294) Installing libiwinfo-data (2026.01.14~f5dd57a8-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.0337432Z ( 44/294) Installing libiwinfo20230701 (2026.01.14~f5dd57a8-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.1571221Z ( 45/294) Installing umdns (2025.10.04~2f75344f-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.2832624Z ( 46/294) Installing dawn (2025.11.07~7414c34a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.4064189Z ( 47/294) Installing kernel (6.12.65~aa4948ece684816486d1fa5040ce0bb3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.4068635Z ( 48/294) Installing kmod-nf-conntrack (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.5614779Z ( 49/294) Installing kmod-nfnetlink (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.6792815Z ( 50/294) Installing kmod-nf-conntrack-netlink (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.8040940Z ( 51/294) Installing libmnl0 (1.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:36.9269129Z ( 52/294) Installing libnfnetlink0 (1.0.2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:37.2886025Z ( 53/294) Installing libnetfilter-conntrack3 (1.1.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:37.4224878Z ( 54/294) Installing libgmp10 (6.3.0-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:37.5557465Z ( 55/294) Installing libnettle8 (3.10.2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:37.8110417Z ( 56/294) Installing jansson4 (2.14.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:37.9367430Z ( 57/294) Installing kmod-crypto-hash (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.0538952Z ( 58/294) Installing kmod-crypto-crc32c (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.1891959Z ( 59/294) Installing kmod-lib-crc32c (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.3084810Z ( 60/294) Installing kmod-nf-conntrack6 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.4292478Z ( 61/294) Installing kmod-nf-log (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.5454236Z ( 62/294) Installing kmod-nf-log6 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.6671308Z ( 63/294) Installing kmod-nf-nat (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.7915164Z ( 64/294) Installing kmod-nf-reject (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:38.9130236Z ( 65/294) Installing kmod-nf-reject6 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.0345496Z ( 66/294) Installing kmod-nft-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.1665256Z ( 67/294) Installing libnftnl11 (1.3.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.2954647Z ( 68/294) Installing nftables-json (1.1.6-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.6290045Z ( 69/294) Installing dnsmasq-full (2.91-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.7682487Z ( 70/294) Installing dropbear (2025.89-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:39.8979304Z ( 71/294) Installing libpthread (1.2.5-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.0191264Z ( 72/294) Installing librt (1.2.5-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.1369271Z ( 73/294) Installing libuuid1 (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.2611451Z ( 74/294) Installing libe2p2 (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.3823874Z ( 75/294) Installing libblkid1 (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.5118067Z ( 76/294) Installing libcomerr0 (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.6348577Z ( 77/294) Installing libss2 (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.7526100Z ( 78/294) Installing libext2fs2 (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:40.8861358Z ( 79/294) Installing e2fsprogs (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.0198428Z ( 80/294) Installing ethtool-full (6.15-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.1541191Z ( 81/294) Installing libf2fs6 (1.16.0-r4)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.2771337Z ( 82/294) Installing f2fsck (1.16.0-r4)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.4032977Z ( 83/294) Installing libfdisk1 (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.5371604Z ( 84/294) Installing terminfo (6.4-r3)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.6671776Z ( 85/294) Installing libncurses6 (6.4-r3)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.8033018Z ( 86/294) Installing libsmartcols1 (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:41.9447729Z ( 87/294) Installing fdisk (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.0676826Z ( 88/294) Installing kmod-nft-fib (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.1911178Z ( 89/294) Installing kmod-nft-nat (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.3146012Z ( 90/294) Installing kmod-nf-flow (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.4396160Z ( 91/294) Installing kmod-nft-offload (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.5681220Z ( 92/294) Installing firewall4 (2025.03.17~b6e51575-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.6922889Z ( 93/294) Installing fit-check-sign (2025.10-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.8173485Z ( 94/294) Installing fitblk (2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:42.9356268Z ( 95/294) Installing libopenssl3 (3.5.4-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:43.2225152Z ( 96/294) Installing git (2.50.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.0542270Z ( 97/294) Installing hostapd-utils (2025.08.26~ca266cc2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.1790268Z ( 98/294) Installing htop (3.4.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.3129158Z ( 99/294) Installing eip197-mini-firmware (20251125-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.4334635Z (100/294) Installing kmod-crypto-null (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.5609908Z (101/294) Installing kmod-crypto-aead (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.6828516Z (102/294) Installing kmod-crypto-manager (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.8114103Z (103/294) Installing kmod-crypto-authenc (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:44.9312054Z (104/294) Installing kmod-crypto-des (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.0491866Z (105/294) Installing kmod-crypto-hmac (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.1696802Z (106/294) Installing kmod-crypto-md5 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.2904433Z (107/294) Installing kmod-crypto-sha1 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.4079636Z (108/294) Installing kmod-crypto-sha256 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.5266662Z (109/294) Installing kmod-crypto-sha512 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.6460475Z (110/294) Installing kmod-crypto-hw-safexcel (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.7761527Z (111/294) Installing kmod-i2c-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:45.9014794Z (112/294) Installing kmod-regmap-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.0213860Z (113/294) Installing kmod-regmap-i2c (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.1392159Z (114/294) Installing kmod-eeprom-at24 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.2571445Z (115/294) Installing kmod-lib-crc16 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.3753950Z (116/294) Installing kmod-fs-ext4 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.4977730Z (117/294) Installing kmod-nls-base (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.6190735Z (118/294) Installing kmod-nls-cp437 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.7397975Z (119/294) Installing kmod-nls-iso8859-1 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.8610920Z (120/294) Installing kmod-nls-utf8 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:46.9821853Z (121/294) Installing kmod-fs-vfat (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.1071260Z (122/294) Installing kmod-gpio-button-hotplug (6.12.65-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.2233928Z (123/294) Installing kmod-hwmon-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.3466559Z (124/294) Installing kmod-thermal (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.4641666Z (125/294) Installing kmod-hwmon-pwmfan (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.5828897Z (126/294) Installing kmod-i2c-mux (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.7025537Z (127/294) Installing kmod-i2c-mux-pca954x (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.8293737Z (128/294) Installing kmod-nf-ipt (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:47.9604067Z (129/294) Installing kmod-ipt-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.0821573Z (130/294) Installing kmod-ipt-nat (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.2019692Z (131/294) Installing kmod-leds-gpio (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.3228468Z (132/294) Installing kmod-macvlan (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.4417982Z (133/294) Installing hostapd-common (2025.08.26~ca266cc2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.5634339Z (134/294) Installing iw (6.17-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.6907986Z (135/294) Installing ucode-mod-digest (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.8115442Z (136/294) Installing ucode-mod-nl80211 (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:48.9413841Z (137/294) Installing ucode-mod-rtnl (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.0800101Z (138/294) Installing wifi-scripts (1.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.2087049Z (139/294) Installing wireless-regdb (2025.10.07-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.3306777Z (140/294) Installing kmod-cfg80211 (6.12.65.6.18-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.4867112Z (141/294) Installing kmod-crypto-sha3 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.6057152Z (142/294) Installing kmod-crypto-rng (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.7281161Z (143/294) Installing kmod-crypto-geniv (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.8591184Z (144/294) Installing kmod-crypto-seqiv (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:49.9795321Z (145/294) Installing kmod-crypto-ctr (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.1020516Z (146/294) Installing kmod-crypto-ccm (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.2277816Z (147/294) Installing kmod-crypto-cmac (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.3498517Z (148/294) Installing kmod-crypto-gf128 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.4758735Z (149/294) Installing kmod-crypto-ghash (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.5933596Z (150/294) Installing kmod-crypto-gcm (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.7222923Z (151/294) Installing kmod-mac80211 (6.12.65.6.18-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:50.8560576Z (152/294) Installing kmod-mt7996-firmware-common (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:51.1204820Z (153/294) Installing kmod-mt76-core (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:51.4631383Z (154/294) Installing kmod-mt76-connac (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:51.5882604Z (155/294) Installing kmod-mt7996e (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:51.7138898Z (156/294) Installing kmod-mt7996-233-firmware (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:52.2380383Z (157/294) Installing kmod-mt7996-firmware (6.12.65.2025.11.06~eb567bc7-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.3147336Z (158/294) Installing kmod-rtc-pcf8563 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.4371173Z (159/294) Installing kmod-libphy (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.5590036Z (160/294) Installing kmod-phylink (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.6755765Z (161/294) Installing kmod-sfp (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.7977805Z (162/294) Installing kmod-tun (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:53.9226363Z (163/294) Installing kmod-scsi-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.0413551Z (164/294) Installing kmod-usb-common (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.1635249Z (165/294) Installing kmod-usb-core (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.2925367Z (166/294) Installing kmod-usb-storage (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.6376955Z (167/294) Installing kmod-usb-xhci-hcd (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.7699077Z (168/294) Installing kmod-usb-xhci-mtk (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:54.8897386Z (169/294) Installing kmod-usb3 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.0096410Z (170/294) Installing kmod-veth (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.1285101Z (171/294) Installing kmod-crypto-lib-chacha20 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.2487406Z (172/294) Installing kmod-crypto-lib-poly1305 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.3799101Z (173/294) Installing kmod-crypto-lib-chacha20poly1305 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.5040879Z (174/294) Installing kmod-crypto-kpp (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.6223274Z (175/294) Installing kmod-crypto-lib-curve25519 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.7447056Z (176/294) Installing kmod-udptunnel4 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.8711273Z (177/294) Installing kmod-udptunnel6 (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:55.9931223Z (178/294) Installing kmod-wireguard (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.1160712Z (179/294) Installing libustream-mbedtls20201210 (2025.10.03~5a81c108-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.2348285Z (180/294) Installing logd (2025.10.30~6f78fa49-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.3589466Z (181/294) Installing losetup (2.41.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.4846882Z (182/294) Installing rpcd (2025.12.03~ffb9961c-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.6094239Z (183/294) Installing rpcd-mod-rpcsys (2025.12.03~ffb9961c-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.7316247Z (184/294) Installing attendedsysupgrade-common (9)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.8490892Z (185/294) Installing cgi-io (2025.12.11~658b14bd-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:56.9695560Z (186/294) Installing liblucihttp0 (2023.03.15~9b5b683f-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.0884319Z (187/294) Installing liblucihttp-ucode (2023.03.15~9b5b683f-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.2070584Z (188/294) Installing rpcd-mod-file (2025.12.03~ffb9961c-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.3295785Z (189/294) Installing rpcd-mod-luci (20240305-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.4592903Z (190/294) Installing rpcd-mod-ucode (2025.12.03~ffb9961c-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.5785423Z (191/294) Installing ucode-mod-html (1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.7071658Z (192/294) Installing ucode-mod-log (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.8291489Z (193/294) Installing ucode-mod-math (2025.12.01~f7c2b97a-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:57.9510551Z (194/294) Installing luci-base (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.0923257Z (195/294) Installing luci-app-attendedsysupgrade (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.2606607Z (196/294) Installing luci-app-package-manager (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.3806674Z (197/294) Installing luci-app-firewall (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.5002918Z (198/294) Installing luci-lib-uqr (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.6180139Z (199/294) Installing rpcd-mod-iwinfo (2025.12.03~ffb9961c-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.7378817Z (200/294) Installing luci-mod-network (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.8655592Z (201/294) Installing luci-mod-status (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:58.9926623Z (202/294) Installing luci-mod-system (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.1229163Z (203/294) Installing luci-mod-admin-full (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.2451696Z (204/294) Installing luci-proto-ipv6 (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.3652183Z (205/294) Installing luci-proto-ppp (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.4819517Z (206/294) Installing luci-theme-bootstrap (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.6070881Z (207/294) Installing rpcd-mod-rrdns (20170710)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.7462589Z (208/294) Installing uhttpd (2025.10.03~ebb92e6b-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:43:59.8819821Z (209/294) Installing uhttpd-mod-ubus (2025.10.03~ebb92e6b-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.0007831Z (210/294) Installing luci-light (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.1212248Z (211/294) Installing luci (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.2462542Z (212/294) Installing px5g-mbedtls (11)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.3643769Z (213/294) Installing luci-ssl (26.012.79498~2eb0501)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.4860489Z (214/294) Installing lxc (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.6089676Z (215/294) Installing libcap (2.69-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.7299566Z (216/294) Installing libdbus (1.16.2-r3)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.8601514Z (217/294) Installing libseccomp (2.5.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:00.9877210Z (218/294) Installing liblxc (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.1254713Z (219/294) Installing lxc-common (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.2463280Z (220/294) Installing lxc-start (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.3756730Z (221/294) Installing lxc-stop (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.4977098Z (222/294) Installing lxc-auto (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.6211521Z (223/294) Installing lxc-templates (6.0.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.7422387Z (224/294) Installing mkf2fs (1.16.0-r4)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.8677246Z (225/294) Installing mt7988-wo-firmware (20251125-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:01.9982458Z (226/294) Installing mtd (27)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.1191069Z (227/294) Installing nano (8.7-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.2445078Z (228/294) Installing odhcp6c (2025.12.29~8abb4506-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.3672806Z (229/294) Installing odhcpd-ipv6only (2025.12.18~3fda5f8b-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.5072680Z (230/294) Installing libkmod (32-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.6296024Z (231/294) Installing libpci (3.14.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.7551782Z (232/294) Installing pciids (0.387-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:02.9064447Z (233/294) Installing pciutils (3.14.0-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.0384809Z (234/294) Installing kmod-lib-crc-ccitt (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.1738430Z (235/294) Installing kmod-slhc (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.2920905Z (236/294) Installing kmod-ppp (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.4237219Z (237/294) Installing ppp (2.5.2-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.5740636Z (238/294) Installing kmod-pppox (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.6931757Z (239/294) Installing kmod-pppoe (6.12.65-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.8095286Z (240/294) Installing ppp-mod-pppoe (2.5.2-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:03.9345037Z (241/294) Installing procd-ujail (2025.10.04~3b3501ab-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.0636020Z (242/294) Installing liblua5.1.5 (5.1.5-r11)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.1926886Z (243/294) Installing libubus-lua (2025.12.02~3cc98db1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.3152264Z (244/294) Installing lua (5.1.5-r11)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.4336492Z (245/294) Installing luasocket (3.1.0-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.5640850Z (246/294) Installing uhttpd-mod-lua (2025.10.03~ebb92e6b-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.6827169Z (247/294) Installing prometheus-node-exporter-lua (2025.11.22-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.8033263Z (248/294) Installing libbz2-1.0 (1.0.8-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:04.9276921Z (249/294) Installing libatomic1 (14.3.0-r5)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:05.0462288Z (250/294) Installing libpython3-3.13 (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:05.3195785Z (251/294) Installing python3-base (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:05.4603525Z (252/294) Installing python3-light (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:05.8876544Z (253/294) Installing python3-asyncio (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.0288041Z (254/294) Installing python3-codecs (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.1753017Z (255/294) Installing libffi (3.4.7-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.2955392Z (256/294) Installing python3-ctypes (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.4262156Z (257/294) Installing libgdbm (1.25-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.5476854Z (258/294) Installing python3-dbm (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.6715842Z (259/294) Installing python3-decimal (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.7961873Z (260/294) Installing python3-email (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:06.9343617Z (261/294) Installing python3-logging (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.0674623Z (262/294) Installing liblzma (5.8.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.1947125Z (263/294) Installing python3-lzma (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.3152787Z (264/294) Installing python3-multiprocessing (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.4493100Z (265/294) Installing python3-ncurses (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.5777103Z (266/294) Installing python3-openssl (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.7064460Z (267/294) Installing python3-pydoc (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.8401901Z (268/294) Installing libreadline8 (8.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:07.9706160Z (269/294) Installing python3-readline (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.0927890Z (270/294) Installing libsqlite3-0 (3.51.2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.2322759Z (271/294) Installing python3-sqlite3 (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.3557743Z (272/294) Installing python3-unittest (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.4849076Z (273/294) Installing python3-urllib (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.6116874Z (274/294) Installing python3-uuid (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.7334523Z (275/294) Installing python3-xml (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.8690639Z (276/294) Installing python3 (3.13.9-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:08.9865889Z (277/294) Installing python3-pip (23.3.1-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:09.7296903Z (278/294) Installing resize2fs (1.47.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:09.8888993Z (279/294) Installing tailscale (1.92.3-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.2481827Z (280/294) Installing libpcap1 (1.10.5-r3)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.3782526Z (281/294) Installing tcpdump (4.99.5-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.5166160Z (282/294) Installing uboot-envtools (2025.10-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.6543762Z (283/294) Installing uci (2025.12.02~66127cd7-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.7729732Z (284/294) Installing getrandom (2025.10.30~6f78fa49-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:11.9024045Z (285/294) Installing urandom-seed (3)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.0284643Z (286/294) Installing urngd (2025.10.03~f17e33d9-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.1517562Z (287/294) Installing libevdev (1.13.4-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.2739447Z (288/294) Installing libudev-zero (1.0.3-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.3981363Z (289/294) Installing libusb-1.0-0 (1.0.29-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.5225285Z (290/294) Installing usbids (0.387-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.6757679Z (291/294) Installing usbutils (017-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.8062571Z (292/294) Installing libpcre2 (10.47-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:12.9412967Z (293/294) Installing wget-ssl (1.25.0-r2)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.0738430Z (294/294) Installing wpad-basic-mbedtls (2025.08.26~ca266cc2-r1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.2436830Z OK: 109.1 MiB in 294 packages
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.2692319Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.2707668Z Finalizing root filesystem...
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.9510869Z add alternative: /usr/bin/ssh-keygen -> /usr/sbin/dropbear
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.9546207Z add alternative: /usr/bin/scp -> /usr/sbin/dropbear
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:13.9582489Z add alternative: /usr/bin/ssh -> /usr/sbin/dropbear
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:16.7003529Z add alternative: /sbin/logread -> /usr/libexec/logread-ubox
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.0972896Z add alternative: /sbin/rmmod -> /sbin/kmodloader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.1006109Z add alternative: /sbin/insmod -> /sbin/kmodloader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.1039975Z add alternative: /sbin/lsmod -> /sbin/kmodloader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.1073100Z add alternative: /sbin/modinfo -> /sbin/kmodloader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.1106884Z add alternative: /sbin/modprobe -> /sbin/kmodloader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.5981447Z add alternative: /usr/bin/wget -> /usr/libexec/wget-ssl
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.7093985Z Enabling boot
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.7247189Z Enabling bootcount
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.7631614Z Enabling cron
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.8007239Z Enabling dawn
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.8361259Z Disabling dnsmasq
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.8513399Z Enabling done
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.8899131Z Enabling dropbear
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.9234539Z Enabling firewall
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.9603149Z Enabling gpio_switch
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:18.9774379Z Enabling led
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.0161368Z Enabling log
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.0356171Z Enabling lxc-auto
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.0731953Z Enabling network
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.1056842Z Disabling odhcpd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.1411339Z Enabling packet_steering
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.1757453Z Enabling prometheus-node-exporter-lua
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.2126275Z Enabling rpcd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.2280063Z Enabling sysctl
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.2467218Z Enabling sysfixtime
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.2809056Z Enabling sysntpd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.3147093Z Enabling system
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.3487000Z Enabling tailscale
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.3826458Z Enabling ubihealthd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.4173195Z Enabling ucitrack
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.4523399Z Enabling uhttpd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.4863499Z Enabling umdns
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.5020523Z Enabling umount
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.5355184Z Enabling urandom_seed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.5699203Z Enabling urngd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:19.6078371Z Enabling wpad
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.3016987Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.3032432Z Building images...
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.7023446Z Pseudo file "dev" exists in source filesystem "/home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/root-mediatek/dev".
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.7024456Z Parallel mksquashfs: Using 4 processors
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.7024960Z Ignoring, exclude it (-e/-ef) to override.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.7027229Z Creating 4.0 filesystem on /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/root.squashfs, block size 262144.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:21.7028865Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5226137Z [|                                                             ]    0/2672   0%
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5296810Z [=============================================================\] 2812/2812 100%
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5297301Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5297649Z Exportable Squashfs 4.0 filesystem, xz compressed, data block size 262144
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5298605Z 	compressed data, compressed metadata, compressed fragments,
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5298989Z 	no xattrs, compressed ids
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5299241Z 	duplicates are removed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5299508Z Filesystem size 37114.92 Kbytes (36.25 Mbytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5299870Z 	33.08% of uncompressed filesystem size (112197.18 Kbytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5300241Z Inode table size 22918 bytes (22.38 Kbytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5300616Z 	22.02% of uncompressed inode table size (104079 bytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5300980Z Directory table size 31726 bytes (30.98 Kbytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5301337Z 	46.40% of uncompressed directory table size (68373 bytes)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5301683Z Number of duplicate files found 43
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5301948Z Number of inodes 3167
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5302158Z Number of files 2446
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5302381Z Number of fragments 192
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5302608Z Number of symbolic links 453
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5302841Z Number of device nodes 1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5303064Z Number of fifo nodes 0
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5303280Z Number of socket nodes 0
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5303499Z Number of directories 267
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5303728Z Number of hard-links 0
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5303956Z Number of ids (unique uids + gids) 1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5304211Z Number of uids 1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5304402Z 	unknown (0)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5304598Z Number of gids 1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5304801Z 	unknown (0)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5745260Z 12248+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5746162Z 12248+1 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.5747564Z 6271271 bytes (6.3 MB, 6.0 MiB) copied, 0.0231935 s, 270 MB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6351530Z 9278+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6351956Z 9279+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6352754Z 38006784 bytes (38 MB, 36 MiB) copied, 0.0472468 s, 804 MB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6416973Z mt7988a-bananapi-bpi-r4-emmc (/home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/image-mt7988a-bananapi-bpi-r4-emmc.dtbo) : 1534
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6436914Z mt7988a-bananapi-bpi-r4-rtc (/home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/image-mt7988a-bananapi-bpi-r4-rtc.dtbo) : 285
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:30.6457022Z mt7988a-bananapi-bpi-r4-sd (/home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/build_dir/target-aarch64_cortex-a53_musl/linux-mediatek_filogic/image-mt7988a-bananapi-bpi-r4-sd.dtbo) : 1462
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2040939Z FIT description: ARM64 OpenWrt FIT (Flattened Image Tree)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2041501Z Created:         Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2041762Z  Image 0 (kernel-1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2041996Z   Description:  ARM64 OpenWrt Linux-6.12.65
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2042283Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2042545Z   Type:         Kernel Image
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2042780Z   Compression:  gzip compressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2043189Z   Data Size:    6271271 Bytes = 6124.29 KiB = 5.98 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2043675Z   Architecture: AArch64
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2043998Z   OS:           Linux
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2044310Z   Load Address: 0x46000000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2044643Z   Entry Point:  0x46000000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2044850Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2045047Z   Hash value:   7a7088ec
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2045256Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2045506Z   Hash value:   692ca215b50542bceebfcd03f571b41064838b99
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2046064Z  Image 1 (fdt-1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2046352Z   Description:  ARM64 OpenWrt bananapi_bpi-r4 device tree blob
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2046699Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2046950Z   Type:         Flat Device Tree
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2047188Z   Compression:  uncompressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2047445Z   Data Size:    43976 Bytes = 42.95 KiB = 0.04 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2047711Z   Architecture: AArch64
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2047913Z   Load Address: 0x45f00000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2048365Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2048608Z   Hash value:   070d3b2b
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2048842Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2049080Z   Hash value:   a5adb5c15a82b50767138e20a9434b40292ba71c
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2049406Z  Image 2 (fdt-mt7988a-bananapi-bpi-r4-emmc)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2049890Z   Description:  ARM64 OpenWrt bananapi_bpi-r4 device tree overlay mt7988a-bananapi-bpi-r4-emmc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2050365Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2050618Z   Type:         Flat Device Tree
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2050855Z   Compression:  uncompressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2051102Z   Data Size:    1534 Bytes = 1.50 KiB = 0.00 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2051382Z   Architecture: AArch64
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2051578Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2051769Z   Hash value:   ff8a242f
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2051965Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2052191Z   Hash value:   646c976e1c9b5a07a15f13459cfe50836bccc2ea
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2052509Z  Image 3 (fdt-mt7988a-bananapi-bpi-r4-rtc)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2052979Z   Description:  ARM64 OpenWrt bananapi_bpi-r4 device tree overlay mt7988a-bananapi-bpi-r4-rtc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2053426Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2053677Z   Type:         Flat Device Tree
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2053916Z   Compression:  uncompressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2054150Z   Data Size:    285 Bytes = 0.28 KiB = 0.00 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2054423Z   Architecture: AArch64
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2054621Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2054818Z   Hash value:   9e869883
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2055006Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2055240Z   Hash value:   343be366c4680b8d5f970ece19ea9970b91e5aad
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2055555Z  Image 4 (fdt-mt7988a-bananapi-bpi-r4-sd)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2056004Z   Description:  ARM64 OpenWrt bananapi_bpi-r4 device tree overlay mt7988a-bananapi-bpi-r4-sd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2056447Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2056698Z   Type:         Flat Device Tree
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2056929Z   Compression:  uncompressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2057183Z   Data Size:    1462 Bytes = 1.43 KiB = 0.00 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2057458Z   Architecture: AArch64
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2057654Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2057850Z   Hash value:   dc3d838d
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2058049Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2058490Z   Hash value:   47c779b5fb7acc9baf4e57810ddca89a4bef2615
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2058976Z  Image 5 (rootfs-1)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2059221Z   Description:  ARM64 OpenWrt bananapi_bpi-r4 rootfs
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2059520Z   Created:      Thu Jan 15 14:33:26 2026
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2059797Z   Type:         Filesystem Image
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2060034Z   Compression:  uncompressed
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2060288Z   Data Size:    38006784 Bytes = 37116.00 KiB = 36.25 MiB
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2060568Z   Hash algo:    crc32
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2060766Z   Hash value:   c42759aa
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2060955Z   Hash algo:    sha1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2061193Z   Hash value:   bf23354bb7c693f43e3b1baebaed48cd2c3cb343
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2061554Z  Default Configuration: 'config-mt7988a-bananapi-bpi-r4'
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2061893Z  Configuration 0 (config-mt7988a-bananapi-bpi-r4)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2062193Z   Description:  OpenWrt bananapi_bpi-r4
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2062442Z   Kernel:       kernel-1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2062644Z   FDT:          fdt-1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2062842Z   Loadables:    rootfs-1
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2063207Z  Configuration 1 (mt7988a-bananapi-bpi-r4-emmc)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2063631Z   Description:  OpenWrt bananapi_bpi-r4 overlay mt7988a-bananapi-bpi-r4-emmc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2064009Z   Kernel:       unavailable
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2064252Z   FDT:          fdt-mt7988a-bananapi-bpi-r4-emmc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2064555Z  Configuration 2 (mt7988a-bananapi-bpi-r4-rtc)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2064932Z   Description:  OpenWrt bananapi_bpi-r4 overlay mt7988a-bananapi-bpi-r4-rtc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2065293Z   Kernel:       unavailable
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2065525Z   FDT:          fdt-mt7988a-bananapi-bpi-r4-rtc
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2065818Z  Configuration 3 (mt7988a-bananapi-bpi-r4-sd)
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2066185Z   Description:  OpenWrt bananapi_bpi-r4 overlay mt7988a-bananapi-bpi-r4-sd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2066546Z   Kernel:       unavailable
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2066784Z   FDT:          fdt-mt7988a-bananapi-bpi-r4-sd
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2229390Z padding image to 02a4a000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2229848Z padding image to 02a4c000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2230257Z padding image to 02a50000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2230622Z padding image to 02a60000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.2230990Z padding image to 02a80000
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6519627Z part 4096 512
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6520004Z part 4608 2048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6520324Z part 6656 4096
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6520614Z part 12288 32768
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6520912Z part 65536 458752
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6521217Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6521463Z 524288
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6521708Z 4718592
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6521862Z 2097152
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522003Z 6815744
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522146Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522293Z 12582912
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522434Z 33554432
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522582Z 67108864
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.6522737Z 469762048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7960518Z part 17 4079
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7960878Z part 4096 512
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7961112Z part 4608 2048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7961319Z part 6656 4096
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7961638Z part 12288 32768
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7961956Z part 45056 20480
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7962282Z part 65536 458752
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7962604Z 17408
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7962789Z 4176896
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7962972Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7963149Z 524288
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7963320Z 4718592
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7963495Z 2097152
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7963671Z 6815744
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7963837Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964011Z 12582912
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964192Z 33554432
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964363Z 46137344
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964539Z 20971520
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964718Z 67108864
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.7964887Z 469762048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8029680Z 1+0 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8030019Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8030393Z 17408 bytes (17 kB, 17 KiB) copied, 6.2577e-05 s, 278 MB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8155702Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8156070Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8156502Z 6815744 bytes (6.8 MB, 6.5 MiB) copied, 0.00513989 s, 1.3 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8349686Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8350070Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8350528Z 12582912 bytes (13 MB, 12 MiB) copied, 0.00967148 s, 1.3 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8997675Z 29440+0 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8998054Z 29440+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.8998654Z 15073280 bytes (15 MB, 14 MiB) copied, 0.0555274 s, 271 MB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.9447535Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.9447909Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:31.9448591Z 46137344 bytes (46 MB, 44 MiB) copied, 0.0370312 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0059035Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0059413Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0059863Z 47185920 bytes (47 MB, 45 MiB) copied, 0.0393493 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0743067Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0743461Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.0743943Z 53477376 bytes (53 MB, 51 MiB) copied, 0.0436901 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.1460207Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.1460602Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.1461084Z 54525952 bytes (55 MB, 52 MiB) copied, 0.045331 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2220596Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2221328Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2221766Z 58720256 bytes (59 MB, 56 MiB) copied, 0.0478119 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2968527Z part 4096 512
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2968888Z part 4608 2048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2969197Z part 6656 4096
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2969475Z part 12288 32768
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.2969776Z part 65536 458752
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3092014Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3092317Z 524288
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3092581Z 4718592
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3092761Z 2097152
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3092923Z 6815744
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3093161Z 4194304
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3093356Z 12582912
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3093513Z 33554432
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3093663Z 67108864
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3093810Z 469762048
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3709142Z 0+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3709528Z 1+0 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.3709981Z 67108864 bytes (67 MB, 64 MiB) copied, 0.0545549 s, 1.2 GB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.8430964Z 87040+1 records in
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.8431371Z 87040+1 records out
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:32.8431866Z 44564484 bytes (45 MB, 43 MiB) copied, 0.166293 s, 268 MB/s
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:36.6091808Z 
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:36.6107154Z Calculating checksums...
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0361313Z [5/5] Done!
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0362146Z     Image is located in: /home/runner/work/openwrt-builder/openwrt-builder/openwrt-imagebuilder-bpi-r4/bin/targets/
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0448605Z ##[group]Run actions/upload-artifact@v4
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0448940Z with:
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0449131Z   name: openwrt-bpi-r4-images
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0449368Z   path: bin/targets/**/*
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0449586Z   if-no-files-found: warn
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0449797Z   compression-level: 6
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0449986Z   overwrite: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0450198Z   include-hidden-files: false
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.0450418Z ##[endgroup]
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.2674414Z ##[warning]No files were found with the provided path: bin/targets/**/*. No artifacts will be uploaded.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.2784993Z Post job cleanup.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.4135906Z Cache hit occurred on the primary key Linux-openwrt-builder-bpi-r4, not saving cache.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.4256135Z Post job cleanup.
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5001923Z [command]/usr/bin/git version
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5035886Z git version 2.52.0
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5080313Z Temporarily overriding HOME='/home/runner/work/_temp/055470ce-eeb8-4868-80c6-6d8d397500e6' before making global git config changes
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5081653Z Adding repository directory to the temporary git global config as a safe directory
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5085127Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/openwrt-builder/openwrt-builder
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5116383Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5145681Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5373528Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5395286Z http.https://github.com/.extraheader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5407192Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5436797Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+build-firmware	UNKNOWN STEP	2026-01-15T23:44:37.5787682Z Cleaning up orphan processes
