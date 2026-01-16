@@ -37,8 +37,8 @@
 
       # Build system
       gawk
-      sed
-      grep
+      gnused
+      gnugrep
       flex
       bison
       gettext
