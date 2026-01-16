@@ -8,7 +8,7 @@ set -e
 if [ -z "$IN_NIX_SHELL" ] && command -v nix-shell >/dev/null; then
     echo "❄️  Nix detected. re-executing inside reproducible environment..."
     export IN_NIX_SHELL=1
-    exec nix-shell --command "$0 $*"
+    exec nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz --command "$0 $*"
 fi
 
 SOURCE_DIR="openwrt-source"
