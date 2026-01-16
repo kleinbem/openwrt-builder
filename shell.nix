@@ -31,8 +31,7 @@
       swig
 
       # Python
-      python311
-      python311Packages.setuptools
+      (python311.withPackages (ps: [ ps.setuptools ]))
 
       # Libraries
       ncurses
