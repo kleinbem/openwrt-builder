@@ -1,0 +1,7 @@
+Build from Source (FrankW Fork)	Build Source	﻿2026-01-16T12:08:06.0221386Z ##[group]Run ./build-source.sh
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:06.0222270Z [36;1m./build-source.sh[0m
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:06.0230237Z shell: /nix/store/hkbylipx1iiawqdcjv858p501wv81bpm-bash-interactive-5.3p3/bin/bash -e {0}
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:06.0231373Z ##[endgroup]
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:06.0348953Z ❄️  Nix detected. re-executing inside reproducible environment...
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:07.7371421Z bwrap: No permissions to creating new namespace, likely because the kernel does not allow non-privileged user namespaces. On e.g. debian this can be enabled with 'sysctl kernel.unprivileged_userns_clone=1'.
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:08:07.7383314Z ##[error]Process completed with exit code 1.

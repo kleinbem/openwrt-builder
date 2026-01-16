@@ -1,0 +1,8 @@
+Build from Source (FrankW Fork)	Build Source	﻿2026-01-16T12:26:44.7782759Z ##[group]Run ./build-source.sh
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:26:44.7783342Z [36;1m./build-source.sh[0m
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:26:44.7801735Z shell: /nix/store/hkbylipx1iiawqdcjv858p501wv81bpm-bash-interactive-5.3p3/bin/bash -e {0}
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:26:44.7802565Z ##[endgroup]
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:26:44.7906795Z ❄️  Nix detected. re-executing inside reproducible environment...
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:26:44.8115423Z unpacking 'https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz' into the Git cache...
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:27:11.0484004Z /run/github-runner/openwrt-builder/_temp/f5037093-5700-4d4a-a132-d713e67ecefe.sh: line 1: 3720049 Bad system call            (core dumped) ./build-source.sh
+Build from Source (FrankW Fork)	Build Source	2026-01-16T12:27:16.0518467Z ##[error]Process completed with exit code 159.

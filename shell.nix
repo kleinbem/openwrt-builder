@@ -48,4 +48,4 @@
     export CFLAGS="-Wno-error=format-security"
     echo "Welcome to the OpenWrt FHS Builder Environment"
   '';
-}).env
+})

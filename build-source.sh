@@ -4,11 +4,18 @@ set -e
 # Usage: ./build-source.sh [bpi-r4]
 # Currently hardcoded for BPI-R4 logic but structure allows expansion.
 
-# Auto-enter Nix Shell if available (fixes CI runners missing headers)
-if [ -z "$IN_NIX_SHELL" ] && command -v nix-shell >/dev/null; then
-    echo "❄️  Nix detected. re-executing inside reproducible environment..."
-    export IN_NIX_SHELL=1
-    exec nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz --command "$0 $*"
+# Auto-enter Nix FHS Environment if available (fixes CI runners missing headers)
+if [ -z "$IN_OpenWrt_FHS" ] && command -v nix-build >/dev/null; then
+    echo "❄️  Nix detected. Building FHS environment..."
+    export IN_OpenWrt_FHS=1
+    # Build the FHS wrapper
+    # We use --no-out-link to avoid cluttering the workspace
+    FHS=$(nix-build shell.nix --no-out-link -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz)
+    
+    # Execute the script INSIDE the FHS wrapper
+    # The wrapper starts bash, so we pass the script and args to it
+    echo "🔄 Re-executing inside FHS container: $FHS"
+    exec "$FHS/bin/openwrt-builder-env" "$0" "$@"
 fi
 
 SOURCE_DIR="openwrt-source"
