@@ -55,6 +55,14 @@ echo "CONFIG_BTRFS_FS=y" >> .config                    # BTRFS Filesystem Suppor
 echo "CONFIG_ZRAM=y" >> .config                        # ZRAM (Compressed RAM Block Device)
 echo "CONFIG_ZSMALLOC=y" >> .config                    # Memory allocator for ZRAM
 
+# 2.5 NixOS / LXC Requirements (Systemd Support)
+echo "CONFIG_CGROUPS=y" >> .config                     # Control Groups (Required by Systemd)
+echo "CONFIG_MEMCG=y" >> .config                       # Memory Resource Controller
+echo "CONFIG_CGROUP_PIDS=y" >> .config                 # PIDs Resource Controller
+echo "CONFIG_NAMESPACES=y" >> .config                  # Namespaces Support
+echo "CONFIG_SECCOMP=y" >> .config                     # Seccomp Security (Required by Systemd)
+echo "CONFIG_SECCOMP_FILTER=y" >> .config              # Seccomp Filter
+
 # 3. Optimization
 echo "CONFIG_DEVEL=y" >> .config                         # Enable advanced options
 echo "CONFIG_CCACHE=y" >> .config                        # Enable compiler cache locally

@@ -2,45 +2,50 @@
   pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-24.11.tar.gz") { },
 }:
 
-pkgs.mkShell {
-  buildInputs = with pkgs; [
-    # Core build tools
-    gnumake
-    gcc11
-    perl
-    wget
-    unzip
-    git
-    file
-    which
-    rsync
-    patch
-    diffutils # for cmp
+# Using buildFHSUserEnv to provide a standard /bin/bash and other FHS paths
+# This fixes "bad interpreter: /bin/bash" errors in OpenWrt host tools (like util-linux)
+(pkgs.buildFHSUserEnv {
+  name = "openwrt-builder-env";
+  targetPkgs =
+    pkgs:
+    (with pkgs; [
+      # Core build tools
+      gnumake
+      gcc11
+      perl
+      wget
+      unzip
+      git
+      file
+      which
+      rsync
+      patch
+      diffutils
 
-    # Build system
-    gawk
-    flex
-    bison
-    gettext
-    quilt
-    swig
+      # Build system
+      gawk
+      flex
+      bison
+      gettext
+      quilt
+      swig
 
-    # Python
-    python311
-    python311Packages.setuptools # Provides distutils fallback
-    # python311Packages.distutils # Legacy if needed, but 3.11 still has it partially or via setuptools better
+      # Python
+      python311
+      python311Packages.setuptools
 
-    # Libraries
-    ncurses
-    zlib
-    openssl
+      # Libraries
+      ncurses
+      zlib
+      openssl
 
-    # Utilities
-    zstd
-  ];
-  hardeningDisable = [ "format" ];
+      # Utilities
+      zstd
+    ]);
 
-  shellHook = ''
-    echo "Welcome to the OpenWrt Builder Environment"
+  # Disable hardening for host tools (elfutils fix)
+  profile = ''
+    export CFLAGS="-Wno-error=format-security"
+    echo "Welcome to the OpenWrt FHS Builder Environment"
   '';
-}
+}).env
