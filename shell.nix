@@ -36,8 +36,11 @@
 
       # Libraries
       ncurses
+      ncurses.dev # Explicitly include headers
       zlib
+      zlib.dev
       openssl
+      openssl.dev
 
       # Utilities
       zstd
@@ -45,6 +48,7 @@
 
   # Disable hardening for host tools (elfutils fix)
   profile = ''
+    umask 022
     export CFLAGS="-Wno-error=format-security"
     echo "Welcome to the OpenWrt FHS Builder Environment"
   '';
