@@ -28,42 +28,48 @@ echo "🛠️ Applying fixes and running smoke tests..."
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
 if [ -d "$SOURCE_DIR" ]; then
     # ------------------------------------
-    # FIX: Quilt Patch Strategy (The "OpenWrt Way")
+    # FIX: Package Definition Patching (The "Nuclear" Option)
     # ------------------------------------
-    # We copy our patch file into the package's patches directory.
-    # OpenWrt's build system will automatically apply it during the 'patch' phase.
-    echo "🩹 Installing PPP Permission Patch..."
+    # Quilt patching proved unreliable (context mismatch or ignored).
+    # We will now DIRECTLY MODIFY the 'package/network/services/ppp/Makefile'
+    # to include a 'Build/Prepare' hook that sanitizes the source code.
+    echo "🔧 Injecting 'Build/Prepare' hook into PPP Package Definition..."
     
-    PPP_PATCH_DIR="$SOURCE_DIR/package/network/services/ppp/patches"
-    mkdir -p "$PPP_PATCH_DIR"
+    PPP_MK="$SOURCE_DIR/package/network/services/ppp/Makefile"
     
-    # We assume the patch was created in files/common (or we create it on fly here if needed)
-    # For robustness, we will create it right here to be self-contained in this block for now,
-    # or copy it if we saved it to the repo.
+    # 1. Check if Build/Prepare exists. If so, append to it. If not, create it.
+    # Most OpenWrt Makefiles use 'Build/Prepare/Default'.
     
-    # Let's use the one we just created in the files/ folder logic, BUT
-    # since we want to be sure, we also write it here to guarantee it exists.
-    cat > "$PPP_PATCH_DIR/999-fix-setuid-permissions.patch" << 'EOF'
---- a/pppd/plugins/pppoe/Makefile.linux
-+++ b/pppd/plugins/pppoe/Makefile.linux
-@@ -43,7 +43,7 @@ install: all
- 	$(INSTALL) -d -m 755 $(LIBDIR)
--	$(INSTALL) -c -m 4550 -o root -g root pppoe.so $(LIBDIR)
-+	$(INSTALL) -c -m 0755 pppoe.so $(LIBDIR)
- 
- clean:
- 	rm -f *.o *.so
---- a/pppd/plugins/pppoatm/Makefile.linux
-+++ b/pppd/plugins/pppoatm/Makefile.linux
-@@ -43,7 +43,7 @@ install: all
- 	$(INSTALL) -d -m 755 $(LIBDIR)
--	$(INSTALL) -c -m 4550 -o root -g root pppoatm.so $(LIBDIR)
-+	$(INSTALL) -c -m 0755 pppoatm.so $(LIBDIR)
- 
- clean:
- 	rm -f *.o *.so
-EOF
-    echo "✅ Patch installed to: $PPP_PATCH_DIR/999-fix-setuid-permissions.patch"
+    if grep -q "define Build/Prepare" "$PPP_MK"; then
+         echo "   ⚠️ Build/Prepare already exists. Adding fix..."
+         # Assuming it ends with 'endef', we insert before that.
+         sed -i '/endef/i \\tfind $(PKG_BUILD_DIR) -name Makefile.linux -exec sed -i "s/4550/0755/g" {} +' "$PPP_MK"
+    else
+         echo "   ✨ Build/Prepare not found (using default). Overriding..."
+         # We append the override at the end of the file, but before the "Evaluation" (last line usually) assertion?
+         # No, OpenWrt Makefiles usually end with $(eval $(call ...)).
+         # We can safely add the define block anywhere before that.
+         # Let's add it right after PKG_INSTALL:=1 or include directives.
+         
+         # Find a safe insertion point (e.g. after 'include $(INCLUDE_DIR)/package.mk')
+         INSERT_POINT="include \$(INCLUDE_DIR)/package.mk"
+         
+         # The Hook:
+         # 1. Unpack (Default)
+         # 2. Patch (Default)
+         # 3. NUKE '4550' with '0755' in all Makefile.linux
+         HOOK="define Build/Prepare\n\t\$(call Build/Prepare/Default)\n\t@echo '🧨 NUKING 4550 PERMISSIONS'\n\tfind \$(PKG_BUILD_DIR) -name Makefile.linux -exec sed -i 's/4550/0755/g' {} +\nendef\n"
+         
+         sed -i "/$INSERT_POINT/a $HOOK" "$PPP_MK"
+    fi
+    
+    # Verify Injection
+    if grep -q "NUKING 4550" "$PPP_MK"; then
+        echo "✅ Injection Successful: PPP Build/Prepare now enforces 0755."
+    else
+        echo "❌ Injection Validation Failed."
+        exit 1
+    fi
 fi
 
 # Smoke Test: Build ppp first (Fast Fail)
