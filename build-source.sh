@@ -14,12 +14,24 @@ if [ -z "$IN_BUILD_CONTAINER" ]; then
     echo "🚢 Setting up Container Environment..."
 
     # A. Detect Engine (Prefer Podman on NixOS)
+    # Note: Runners often have restricted PATH, so we check absolute paths too.
     if command -v podman >/dev/null; then
         ENGINE="podman"
+    elif [ -x "/run/current-system/sw/bin/podman" ]; then
+        ENGINE="/run/current-system/sw/bin/podman"
+    elif [ -x "/nix/var/nix/profiles/default/bin/podman" ]; then
+        ENGINE="/nix/var/nix/profiles/default/bin/podman"
     elif command -v docker >/dev/null; then
         ENGINE="docker"
+    elif [ -x "/run/current-system/sw/bin/docker" ]; then
+        ENGINE="/run/current-system/sw/bin/docker"
+    elif [ -x "/usr/bin/podman" ]; then
+        ENGINE="/usr/bin/podman"
+    elif [ -x "/usr/bin/docker" ]; then
+        ENGINE="/usr/bin/docker"
     else
-        echo "❌ Error: Neither podman nor docker found. Please install one."
+        echo "❌ Error: Neither podman nor docker found in PATH or standard locations."
+        echo "   PATH is: $PATH"
         exit 1
     fi
     echo "    Engine detected: $ENGINE"
