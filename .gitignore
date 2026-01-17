@@ -11,5 +11,10 @@ files_overlay/
 openwrt-source/
 logs/
 *.log
+*.txt
 debug_*.log
 logs_debug/
+.direnv/
+result
+tmp/
+

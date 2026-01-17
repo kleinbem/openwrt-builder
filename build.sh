@@ -47,7 +47,11 @@ cd "$BUILDER_DIR_NAME"
 
 # --- 2.5 PREPARE SECRETS ---
 SECRETS_REPO="../../openwrt-secrets"
-if [ -d "$SECRETS_REPO" ] && [ -f "$SECRETS_REPO/decrypt.sh" ]; then
+
+if [ -n "$EXTERNAL_SECRETS_DIR" ] && [ -d "$EXTERNAL_SECRETS_DIR" ]; then
+    echo "🔐 Using external secrets from environment: $EXTERNAL_SECRETS_DIR"
+    SECRETS_SOURCE="$EXTERNAL_SECRETS_DIR"
+elif [ -d "$SECRETS_REPO" ] && [ -f "$SECRETS_REPO/decrypt.sh" ]; then
     echo "🔐 Secrets repo found. Decrypting..."
     # We decrypt into the common files area temporarily or directly into overlays?
     # Let's decrypt to a temporary location that we can merge.
@@ -61,17 +65,7 @@ if [ -d "$SECRETS_REPO" ] && [ -f "$SECRETS_REPO/decrypt.sh" ]; then
     # Check if we have files to merge
     if [ -n "$(ls -A "$SECRET_TMP")" ]; then
          echo "    Merging secrets into build..."
-         # We'll merge these later in Step 3, or we can just keep them in a variable
-         # BUT `files_overlay` is created in Step 3.
-         # So let's store the path to SECRETS_TMP and use it there.
-         # Actually, it's easier to verify they exist here and verify the trap works.
-         # Let's Move them to a staging area that persists until step 3?
-         # OR simply copy them directly to files_overlay once created.
-         
-         # Better approach:
-         # We just set a flag/variable pointing to the tmp dir, and in Step 3 we copy from it.
          SECRETS_SOURCE="$SECRET_TMP"
-         # Note: trap will remove it on EXIT, which is fine as long as we copy before script ends.
     else
          echo "    (No secrets decrypted)"
     fi
@@ -102,7 +96,7 @@ fi
 # --- 4. BUILD ---
 echo "[3/5] Cleaning previous builds..."
 make clean
-mkdir -p "${BUILDER_DIR_NAME}/tmp"
+mkdir -p tmp
 
 echo "[4/5] Building Firmware for $BOARD..."
 make image PROFILE="$BOARD" \
