@@ -68,6 +68,11 @@ if [ -z "$IN_BUILD_CONTAINER" ]; then
     mkdir -p "$HOST_DL_DIR" "$HOST_CCACHE_DIR"
 
     # D. Launch Container
+    echo "🔍 Debugging Podman Environment..."
+    id
+    cat /etc/subuid 2>/dev/null || echo "No /etc/subuid"
+    $ENGINE info || echo "Podman info failed"
+
     echo "🚀 Launching $ENGINE container (ubuntu:22.04)..."
     
     # Only allocate TTY if we have one (Fixes 'The input device is not a TTY' in CI)
@@ -76,7 +81,13 @@ if [ -z "$IN_BUILD_CONTAINER" ]; then
         IT_FLAGS="-ti"
     fi
     
-    exec $ENGINE run --rm $IT_FLAGS \
+    # Force cgroupfs for rootless CI to avoid systemd session dependence
+    CGROUP_FLAGS=""
+    if [ "$ENGINE" = "podman" ] || [[ "$ENGINE" == *"/bin/podman" ]]; then
+        CGROUP_FLAGS="--cgroup-manager=cgroupfs"
+    fi
+
+    exec $ENGINE run --rm $IT_FLAGS $CGROUP_FLAGS \
         --name openwrt-builder-$(date +%s) \
         -v "$(pwd):/workspace" \
         -w "/workspace" \
