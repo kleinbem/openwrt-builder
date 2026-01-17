@@ -69,6 +69,13 @@ if [ -z "$IN_BUILD_CONTAINER" ]; then
 
     # D. Launch Container
     echo "🔍 Debugging Podman Environment..."
+    # CRITICAL FIX for NixOS: Ensure we find the SUID wrappers (newuidmap) 
+    # instead of the raw store binaries which fail with "Operation not permitted".
+    if [ -d "/run/wrappers/bin" ]; then
+        echo "    Prefixing PATH with /run/wrappers/bin"
+        export PATH="/run/wrappers/bin:$PATH"
+    fi
+    
     id
     cat /etc/subuid 2>/dev/null || echo "No /etc/subuid"
     $ENGINE info || echo "Podman info failed"
