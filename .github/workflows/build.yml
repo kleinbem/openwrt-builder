@@ -70,6 +70,22 @@ jobs:
       # Note: We assume the runner already has the necessary tools (gcc, make, etc.)
       # as defined in our NixOS config, so we skip "Prepare Environment".
       
+      - name: Cache Downloads
+        uses: actions/cache@v4
+        with:
+          path: openwrt-source/dl
+          key: ${{ runner.os }}-openwrt-dl-${{ hashFiles('build-source.sh') }}
+          restore-keys: |
+            ${{ runner.os }}-openwrt-dl-
+
+      - name: Cache CCache
+        uses: actions/cache@v4
+        with:
+          path: ~/.ccache
+          key: ${{ runner.os }}-openwrt-ccache-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-openwrt-ccache-
+      
       - name: Build Source
         run: ./build-source.sh
 
