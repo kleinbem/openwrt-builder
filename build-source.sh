@@ -30,14 +30,15 @@ if [ -d "$SOURCE_DIR" ]; then
     echo "🔧 Patching ppp OpenWrt Recipe to enforce permission fix..."
     PPP_MK="$SOURCE_DIR/package/network/services/ppp/Makefile"
     
-    # Check if we can find the Build/Compile section
-    if grep -q "define Build/Compile" "$PPP_MK"; then
-        # Inject our fix at the start of Build/Compile
-        # We use 'find' to be robust against directory structure changes
-        sed -i '/define Build\/Compile/a \\tfind $(PKG_BUILD_DIR) -name Makefile -exec sed -i "s/4550/0755/g" {} +' "$PPP_MK"
-        echo "   ✅ Injected fix into Build/Compile"
+    # Check if we can find the Build/Configure section (which is explicitly defined in ppp Makefile)
+    if grep -q "define Build/Configure" "$PPP_MK"; then
+        # Inject our fix at the END of Build/Configure (before endef)
+        # This ensures it runs after any default configuration/copying
+        sed -i '/define Build\/Configure/,/endef/s/endef/\tfind $(PKG_BUILD_DIR) -name Makefile -exec sed -i "s\/4550\/0755\/g" {} +\nendef/' "$PPP_MK"
+        echo "   ✅ Injected fix into Build/Configure"
     else
-        # Fallback: Append a pre-compile hook if Build/Compile is missing (default)
+        echo "   ⚠️ Build/Configure not found, falling back to Build/Compile injection..."
+        # Fallback: Append a pre-compile hook
         echo "define Build/Compile" >> "$PPP_MK"
         echo -e "\tfind \$(PKG_BUILD_DIR) -name Makefile -exec sed -i 's/4550/0755/g' {} +" >> "$PPP_MK"
         echo -e "\t\$(call Build/Compile/Default)" >> "$PPP_MK"
