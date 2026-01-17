@@ -27,28 +27,21 @@ echo "🛠️ Applying fixes and running smoke tests..."
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
 if [ -d "$SOURCE_DIR" ]; then
-    echo "🔧 Patching ppp OpenWrt Recipe to enforce permission fix..."
-    PPP_MK="$SOURCE_DIR/package/network/services/ppp/Makefile"
+    # ------------------------------------
+    # FIX: Explicit Prepare & Patch Strategy
+    # ------------------------------------
+    echo "🔧 Pre-preparing PPP package to apply permission fixes..."
+    # This unpacks the source into build_dir
+    make -C "$SOURCE_DIR" package/network/services/ppp/prepare
+    
+    echo "🩹 Applying permission fix to unpacked source..."
     FIX_SCRIPT="$(pwd)/scripts/fix-ppp-permissions.sh"
     chmod +x "$FIX_SCRIPT"
     
-    # Check if we can find the Build/Configure section
-    if grep -q "define Build/Configure" "$PPP_MK"; then
-        echo "🩹 Injecting 'fix-ppp-permissions.sh' into Build/Configure..."
-        # Inject call to our script right after Build/Configure starts
-        # We pass '$(PKG_BUILD_DIR)/..' which resolves to 'build_dir/target-.../linux-.../ppp-default' 
-        # because PKG_BUILD_DIR is usually inside that.
-        # Actually, passing $(PKG_BUILD_DIR) is safer as the find command looks recursively.
-        sed -i "/define Build\/Configure/a \\\\t$FIX_SCRIPT \$(PKG_BUILD_DIR)" "$PPP_MK"
-        echo "   ✅ Injected fix script into Build/Configure"
-    else
-        echo "   ⚠️ Build/Configure not found, appending Build/Compile hook..."
-        echo "define Build/Compile" >> "$PPP_MK"
-        echo -e "\t$FIX_SCRIPT \$(PKG_BUILD_DIR)" >> "$PPP_MK"
-        echo -e "\t\$(call Build/Compile/Default)" >> "$PPP_MK"
-        echo "endef" >> "$PPP_MK"
-        echo "   ✅ Appended custom Build/Compile with fix script"
-    fi
+    # Run the fix script against the ENTIRE build_dir (finding the ppp directory inside)
+    $FIX_SCRIPT "$SOURCE_DIR/build_dir"
+    
+    echo "✅ PPP Source Patched. Proceeding with build..."
 fi
 
 # Smoke Test: Build ppp first (Fast Fail)
