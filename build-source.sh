@@ -25,19 +25,32 @@ SOURCE_DIR="openwrt-source"
 echo "🛠️ Applying fixes and running smoke tests..."
 
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
+# Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
 if [ -d "$SOURCE_DIR" ]; then
-    echo "🔥 Preparing ppp sources for patching..."
-    make -C "$SOURCE_DIR" package/network/services/ppp/prepare -j$(nproc) || echo "Warning: ppp prepare failed, continuing hoping for the best..."
-
-    echo "🔧 Patching ppp upstream Makefiles (removing setuid 4550)..."
-    # Find all Makefiles in the ppp build directory (inside build_dir) that contain 4550 and replace it
-    # We look for 'build_dir' to be safe, but since we just prepared ppp, it should be there.
-    find "$SOURCE_DIR/build_dir" -name "Makefile" -print0 | xargs -0 sed -i 's/4550/0755/g'
+    echo "🔧 Patching ppp OpenWrt Recipe to enforce permission fix..."
+    PPP_MK="$SOURCE_DIR/package/network/services/ppp/Makefile"
+    
+    # Check if we can find the Build/Compile section
+    if grep -q "define Build/Compile" "$PPP_MK"; then
+        # Inject our fix at the start of Build/Compile
+        # We use 'find' to be robust against directory structure changes
+        sed -i '/define Build\/Compile/a \\tfind $(PKG_BUILD_DIR) -name Makefile -exec sed -i "s/4550/0755/g" {} +' "$PPP_MK"
+        echo "   ✅ Injected fix into Build/Compile"
+    else
+        # Fallback: Append a pre-compile hook if Build/Compile is missing (default)
+        echo "define Build/Compile" >> "$PPP_MK"
+        echo -e "\tfind \$(PKG_BUILD_DIR) -name Makefile -exec sed -i 's/4550/0755/g' {} +" >> "$PPP_MK"
+        echo -e "\t\$(call Build/Compile/Default)" >> "$PPP_MK"
+        echo "endef" >> "$PPP_MK"
+        echo "   ✅ Appended custom Build/Compile"
+    fi
 fi
 
 # Smoke Test: Build ppp first (Fast Fail)
 if [ -d "$SOURCE_DIR" ]; then
     echo "🔥 Running Smoke Test: Building ppp..."
+    # Clean first ensuring our Modified Recipe runs from scratch
+    make -C "$SOURCE_DIR" package/network/services/ppp/clean
     make -C "$SOURCE_DIR" package/network/services/ppp/compile -j$(nproc) || {
         echo "❌ Smoke Test Failed: ppp build error"
         exit 1
