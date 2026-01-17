@@ -56,6 +56,17 @@ if [ -d "$SOURCE_DIR" ]; then
         echo "❌ Smoke Test Failed: ppp build error"
         exit 1
     }
+    
+    # VERIFICATION: Check if the 4550 permissions are actually gone
+    echo "🔎 Verifying ppp fix specifically..."
+    if grep -r "4550" "$SOURCE_DIR/build_dir/target-"*"/linux-mediatek_filogic/ppp-default"; then
+        echo "❌ CRITICAL: '4550' permission string STILL FOUND in build dir after smoke test!"
+        echo "   The fix did not apply correctly. Failing early to save time."
+        grep -r "4550" "$SOURCE_DIR/build_dir/target-"*"/linux-mediatek_filogic/ppp-default"
+        exit 1
+    else
+        echo "✅ Verification Passed: No '4550' permissions found in ppp build dir."
+    fi
     echo "✅ Smoke Test Passed!"
 fi
 # ------------------------------------
