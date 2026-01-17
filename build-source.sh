@@ -59,13 +59,30 @@ if [ -d "$SOURCE_DIR" ]; then
     
     # VERIFICATION: Check if the 4550 permissions are actually gone
     echo "🔎 Verifying ppp fix specifically..."
-    if grep -r "4550" "$SOURCE_DIR/build_dir/target-"*"/linux-mediatek_filogic/ppp-default"; then
-        echo "❌ CRITICAL: '4550' permission string STILL FOUND in build dir after smoke test!"
+    TARGET_PPP_DIR=$(find "$SOURCE_DIR/build_dir" -type d -path "*/linux-mediatek_filogic/ppp-default" | head -n 1)
+    
+    if [ -z "$TARGET_PPP_DIR" ]; then
+        echo "❌ CRITICAL: Could not find ppp build directory for verification!"
+        find "$SOURCE_DIR/build_dir" -maxdepth 4 -name "ppp-default"
+        exit 1
+    fi
+    
+    echo "   Checking directory: $TARGET_PPP_DIR"
+    makefile_count=$(find "$TARGET_PPP_DIR" -name "Makefile" | wc -l)
+    echo "   Found $makefile_count Makefiles to check."
+    
+    if [ "$makefile_count" -eq 0 ]; then
+         echo "❌ CRITICAL: No Makefiles found in ppp build dir! Verification is invalid."
+         exit 1
+    fi
+
+    if find "$TARGET_PPP_DIR" -name "Makefile" -exec grep -l "4550" {} +; then
+        echo "❌ CRITICAL: '4550' permission string STILL FOUND in Makefiles after smoke test!"
         echo "   The fix did not apply correctly. Failing early to save time."
-        grep -r "4550" "$SOURCE_DIR/build_dir/target-"*"/linux-mediatek_filogic/ppp-default"
+        find "$TARGET_PPP_DIR" -name "Makefile" -exec grep -H "4550" {} +
         exit 1
     else
-        echo "✅ Verification Passed: No '4550' permissions found in ppp build dir."
+        echo "✅ Verification Passed: No '4550' permissions found in $makefile_count files."
     fi
     echo "✅ Smoke Test Passed!"
 fi
