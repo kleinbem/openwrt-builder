@@ -28,20 +28,42 @@ echo "🛠️ Applying fixes and running smoke tests..."
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
 if [ -d "$SOURCE_DIR" ]; then
     # ------------------------------------
-    # FIX: Explicit Prepare & Patch Strategy
+    # FIX: Quilt Patch Strategy (The "OpenWrt Way")
     # ------------------------------------
-    echo "🔧 Pre-preparing PPP package to apply permission fixes..."
-    # This unpacks the source into build_dir
-    make -C "$SOURCE_DIR" package/network/services/ppp/prepare
+    # We copy our patch file into the package's patches directory.
+    # OpenWrt's build system will automatically apply it during the 'patch' phase.
+    echo "🩹 Installing PPP Permission Patch..."
     
-    echo "🩹 Applying permission fix to unpacked source..."
-    FIX_SCRIPT="$(pwd)/scripts/fix-ppp-permissions.sh"
-    chmod +x "$FIX_SCRIPT"
+    PPP_PATCH_DIR="$SOURCE_DIR/package/network/services/ppp/patches"
+    mkdir -p "$PPP_PATCH_DIR"
     
-    # Run the fix script against the ENTIRE build_dir (finding the ppp directory inside)
-    $FIX_SCRIPT "$SOURCE_DIR/build_dir"
+    # We assume the patch was created in files/common (or we create it on fly here if needed)
+    # For robustness, we will create it right here to be self-contained in this block for now,
+    # or copy it if we saved it to the repo.
     
-    echo "✅ PPP Source Patched. Proceeding with build..."
+    # Let's use the one we just created in the files/ folder logic, BUT
+    # since we want to be sure, we also write it here to guarantee it exists.
+    cat > "$PPP_PATCH_DIR/999-fix-setuid-permissions.patch" << 'EOF'
+--- a/pppd/plugins/pppoe/Makefile.linux
++++ b/pppd/plugins/pppoe/Makefile.linux
+@@ -43,7 +43,7 @@ install: all
+ 	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL) -c -m 4550 -o root -g root pppoe.so $(LIBDIR)
++	$(INSTALL) -c -m 0755 pppoe.so $(LIBDIR)
+ 
+ clean:
+ 	rm -f *.o *.so
+--- a/pppd/plugins/pppoatm/Makefile.linux
++++ b/pppd/plugins/pppoatm/Makefile.linux
+@@ -43,7 +43,7 @@ install: all
+ 	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL) -c -m 4550 -o root -g root pppoatm.so $(LIBDIR)
++	$(INSTALL) -c -m 0755 pppoatm.so $(LIBDIR)
+ 
+ clean:
+ 	rm -f *.o *.so
+EOF
+    echo "✅ Patch installed to: $PPP_PATCH_DIR/999-fix-setuid-permissions.patch"
 fi
 
 # Smoke Test: Build ppp first (Fast Fail)

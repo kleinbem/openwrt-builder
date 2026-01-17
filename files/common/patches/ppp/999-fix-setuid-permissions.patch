@@ -1,0 +1,22 @@
+--- a/pppd/plugins/pppoe/Makefile.linux
++++ b/pppd/plugins/pppoe/Makefile.linux
+@@ -43,7 +43,7 @@
+ 
+ install: all
+ 	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL) -c -m 4550 -o root -g root pppoe.so $(LIBDIR)
++	$(INSTALL) -c -m 0755 pppoe.so $(LIBDIR)
+ 
+ clean:
+ 	rm -f *.o *.so
+--- a/pppd/plugins/pppoatm/Makefile.linux
++++ b/pppd/plugins/pppoatm/Makefile.linux
+@@ -43,7 +43,7 @@
+ 
+ install: all
+ 	$(INSTALL) -d -m 755 $(LIBDIR)
+-	$(INSTALL) -c -m 4550 -o root -g root pppoatm.so $(LIBDIR)
++	$(INSTALL) -c -m 0755 pppoatm.so $(LIBDIR)
+ 
+ clean:
+ 	rm -f *.o *.so
