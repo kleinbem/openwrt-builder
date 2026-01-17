@@ -69,7 +69,14 @@ if [ -z "$IN_BUILD_CONTAINER" ]; then
 
     # D. Launch Container
     echo "🚀 Launching $ENGINE container (ubuntu:22.04)..."
-    exec $ENGINE run --rm -ti \
+    
+    # Only allocate TTY if we have one (Fixes 'The input device is not a TTY' in CI)
+    IT_FLAGS=""
+    if [ -t 0 ]; then
+        IT_FLAGS="-ti"
+    fi
+    
+    exec $ENGINE run --rm $IT_FLAGS \
         --name openwrt-builder-$(date +%s) \
         -v "$(pwd):/workspace" \
         -w "/workspace" \
