@@ -25,9 +25,14 @@ SOURCE_DIR="openwrt-source"
 echo "🛠️ Applying fixes and running smoke tests..."
 
 # Fix ppp permissions (Remove setuid 4550 which fails in rootless build)
-if [ -f "$SOURCE_DIR/package/network/services/ppp/Makefile" ]; then
-    echo "🔧 Patching ppp Makefile to remove setuid permissions..."
-    sed -i 's/4550/0755/g' "$SOURCE_DIR/package/network/services/ppp/Makefile"
+if [ -d "$SOURCE_DIR" ]; then
+    echo "🔥 Preparing ppp sources for patching..."
+    make -C "$SOURCE_DIR" package/network/services/ppp/prepare -j$(nproc) || echo "Warning: ppp prepare failed, continuing hoping for the best..."
+
+    echo "🔧 Patching ppp upstream Makefiles (removing setuid 4550)..."
+    # Find all Makefiles in the ppp build directory (inside build_dir) that contain 4550 and replace it
+    # We look for 'build_dir' to be safe, but since we just prepared ppp, it should be there.
+    find "$SOURCE_DIR/build_dir" -name "Makefile" -print0 | xargs -0 sed -i 's/4550/0755/g'
 fi
 
 # Smoke Test: Build ppp first (Fast Fail)
