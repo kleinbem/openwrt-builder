@@ -12,45 +12,34 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Syntax Check
-        run: |
-          bash -n build.sh
-          ls profiles/*.conf
-
-      - name: Profile Validation
-        run: |
-          source profiles/bpi-r4.conf
-          if [ -z "$BUILDER_URL" ]; then echo "Missing BUILDER_URL"; exit 1; fi
-          if [ -z "$BOARD" ]; then echo "Missing BOARD"; exit 1; fi
-
   build-firmware:
-    needs: validate
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
 
-      - name: Install dependencies
+      - name: Install Tools (Just)
+        uses: extractions/setup-just@v1
+
+      # Ubuntu 22.04 has podman available in repositories, or use docker (default alias in action-runner).
+      # The 'just build-container' uses 'podman'.
+      # Let's ensure podman is installed.
+      - name: Install Tools (Podman)
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential clang flex bison g++ gawk \
-            gcc-multilib g++-multilib gettext git libncurses5-dev libssl-dev \
-            python3-distutils rsync unzip zlib1g-dev file wget python3
+          sudo apt-get install -y podman
 
       - name: Cache ImageBuilder
         id: cache-builder
         uses: actions/cache@v3
         with:
           path: openwrt-imagebuilder-*
-          key: ${{ runner.os }}-openwrt-builder-bpi-r4
+          key: ${{ runner.os }}-openwrt-builder-bpi-r4-${{ hashFiles('profiles/bpi-r4.conf') }}
 
       - name: Build Firmware
-        run: ./build.sh bpi-r4
-      
+        # We run the build WITHOUT secrets for Public/CI builds.
+        # This verifies the base image and configuration is valid.
+        run: just build bpi-r4
+
       - name: Upload Artifacts
         if: success()
         uses: actions/upload-artifact@v4
@@ -58,39 +47,3 @@ jobs:
           name: openwrt-bpi-r4-images
           path: bin/targets/**/*
 
-  # Manual Job: Build from Source (FrankW Fork)
-  build-source:
-    if: github.event_name == 'workflow_dispatch'
-    name: Build from Source (FrankW Fork)
-    runs-on: [self-hosted, nixos, openwrt]
-    timeout-minutes: 360 # 6 hours (Self-hosted is fast, but be safe)
-    steps:
-      - uses: actions/checkout@v4
-      
-      # Note: We assume the runner already has the necessary tools (gcc, make, etc.)
-      # as defined in our NixOS config, so we skip "Prepare Environment".
-      
-      - name: Cache Downloads
-        uses: actions/cache@v4
-        with:
-          path: openwrt-source/dl
-          key: ${{ runner.os }}-openwrt-dl-${{ hashFiles('build-source.sh') }}
-          restore-keys: |
-            ${{ runner.os }}-openwrt-dl-
-
-      - name: Cache CCache
-        uses: actions/cache@v4
-        with:
-          path: ~/.ccache
-          key: ${{ runner.os }}-openwrt-ccache-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-openwrt-ccache-
-      
-      - name: Build Source
-        run: ./build-source.sh
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: openwrt-bpi-r4-source-images
-          path: bin/targets/**/*

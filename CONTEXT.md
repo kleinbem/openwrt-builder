@@ -21,5 +21,5 @@ This repository is responsible for **building** custom OpenWrt firmware images u
 To build an image:
 
 1. Check `profiles/` for available targets.
-2. Run `./build.sh <profile_name>`.
+2. Run `just build <profile_name>`.
 3. Artifacts are in `bin/targets/...`.

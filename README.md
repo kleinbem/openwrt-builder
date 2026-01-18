@@ -1,66 +1,56 @@
 # OpenWrt Custom Image Builder
 
-This repository contains a modular build system designed to create custom OpenWrt images for **various hardware architectures**.
-While the current focus is on the **Banana Pi BPI-R4**, the system is architecture-agnostic and relies on profiles to switch targets.
+This repository contains a containerized build system designed to create custom OpenWrt images for various hardware architectures, with a focus on the **Banana Pi BPI-R4**.
+
+It uses **Podman/Docker** to provide a clean, reproducible build environment (Ubuntu 22.04) while securely handling decrypted secrets from the host using **YubiKey**.
+
+## Prerequisites
+
+- **Nix** (with `direnv` used to load the shell environment)
+- **Podman** (or Docker)
+- **Just** (Command runner)
+- **YubiKey** (For secret decryption)
 
 ## Directory Structure
 
-- `build.sh`: **Generic** build script that orchestrates the process based on the selected profile.
-- `profiles/`: Configuration files defining specific hardware targets (e.g., `bpi-r4.conf`, `x86-64.conf`).
-- `files/`: Overlay files to be included in the image.
-  - `files/common/`: Files applied to ALL profiles (e.g., SSH keys).
-  - `files/<profile_name>/`: Files applied only to that specific profile.
+- `Dockerfile`: Defines the build environment.
+- `Justfile`: Orchestrates the build workflow (secrets -> container -> build).
+- `build.sh`: Generic script run *inside* the container.
+- `profiles/`: Configuration files (e.g., `bpi-r4.conf`).
+- `files/`: Overlay files.
+  - `files/common/`: Applied to all profiles.
+  - `files/<profile_name>/`: Applied to specific profiles.
 
 ## Usage
 
-Run the build script with the desired profile name:
+Simply run `just build` with the profile name:
 
 ```bash
-./build.sh <profile_name>
+just build bpi-r4
 ```
 
-The script will:
+### What happens?
 
-1. Load the `profiles/<profile_name>.conf` configuration.
-2. Download the OpenWrt ImageBuilder (if not present).
-3. Merge `files/common` and `files/<profile_name>` overlays.
-4. Build the firmware image.
-5. Output the result to `bin/targets/...`
+1. **Cleanup**: Removes old Image Builder artifacts to prevent path pollution.
+2. **Decryption**: Asks for your YubiKey PIN to decrypt secrets (WiFi keys, WireGuard, etc.) into a temporary in-memory directory on the host.
+3. **Container Start**: Starts a Podman container, mounting the source code and the decrypted secrets.
+4. **Build**:
+    - Downloads the OpenWrt ImageBuilder.
+    - Merges file overlays and secrets.
+    - Generates the firmware image.
+5. **Cleanup**: Wipes temporary secrets.
 
-## Workflows
-
-### 1. Hybrid Workflow (Recommended)
-
-This is the safest and most efficient method.
-
-- **GitHub Actions**: Runs lightweight checks and "Speed Builds" (Official Kernel) to verify configuration validity. **No secrets are included.**
-- **Local Build**: Runs `build-source.sh` on your local machine.
-  - Features: **FrankW Kernel** + **Decrypted Secrets**.
-  - Usage: `./build-source.sh`
-  - Result: Production-ready image.
-
-### 2. Speed Build (CI/Local)
-
-- Usage: `./build.sh bpi-r4`
-- fast (~5 mins) but uses Official Kernel (missing some drivers).
-- Local run includes secrets; CI run does not.
+And that's it! The final image will be in `bin/targets/...`.
 
 ## Supported Profiles
 
 ### Banana Pi BPI-R4 (`bpi-r4`)
 
-To build for the BPI-R4:
-
-```bash
-./build.sh bpi-r4
-```
-
-> [!IMPORTANT]
-> **Memory Limit**: The BPI-R4 requires `mem=2048M` in `uEnv.txt` to prevent NPU/PPE crashes. This is handled via the `files/bpi-r4/boot/uEnv.txt` overlay.
-
 - **Target**: MediaTek Filogic 880
 - **Features**:
   - Wi-Fi 7 (MediaTek proprietary drivers)
   - 10G SFP+ support
-  - Docker/LXC containerization support
-  - Tailscale & WireGuard
+  - Tailscale & WireGuard pre-configured
+
+> [!IMPORTANT]
+> The BPI-R4 requires `mem=2048M` in `uEnv.txt` to prevent NPU/PPE crashes. This is handled via the `files/bpi-r4/boot/uEnv.txt` overlay.

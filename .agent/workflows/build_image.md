@@ -2,12 +2,14 @@
 description: Build a custom OpenWrt image
 ---
 
+# Workflow: Build Image
+
 To build an image for a specific board (e.g., `bpi-r4`):
 
 1. **Verify Profile**: Ensure the profile exists in `profiles/`.
 
    ```bash
-   just list-profiles
+   just list
    ```
 
 2. **Build Image**:

@@ -22,6 +22,7 @@ role: FirmwareFactory
 - `profiles/`: The hardware definitions.
 - `files/`: The overlay files.
 
-## Next Task
+## Maintenance
 
-Run a syntax check on `profiles/bpi-r4.conf` before attempting a build.
+- Keep `Dockerfile` dependencies updated.
+- Verify `profiles/*.conf` URLs against OpenWrt snapshot updates.

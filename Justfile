@@ -5,22 +5,8 @@ set dotenv-load
 default:
     @just --list
 
-# Build using Docker/Podman (Recommended)
-# Build using Docker/Podman (Recommended)
-build profile:
-    @just build-container {{profile}}
-
-# Build natively using Nix FHS (Legacy)
-build-native profile:
-    nix-build shell.nix -o result
-    ./result/bin/openwrt-builder-env -c "bash build.sh {{profile}}"
-
-# Build environment container image
-build-image:
-    podman build -t openwrt-builder .
-
-# Orchestrate the containerized build with host-side decryption
-build-container profile: build-image
+# Build using Docker/Podman (Default)
+build profile: build-image
     #!/usr/bin/env bash
     set -e
     # 0. Clean previous artifacts (Avoid Nix store path pollution in standard container)
@@ -33,16 +19,24 @@ build-container profile: build-image
     
     # 2. Decrypt on Host (requires YubiKey)
     if [ -f "../openwrt-secrets/decrypt.sh" ]; then
+        # We need python3 for the decryption script (usually provided by shell.nix)
+        # We use nix-shell -p only if not already in an environment with python3?
+        # Actually simpler: Just rely on PATH having python3 (from shell.nix).
+        # But previous fix used nix-shell wrapper. Let's keep the wrapper if it works, or simplify?
+        # Step 325 failed with YubiKey, likely due to nix-shell masking agent.
+        # Step 290 worked with nix-shell.
+        # Step 332 worked with nix-shell.
+        # The wrapper ensures python3 is available.
         nix-shell -p python3 --run "cd ../openwrt-secrets && ./decrypt.sh \"$SECRET_TMP\""
     else
         echo "Warning: Secrets repo not found."
     fi
 
-    # 3. Release YubiKey/Smartcard resources (optional cleanup)
+    # 3. Clean previous build artifacts inside container?
+    # No, we already cleaned openwrt-imagebuilder-* above.
+
     # 4. Run Build in Container
     echo "Starting Container Build..."
-    # Map Current User to Builder User in Container to fix permissions
-    
     podman run --rm -it \
         --userns=keep-id \
         -v "$PWD":/workspace \
@@ -55,8 +49,12 @@ build-container profile: build-image
     # 5. Cleanup
     rm -rf "$SECRET_TMP"
 
+# Build environment container image
+build-image:
+    podman build -t openwrt-builder .
+
 # List available profiles
-list-profiles:
+list:
     @ls profiles/*.conf | xargs -n 1 basename | sed 's/.conf//'
 
 # Clean build artifacts
