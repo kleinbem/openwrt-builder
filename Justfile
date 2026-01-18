@@ -40,6 +40,7 @@ build profile: build-image
     podman run --rm -it \
         --userns=keep-id \
         -v "$PWD":/workspace \
+        -v "$PWD/dl":/workspace/dl \
         -v "$SECRET_TMP":/secrets:ro \
         -w /workspace \
         -e EXTERNAL_SECRETS_DIR=/secrets \

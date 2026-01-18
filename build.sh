@@ -43,6 +43,13 @@ if [ ! -d "$BUILDER_DIR_NAME" ]; then
     rm "$BUILDER_FILE"
 fi
 
+# Optimization: Use global package cache if mounted
+if [ -d "/workspace/dl" ]; then
+    echo "📦 Using persistent package cache..."
+    rm -rf "$BUILDER_DIR_NAME/dl"
+    ln -s /workspace/dl "$BUILDER_DIR_NAME/dl"
+fi
+
 cd "$BUILDER_DIR_NAME"
 
 # --- 2.5 PREPARE SECRETS ---

@@ -17,4 +17,5 @@ logs_debug/
 .direnv/
 result
 tmp/
+dl/
 
