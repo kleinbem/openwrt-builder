@@ -2,10 +2,13 @@ name: OpenWrt Builder
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -13,31 +16,32 @@ concurrency:
 
 jobs:
   build-firmware:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Tools (Just)
-        uses: extractions/setup-just@v1
+        uses: extractions/setup-just@v2
 
-      # Ubuntu 22.04 has podman available in repositories, or use docker (default alias in action-runner).
-      # The 'just build-container' uses 'podman'.
-      # Let's ensure podman is installed.
       - name: Install Tools (Podman)
         run: |
           sudo apt-get update
           sudo apt-get install -y podman
 
-      - name: Cache ImageBuilder
-        id: cache-builder
-        uses: actions/cache@v3
+      # The build recipe wipes openwrt-imagebuilder-* on every run, so cache
+      # the persistent package download dir instead (symlinked into the
+      # builder by build.sh).
+      - name: Cache package downloads
+        uses: actions/cache@v4
         with:
-          path: openwrt-imagebuilder-*
-          key: ${{ runner.os }}-openwrt-builder-bpi-r4-${{ hashFiles('profiles/bpi-r4.conf') }}
+          path: dl
+          key: ${{ runner.os }}-openwrt-dl-bpi-r4-${{ hashFiles('profiles/bpi-r4.conf') }}
+          restore-keys: |
+            ${{ runner.os }}-openwrt-dl-bpi-r4-
 
       - name: Build Firmware
-        # We run the build WITHOUT secrets for Public/CI builds.
-        # This verifies the base image and configuration is valid.
+        # Runs WITHOUT secrets for public/CI builds — verifies the pinned
+        # ImageBuilder (sha256-checked) and package selection are valid.
         run: just build bpi-r4
 
       - name: Upload Artifacts
@@ -45,5 +49,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: openwrt-bpi-r4-images
-          path: bin/targets/**/*
-
+          path: dist/*

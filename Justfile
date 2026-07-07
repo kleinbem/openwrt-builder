@@ -16,28 +16,19 @@ build profile: build-image
     # 1. Prepare Secrets Directory
     SECRET_TMP=$(mktemp -d)
     echo "Decrypting secrets on host to $SECRET_TMP..."
-    
-    # 2. Decrypt on Host (requires YubiKey)
+
+    # 2. Decrypt on Host (requires YubiKey). The nix-shell wrapper guarantees
+    # python3 for decrypt.sh even outside the devshell.
     if [ -f "../openwrt-secrets/decrypt.sh" ]; then
-        # We need python3 for the decryption script (usually provided by shell.nix)
-        # We use nix-shell -p only if not already in an environment with python3?
-        # Actually simpler: Just rely on PATH having python3 (from shell.nix).
-        # But previous fix used nix-shell wrapper. Let's keep the wrapper if it works, or simplify?
-        # Step 325 failed with YubiKey, likely due to nix-shell masking agent.
-        # Step 290 worked with nix-shell.
-        # Step 332 worked with nix-shell.
-        # The wrapper ensures python3 is available.
         nix-shell -p python3 --run "cd ../openwrt-secrets && ./decrypt.sh \"$SECRET_TMP\""
     else
         echo "Warning: Secrets repo not found."
     fi
 
-    # 3. Clean previous build artifacts inside container?
-    # No, we already cleaned openwrt-imagebuilder-* above.
-
-    # 4. Run Build in Container
+    # 3. Run Build in Container (no -t: must also work without a TTY in CI)
     echo "Starting Container Build..."
-    podman run --rm -it \
+    mkdir -p dl
+    podman run --rm -i \
         --userns=keep-id \
         -v "$PWD":/workspace \
         -v "$PWD/dl":/workspace/dl \
@@ -47,7 +38,14 @@ build profile: build-image
         openwrt-builder \
         bash -c "bash build.sh {{profile}}"
 
-    # 5. Cleanup
+    # 4. Extract Relevant Artifacts to Host
+    mkdir -p dist
+    find openwrt-imagebuilder-*/bin/targets -name "*.img.gz" -exec cp {} dist/ \;
+    find openwrt-imagebuilder-*/bin/targets -name "*.itb" -exec cp {} dist/ \;
+    find openwrt-imagebuilder-*/bin/targets -name "sha256sums" -exec cp {} dist/ \;
+    echo "✅ Firmware images copied to ./dist/"
+
+    # 5. Cleanup sensitive data
     rm -rf "$SECRET_TMP"
 
 # Build environment container image
@@ -60,7 +58,7 @@ list:
 
 # Clean build artifacts
 clean:
-    rm -rf openwrt-imagebuilder-* bin/
+    rm -rf openwrt-imagebuilder-* bin/ dist/
 
 # Validate scripts
 check:

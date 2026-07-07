@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 # Usage: ./build.sh <profile_name>
-PROFILE_NAME="$1"
+PROFILE_NAME="${1:-}"
 
 if [ -z "$PROFILE_NAME" ]; then
     echo "Usage: $0 <profile_name>"
     echo "Available profiles:"
-    ls profiles/*.conf | xargs -n 1 basename | sed 's/.conf//'
+    find profiles -name '*.conf' -printf '%f\n' | sed 's/\.conf$//'
     exit 1
 fi
 
@@ -20,11 +20,13 @@ fi
 
 # --- 1. LOAD PROFILE ---
 echo "🔧 Loading Profile: $PROFILE_NAME"
+# shellcheck disable=SC1090 # profile chosen at runtime
 source "$PROFILE_CONFIG"
 
-# Check required variables
-if [ -z "$BUILDER_URL" ] || [ -z "$BOARD" ]; then
-    echo "❌ Error: Profile must define BUILDER_URL and BOARD."
+# Check required variables — the sha256 pin is mandatory so a compromised
+# or silently-changed download mirror can't reach the build.
+if [ -z "${BUILDER_URL:-}" ] || [ -z "${BOARD:-}" ] || [ -z "${BUILDER_SHA256:-}" ]; then
+    echo "❌ Error: Profile must define BUILDER_URL, BUILDER_SHA256 and BOARD."
     exit 1
 fi
 
@@ -36,7 +38,10 @@ echo "[1/5] Checking for Image Builder..."
 if [ ! -d "$BUILDER_DIR_NAME" ]; then
     echo "    Downloading specific builder..."
     wget -O "$BUILDER_FILE" "$BUILDER_URL"
-    
+
+    echo "    Verifying checksum..."
+    echo "${BUILDER_SHA256}  ${BUILDER_FILE}" | sha256sum -c -
+
     echo "    Extracting..."
     mkdir -p "$BUILDER_DIR_NAME"
     tar -xf "$BUILDER_FILE" --strip-components=1 -C "$BUILDER_DIR_NAME"
@@ -54,18 +59,17 @@ cd "$BUILDER_DIR_NAME"
 
 # --- 2.5 PREPARE SECRETS ---
 SECRETS_REPO="../../openwrt-secrets"
+SECRETS_SOURCE=""
 
-if [ -n "$EXTERNAL_SECRETS_DIR" ] && [ -d "$EXTERNAL_SECRETS_DIR" ]; then
+if [ -n "${EXTERNAL_SECRETS_DIR:-}" ] && [ -d "${EXTERNAL_SECRETS_DIR:-}" ]; then
     echo "🔐 Using external secrets from environment: $EXTERNAL_SECRETS_DIR"
     SECRETS_SOURCE="$EXTERNAL_SECRETS_DIR"
 elif [ -d "$SECRETS_REPO" ] && [ -f "$SECRETS_REPO/decrypt.sh" ]; then
-    echo "🔐 Secrets repo found. Decrypting..."
-    # We decrypt into the common files area temporarily or directly into overlays?
-    # Let's decrypt to a temporary location that we can merge.
-    
+    echo "🔐 Secrets repo found. Decrypting to a temp dir, merged below..."
+
     SECRET_TMP=$(mktemp -d)
     trap 'rm -rf "$SECRET_TMP"' EXIT
-    
+
     # Run the decrypt script from the secrets repo side
     (cd "$SECRETS_REPO" && ./decrypt.sh "$SECRET_TMP")
     
@@ -91,7 +95,7 @@ fi
 
 # Layer 2: Board specific files (uEnv.txt, etc.)
 if [ -d "../files/${PROFILE_NAME}" ]; then
-    cp -r ../files/${PROFILE_NAME}/* files_overlay/
+    cp -r ../files/"${PROFILE_NAME}"/* files_overlay/
 fi
 
 # Layer 3: Secrets (Highest Priority - Overwrites defaults)
