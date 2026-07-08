@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: ["main"]
   workflow_dispatch:
+  schedule:
+    # Mondays 05:00 UTC — weekly rebuild against the pinned release's package
+    # feeds. Firmware sources are checksum-pinned, so a bump is still manual;
+    # this catches a broken feed / missing package before a real deploy needs it.
+    - cron: "0 5 * * 1"
 
 permissions:
   contents: read
@@ -15,7 +20,34 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Fast gate — fails in seconds on a script/profile mistake instead of after
+  # a ~15-minute firmware build.
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: shellcheck build script
+        run: |
+          sudo apt-get update && sudo apt-get install -y shellcheck
+          shellcheck build.sh
+
+      - name: Profile sanity (pins present + sha256 well-formed)
+        run: |
+          set -euo pipefail
+          for p in profiles/*.conf; do
+            # shellcheck disable=SC1090
+            ( source "$p"
+              : "${BUILDER_URL:?missing BUILDER_URL in $p}"
+              : "${BOARD:?missing BOARD in $p}"
+              : "${BUILDER_SHA256:?missing BUILDER_SHA256 in $p}"
+              echo "$BUILDER_SHA256" | grep -qE '^[0-9a-f]{64}$' \
+                || { echo "::error file=$p::BUILDER_SHA256 is not 64 hex chars"; exit 1; }
+              echo "  ok: $p" )
+          done
+
   build-firmware:
+    needs: validate
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
