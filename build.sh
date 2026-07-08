@@ -99,9 +99,13 @@ if [ -d "../files/${PROFILE_NAME}" ]; then
 fi
 
 # Layer 3: Secrets (Highest Priority - Overwrites defaults)
-if [ -n "$SECRETS_SOURCE" ] && [ -d "$SECRETS_SOURCE" ]; then
+# Skip cleanly when the source is empty — public/CI builds mount an empty
+# secrets dir (no openwrt-secrets checkout), and under `set -e` a glob that
+# matches nothing would abort the whole build. `/.` copies contents incl.
+# dotfiles without relying on the shell glob.
+if [ -n "$SECRETS_SOURCE" ] && [ -d "$SECRETS_SOURCE" ] && [ -n "$(ls -A "$SECRETS_SOURCE" 2>/dev/null)" ]; then
     echo "    Applying decrypted secrets..."
-    cp -r "$SECRETS_SOURCE"/* files_overlay/
+    cp -r "$SECRETS_SOURCE"/. files_overlay/
 fi
 
 # --- 4. BUILD ---
