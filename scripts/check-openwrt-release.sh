@@ -9,9 +9,12 @@
 # human still reviews and applies the bump by hand (see each profile's own
 # header comment for the process this mirrors).
 #
-# Usage:  ./scripts/check-openwrt-release.sh
+# Usage:  ./scripts/check-openwrt-release.sh [--dry-run]
 # Deps:   bash, curl, gh
 set -euo pipefail
+
+DRY_RUN=false
+[[ ${1:-} == "--dry-run" ]] && DRY_RUN=true
 
 cd "$(dirname "$0")/.."
 
@@ -28,9 +31,14 @@ LATEST=$(curl -fsSL "https://downloads.openwrt.org/releases/" |
 [[ -n $LATEST ]] || err "Could not determine latest OpenWrt release"
 log "Latest OpenWrt stable release: $LATEST"
 
+# Isolate each profile in its own subshell so one failure (e.g. a mirror
+# lagging behind the release listing) doesn't stop the rest from being
+# checked; failures are collected and turned into a nonzero exit at the end
+# so CI still goes red.
+FAILED=0
 for profile in profiles/*.conf; do
   name=$(basename "$profile" .conf)
-  (
+  if ! (
     # shellcheck disable=SC1090
     source "$profile"
 
@@ -72,13 +80,21 @@ for profile in profiles/*.conf; do
       exit 0
     fi
 
+    # A patch bump (x.y.Z) is safe to apply blind; a major/minor jump (x.Y or
+    # X.y) can carry breaking config changes, so call that out explicitly
+    # rather than presenting every bump as an equally mechanical diff.
+    JUMP_WARNING=""
+    if [[ ${OPENWRT_RELEASE%.*} != "${LATEST%.*}" ]]; then
+      JUMP_WARNING=$'\n> **\xe2\x9a\xa0\xef\xb8\x8f Major/minor version jump** (not a patch-only release) \xe2\x80\x94 review the [OpenWrt release notes](https://openwrt.org/releases/start) for breaking changes before applying; config/package compatibility across major/minor versions is not guaranteed.\n'
+    fi
+
     # BUILDER_URL is already parameterized by ${OPENWRT_RELEASE} in the file
     # itself (see profile header), so only these two lines actually need
     # to change — bumping OPENWRT_RELEASE alone re-resolves BUILDER_URL.
     BODY_FILE=$(mktemp)
     cat > "$BODY_FILE" <<EOF
 OpenWrt **$LATEST** is available (\`$name\` is currently pinned to $OPENWRT_RELEASE).
-
+$JUMP_WARNING
 Apply by hand in \`$profile\`:
 
 \`\`\`diff
@@ -99,8 +115,17 @@ Once bumped, the existing weekly \`build.yml\` run (and a PR's own CI) rebuilds 
 🤖 Opened automatically by the check-openwrt-release workflow.
 EOF
 
-    gh issue create --title "$ISSUE_TITLE" --body-file "$BODY_FILE" --label dependencies
-  )
+    if $DRY_RUN; then
+      log "$name: [dry-run] would open issue \"$ISSUE_TITLE\":"
+      cat "$BODY_FILE" >&2
+    else
+      gh issue create --title "$ISSUE_TITLE" --body-file "$BODY_FILE" --label dependencies
+    fi
+  ); then
+    echo -e "\033[0;31m[ERROR]\033[0m  $name: check failed (see above)" >&2
+    FAILED=1
+  fi
 done
 
 log "Done."
+[[ $FAILED -eq 0 ]] || exit 1
