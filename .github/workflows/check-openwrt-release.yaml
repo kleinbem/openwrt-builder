@@ -1,0 +1,31 @@
+name: "Check OpenWrt release"
+
+# Flags (never applies) an available OpenWrt release bump for any
+# profiles/*.conf. Firmware for a physical router isn't something to
+# auto-bump the way a Nix package hash is — a bad image can brick a device
+# with no console — so this only opens a GitHub issue with the exact values
+# needed; a human reviews and applies the change by hand, then the existing
+# `build.yml` (on push/PR) rebuilds and validates the image.
+
+on:
+  schedule:
+    # Sundays 05:00 UTC — a day ahead of build.yml's own weekly Monday
+    # rebuild, so a fresh release is flagged before that run.
+    - cron: '0 5 * * 0'
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run checker
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          chmod +x scripts/check-openwrt-release.sh
+          ./scripts/check-openwrt-release.sh
