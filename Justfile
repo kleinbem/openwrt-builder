@@ -18,11 +18,13 @@ build profile: build-image
     echo "Decrypting secrets on host to $SECRET_TMP..."
 
     # 2. Decrypt on Host (requires YubiKey). The nix-shell wrapper guarantees
-    # python3 for decrypt.sh even outside the devshell.
-    if [ -f "../openwrt-secrets/decrypt.sh" ]; then
-        nix-shell -p python3 --run "cd ../openwrt-secrets && ./decrypt.sh \"$SECRET_TMP\""
+    # python3 for decrypt-secrets.sh even outside the devshell. Reads from
+    # kleinbem-secrets (cutover 2026-08-08, replaces openwrt-secrets).
+    SECRETS_FILE="../kleinbem-secrets/openwrt/firmware-files.yaml"
+    if [ -f "$SECRETS_FILE" ]; then
+        nix-shell -p python3 --run "./scripts/decrypt-secrets.sh \"$SECRETS_FILE\" \"$SECRET_TMP\""
     else
-        echo "Warning: Secrets repo not found."
+        echo "Warning: Secrets file not found at $SECRETS_FILE."
     fi
 
     # 3. Run Build in Container (no -t: must also work without a TTY in CI)

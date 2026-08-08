@@ -58,21 +58,25 @@ fi
 cd "$BUILDER_DIR_NAME"
 
 # --- 2.5 PREPARE SECRETS ---
-SECRETS_REPO="../../openwrt-secrets"
+# kleinbem-secrets (cutover 2026-08-08, replaces openwrt-secrets). This
+# fallback only matters for a bare-metal (non-container) run of build.sh —
+# the containerized `just build` path always sets EXTERNAL_SECRETS_DIR and
+# doesn't mount kleinbem-secrets into the container at all.
+SECRETS_FILE="../../kleinbem-secrets/openwrt/firmware-files.yaml"
+DECRYPT_SCRIPT="../scripts/decrypt-secrets.sh"
 SECRETS_SOURCE=""
 
 if [ -n "${EXTERNAL_SECRETS_DIR:-}" ] && [ -d "${EXTERNAL_SECRETS_DIR:-}" ]; then
     echo "🔐 Using external secrets from environment: $EXTERNAL_SECRETS_DIR"
     SECRETS_SOURCE="$EXTERNAL_SECRETS_DIR"
-elif [ -d "$SECRETS_REPO" ] && [ -f "$SECRETS_REPO/decrypt.sh" ]; then
-    echo "🔐 Secrets repo found. Decrypting to a temp dir, merged below..."
+elif [ -f "$SECRETS_FILE" ] && [ -f "$DECRYPT_SCRIPT" ]; then
+    echo "🔐 Secrets file found. Decrypting to a temp dir, merged below..."
 
     SECRET_TMP=$(mktemp -d)
     trap 'rm -rf "$SECRET_TMP"' EXIT
 
-    # Run the decrypt script from the secrets repo side
-    (cd "$SECRETS_REPO" && ./decrypt.sh "$SECRET_TMP")
-    
+    "$DECRYPT_SCRIPT" "$SECRETS_FILE" "$SECRET_TMP"
+
     # Check if we have files to merge
     if [ -n "$(ls -A "$SECRET_TMP")" ]; then
          echo "    Merging secrets into build..."
@@ -100,7 +104,7 @@ fi
 
 # Layer 3: Secrets (Highest Priority - Overwrites defaults)
 # Skip cleanly when the source is empty — public/CI builds mount an empty
-# secrets dir (no openwrt-secrets checkout), and under `set -e` a glob that
+# secrets dir (no kleinbem-secrets checkout), and under `set -e` a glob that
 # matches nothing would abort the whole build. `/.` copies contents incl.
 # dotfiles without relying on the shell glob.
 if [ -n "$SECRETS_SOURCE" ] && [ -d "$SECRETS_SOURCE" ] && [ -n "$(ls -A "$SECRETS_SOURCE" 2>/dev/null)" ]; then
