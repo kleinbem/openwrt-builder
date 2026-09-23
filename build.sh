@@ -1,11 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Usage: ./build.sh <profile_name>
+# Usage: ./build.sh <profile_name> [device_name]
+#
+# device_name (optional) selects a per-device file overlay from
+# kleinbem-secrets/openwrt/per-device/<device_name>.yaml — currently used
+# for a stable dropbear host key, so re-flashing a from-scratch image
+# doesn't hand the device a fresh SSH identity every time (see
+# openwrt-config/ansible/ansible.cfg's host_key_checking note). Without a
+# device_name, dropbear falls back to its own generate-on-first-boot
+# behavior, same as before this option existed.
 PROFILE_NAME="${1:-}"
+DEVICE_NAME="${2:-}"
 
 if [ -z "$PROFILE_NAME" ]; then
-    echo "Usage: $0 <profile_name>"
+    echo "Usage: $0 <profile_name> [device_name]"
     echo "Available profiles:"
     find profiles -name '*.conf' -printf '%f\n' | sed 's/\.conf$//'
     exit 1
@@ -76,6 +85,21 @@ elif [ -f "$SECRETS_FILE" ] && [ -f "$DECRYPT_SCRIPT" ]; then
     trap 'rm -rf "$SECRET_TMP"' EXIT
 
     "$DECRYPT_SCRIPT" "$SECRETS_FILE" "$SECRET_TMP"
+
+    # Per-device overlay (e.g. a stable dropbear host key) decrypted into
+    # the SAME temp dir, after the shared file — a colliding path (there
+    # isn't one today) would resolve to whichever decrypt-secrets.sh call
+    # ran last, i.e. this one wins, matching "per-device is more specific
+    # than shared" intent.
+    if [ -n "$DEVICE_NAME" ]; then
+        DEVICE_SECRETS_FILE="../../kleinbem-secrets/openwrt/per-device/${DEVICE_NAME}.yaml"
+        if [ -f "$DEVICE_SECRETS_FILE" ]; then
+            echo "🔐 Per-device secrets found for '$DEVICE_NAME'. Decrypting..."
+            "$DECRYPT_SCRIPT" "$DEVICE_SECRETS_FILE" "$SECRET_TMP"
+        else
+            echo "⚠️  No per-device secrets file for '$DEVICE_NAME' (${DEVICE_SECRETS_FILE}) — dropbear will generate its own host key on first boot."
+        fi
+    fi
 
     # Check if we have files to merge
     if [ -n "$(ls -A "$SECRET_TMP")" ]; then

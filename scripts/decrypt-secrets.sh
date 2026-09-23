@@ -6,6 +6,12 @@ set -e
 # Relocated here from openwrt-secrets/decrypt.sh (cutover 2026-08-08) — this
 # is build tooling, not secret storage, so it belongs with the consumer.
 #
+# Each item also accepts optional `encoding` ("base64", for binary content
+# like dropbear host keys — plain text otherwise) and `mode` (octal string,
+# e.g. "0600" — dropbear's init script refuses a host key file that isn't
+# exactly -rw-------, see openwrt-per-device-keys design note in
+# kleinbem-secrets/openwrt/per-device/).
+#
 # Usage: ./decrypt-secrets.sh <sops_file> <target_dir>
 SOPS_FILE="$1"
 TARGET_DIR="$2"
@@ -37,6 +43,8 @@ if not data or 'files' not in data:
     print('ℹ️  No files definition found in secrets.')
     sys.exit(0)
 
+import base64
+
 for item in data['files']:
     path = item.get('path')
     content = item.get('content')
@@ -50,8 +58,17 @@ for item in data['files']:
         continue
 
     os.makedirs(os.path.dirname(full_path), exist_ok=True)
-    with open(full_path, 'w') as f:
-        f.write(content)
+    if item.get('encoding') == 'base64':
+        with open(full_path, 'wb') as f:
+            f.write(base64.b64decode(content))
+    else:
+        with open(full_path, 'w') as f:
+            f.write(content)
+
+    mode = item.get('mode')
+    if mode:
+        os.chmod(full_path, int(mode, 8))
+
     print(f'-> 🔓 Wrote secret: {path}')
 "
 
