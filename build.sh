@@ -147,6 +147,23 @@ make image PROFILE="$BOARD" \
            FILES="files_overlay" \
            DISABLED_SERVICES="$DISABLED_SERVICES"
 
+# --- 4.5 SIZE GUARD (optional, per profile) ---
+# Some device recipes have no check-size step (e.g. the Netgear DNI factory
+# image for the Orbi units) — an oversized rootfs would silently overflow its
+# eMMC slot. Profiles that know their limit set IMAGE_MAX_BYTES and the
+# build fails loudly here instead of bricking at flash time.
+if [ -n "${IMAGE_MAX_BYTES:-}" ]; then
+    echo "    Checking image size budget (${IMAGE_MAX_BYTES} bytes)..."
+    while IFS= read -r img; do
+        size=$(stat -c %s "$img")
+        if [ "$size" -gt "$IMAGE_MAX_BYTES" ]; then
+            echo "❌ Error: $(basename "$img") is ${size} bytes, over the ${IMAGE_MAX_BYTES}-byte budget — trim PACKAGES."
+            exit 1
+        fi
+        echo "    ok: $(basename "$img") (${size} bytes)"
+    done < <(find bin/targets -type f \( -name '*-factory.img' -o -name '*-sysupgrade.bin' -o -name '*-sysupgrade.itb' \))
+fi
+
 # --- 5. FINISH ---
 echo "[5/5] Done!"
 echo "    Image is located in: $PWD/bin/targets/"

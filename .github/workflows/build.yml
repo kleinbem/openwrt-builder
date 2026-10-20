@@ -49,6 +49,12 @@ jobs:
   build-firmware:
     needs: validate
     runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # Every profile in profiles/ — a public (no-secrets) build of each
+        # proves the pinned ImageBuilder + package selection still resolve.
+        profile: [bpi-r4, orbi-rbr50, orbi-rbs50]
     steps:
       - uses: actions/checkout@v4
 
@@ -67,18 +73,18 @@ jobs:
         uses: actions/cache@v4
         with:
           path: dl
-          key: ${{ runner.os }}-openwrt-dl-bpi-r4-${{ hashFiles('profiles/bpi-r4.conf') }}
+          key: ${{ runner.os }}-openwrt-dl-${{ matrix.profile }}-${{ hashFiles(format('profiles/{0}.conf', matrix.profile)) }}
           restore-keys: |
-            ${{ runner.os }}-openwrt-dl-bpi-r4-
+            ${{ runner.os }}-openwrt-dl-${{ matrix.profile }}-
 
       - name: Build Firmware
         # Runs WITHOUT secrets for public/CI builds — verifies the pinned
         # ImageBuilder (sha256-checked) and package selection are valid.
-        run: just build bpi-r4
+        run: just build ${{ matrix.profile }}
 
       - name: Upload Artifacts
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: openwrt-bpi-r4-images
+          name: openwrt-${{ matrix.profile }}-images
           path: dist/*
