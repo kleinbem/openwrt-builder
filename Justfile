@@ -74,6 +74,32 @@ build profile device="": build-image
     # 5. Cleanup sensitive data
     rm -rf "$SECRET_TMP"
 
+# Writes kleinbem-secrets/openwrt/per-device/<device>.yaml, which
+# `build <profile> <device>` bakes into the image. Needs the device's
+# creation rule in kleinbem-secrets/.sops.yaml first. Encrypting only
+# needs the public recipients, so no YubiKey. Refuses to overwrite:
+# replacing a key is a rotation, do that by hand.
+# New device: stable dropbear host key + its known_hosts line
+device-key device ip:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    out="../kleinbem-secrets/openwrt/per-device/{{device}}.yaml"
+    if [ -e "$out" ]; then echo "❌ $out already exists"; exit 1; fi
+    tmp=$(mktemp -d "${XDG_RUNTIME_DIR:-/tmp}/device-key.XXXXXX")
+    trap 'rm -rf "$tmp" "$out.tmp"' EXIT
+    nix shell nixpkgs#dropbear -c dropbearkey -t ed25519 -f "$tmp/key" >/dev/null
+    pub=$(nix shell nixpkgs#dropbear -c dropbearkey -y -f "$tmp/key" | grep '^ssh-ed25519' | cut -d' ' -f1,2)
+    # path must be relative: decrypt-secrets.sh skips anything that
+    # resolves outside its target dir, and os.path.join drops the target
+    # for an absolute path.
+    printf 'files:\n    - path: etc/dropbear/dropbear_ed25519_host_key\n      encoding: base64\n      mode: "0600"\n      content: %s\n' \
+        "$(base64 -w0 "$tmp/key")" \
+        | (cd ../kleinbem-secrets && sops -e --filename-override "openwrt/per-device/{{device}}.yaml" \
+            --input-type yaml --output-type yaml /dev/stdin) > "$out.tmp"
+    mv "$out.tmp" "$out"
+    echo "✅ wrote $out"
+    echo "known_hosts: {{device}},{{ip}} $pub"
+
 # Build environment container image
 build-image:
     podman build -t openwrt-builder .
