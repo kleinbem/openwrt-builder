@@ -9,7 +9,8 @@ default:
 # stable per-device dropbear host key from kleinbem-secrets/openwrt/
 # per-device/<device>.yaml instead of letting dropbear generate a fresh
 # one on first boot (see ansible.cfg's host_key_checking note). Real
-# devices today: core-gateway, ap-upstairs.
+# devices today: core-gateway, ap-upstairs (bpi-r4); the Orbi APs
+# (orbi-rbr50 / orbi-rbs50) get theirs when they are named in inventory.nix.
 build profile device="": build-image
     #!/usr/bin/env bash
     set -e
@@ -61,8 +62,12 @@ build profile device="": build-image
 
     # 4. Extract Relevant Artifacts to Host
     mkdir -p dist
+    # BPI-R4: *.img.gz (eMMC/SD) + *.itb. Orbi (Netgear DNI): *-factory.img
+    # for nmrpflash / first install, *-sysupgrade.bin for in-place upgrades.
     find openwrt-imagebuilder-*/bin/targets -name "*.img.gz" -exec cp {} dist/ \;
     find openwrt-imagebuilder-*/bin/targets -name "*.itb" -exec cp {} dist/ \;
+    find openwrt-imagebuilder-*/bin/targets -name "*-factory.img" -exec cp {} dist/ \;
+    find openwrt-imagebuilder-*/bin/targets -name "*-sysupgrade.bin" -exec cp {} dist/ \;
     find openwrt-imagebuilder-*/bin/targets -name "sha256sums" -exec cp {} dist/ \;
     echo "✅ Firmware images copied to ./dist/"
 

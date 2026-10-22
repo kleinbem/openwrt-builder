@@ -12,7 +12,7 @@ role: FirmwareFactory
 
 ## CRITICAL RULES (DO NOT VIOLATE)
 
-1. **Memory Limit:** You MUST ensure `mem=2048M` is present in `uEnv.txt` for BPI-R4 builds. This prevents NPU crashes.
+1. **Memory:** `uEnv.txt` for BPI-R4 builds carries NO `mem=` limit (full 4 GiB, since 2026-10-20). The old `mem=2048M` cap was only for MT7988 hardware flow offloading, which stays disabled; never re-add it without a measured reason.
 2. **No Hardcoding:** Never edit `build.sh` logic for a specific board. Always edit `profiles/*.conf`.
 3. **Filesystem:** Do not output artifacts to the root. Use `bin/`.
 
