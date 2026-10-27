@@ -2,6 +2,11 @@
 
 set dotenv-load
 
+# kleinbem-secrets checkout to read from and write to. Override to use a
+# jj workspace instead of the primary checkout:
+#   KLEINBEM_SECRETS=../kleinbem-secrets.ws/<name> just ...
+secrets := env_var_or_default("KLEINBEM_SECRETS", "../kleinbem-secrets")
+
 default:
     @just --list
 
@@ -25,7 +30,7 @@ build profile device="": build-image
     # 2. Decrypt on Host (requires YubiKey). The nix-shell wrapper guarantees
     # python3 for decrypt-secrets.sh even outside the devshell. Reads from
     # kleinbem-secrets (cutover 2026-08-08, replaces openwrt-secrets).
-    SECRETS_FILE="../kleinbem-secrets/openwrt/firmware-files.yaml"
+    SECRETS_FILE="{{secrets}}/openwrt/firmware-files.yaml"
     if [ -f "$SECRETS_FILE" ]; then
         nix-shell -p python3 --run "./scripts/decrypt-secrets.sh \"$SECRETS_FILE\" \"$SECRET_TMP\""
     else
@@ -38,7 +43,7 @@ build profile device="": build-image
     # here doesn't matter (last decrypt into a given path wins either way,
     # and there's no overlap today).
     if [ -n "{{device}}" ]; then
-        DEVICE_SECRETS_FILE="../kleinbem-secrets/openwrt/per-device/{{device}}.yaml"
+        DEVICE_SECRETS_FILE="{{secrets}}/openwrt/per-device/{{device}}.yaml"
         if [ -f "$DEVICE_SECRETS_FILE" ]; then
             echo "Decrypting per-device secrets for {{device}}..."
             nix-shell -p python3 --run "./scripts/decrypt-secrets.sh \"$DEVICE_SECRETS_FILE\" \"$SECRET_TMP\""
@@ -83,7 +88,7 @@ build profile device="": build-image
 device-key device ip:
     #!/usr/bin/env bash
     set -euo pipefail
-    out="../kleinbem-secrets/openwrt/per-device/{{device}}.yaml"
+    out="{{secrets}}/openwrt/per-device/{{device}}.yaml"
     if [ -e "$out" ]; then echo "❌ $out already exists"; exit 1; fi
     tmp=$(mktemp -d "${XDG_RUNTIME_DIR:-/tmp}/device-key.XXXXXX")
     trap 'rm -rf "$tmp" "$out.tmp"' EXIT
@@ -94,7 +99,7 @@ device-key device ip:
     # for an absolute path.
     printf 'files:\n    - path: etc/dropbear/dropbear_ed25519_host_key\n      encoding: base64\n      mode: "0600"\n      content: %s\n' \
         "$(base64 -w0 "$tmp/key")" \
-        | (cd ../kleinbem-secrets && sops -e --filename-override "openwrt/per-device/{{device}}.yaml" \
+        | (cd "{{secrets}}" && sops -e --filename-override "openwrt/per-device/{{device}}.yaml" \
             --input-type yaml --output-type yaml /dev/stdin) > "$out.tmp"
     mv "$out.tmp" "$out"
     echo "✅ wrote $out"
