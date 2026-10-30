@@ -25,7 +25,7 @@ jobs:
   validate:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
@@ -58,12 +58,12 @@ jobs:
         # proves the pinned ImageBuilder + package selection still resolve.
         profile: [bpi-r4, orbi-rbr50, orbi-rbs50]
     steps:
-      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
 
       - name: Install Tools (Just)
-        uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2
+        uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
 
       - name: Install Tools (Podman)
         run: |
@@ -74,7 +74,7 @@ jobs:
       # the persistent package download dir instead (symlinked into the
       # builder by build.sh).
       - name: Cache package downloads
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: dl
           key: ${{ runner.os }}-openwrt-dl-${{ matrix.profile }}-${{ hashFiles(format('profiles/{0}.conf', matrix.profile)) }}
@@ -88,7 +88,7 @@ jobs:
 
       - name: Upload Artifacts
         if: success()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: openwrt-${{ matrix.profile }}-images
           path: dist/*
