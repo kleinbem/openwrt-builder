@@ -92,3 +92,31 @@ jobs:
         with:
           name: openwrt-${{ matrix.profile }}-images
           path: dist/*
+
+  # Single required check for the github-config ruleset. The matrix job names
+  # (`build-firmware (<profile>)`) change with profiles/, so the ruleset
+  # requires this job instead. It runs even when a build fails or is skipped
+  # (validate failed) and passes only if every profile built. Each leg's
+  # conclusion is read from the API: needs.build-firmware.result can say
+  # success when a leg was cancelled before it got a runner.
+  all-builds:
+    needs: [validate, build-firmware]
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+    steps:
+      - name: Every firmware build passed
+        env:
+          VALIDATE: ${{ needs.validate.result }}
+          BUILDS: ${{ needs.build-firmware.result }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          echo "validate: $VALIDATE, build-firmware: $BUILDS"
+          [ "$VALIDATE" = success ] && [ "$BUILDS" = success ] || exit 1
+          legs=$(gh run view "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" \
+            --attempt "$GITHUB_RUN_ATTEMPT" --json jobs \
+            --jq '[.jobs[] | select(.name | startswith("build-firmware (")) | {name, conclusion}]')
+          echo "$legs" | jq -r '.[] | "\(.name): \(.conclusion)"'
+          echo "$legs" | jq -e 'length > 0 and all(.[]; .conclusion == "success")' >/dev/null
