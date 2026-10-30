@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Keeps pinned actions current. One grouped PR a week instead of one per
+  # action; the cooldown skips releases younger than a week.
+  - package-ecosystem: github-actions
+    directories: ["/"]
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      actions:
+        patterns: ["*"]
