@@ -7,6 +7,13 @@
 # board.d/02_network defaults to lan "lan1 lan2 lan3 sfp-lan" and
 # wan "wan sfp-wan" (a br-wan bridge); both are rewritten here by section
 # name, not by position.
+#
+# uci-defaults run again after every flash, including a sysupgrade that keeps
+# /etc/config. By then openwrt-config's roles/network owns br-lan (adds the
+# sfp-lan trunk) and has replaced `lan` with the VLAN interfaces, so this
+# runs once per install only: a marker in /etc/config/kleinbem (kept with the
+# rest of /etc/config) skips it on later flashes.
+[ "$(uci -q get kleinbem.setup.network)" = "1" ] && exit 0
 
 # Network Setup
 uci set network.loopback=interface
@@ -54,5 +61,10 @@ uci set network.wan6.proto='dhcpv6'
 
 uci commit network
 uci commit system
+
+touch /etc/config/kleinbem
+uci set kleinbem.setup=setup
+uci set kleinbem.setup.network='1'
+uci commit kleinbem
 
 exit 0
