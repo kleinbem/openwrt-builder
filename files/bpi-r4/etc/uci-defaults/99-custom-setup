@@ -1,4 +1,21 @@
 #!/bin/sh
+# BPI-R4 first-boot network (OpenWrt 25.12 names, bananapi_bpi-r4):
+#   sfp-wan (SFP1 cage, "SFP-WAN") = WAN  — copper SFP+ module to the ONT
+#   sfp-lan (SFP2 cage)            = R4<->R4 trunk (openwrt-config port_map)
+#   lan1 lan2 lan3                 = br-lan (192.168.1.1 bench address)
+#   wan (RJ45, 1G)                 = spare, unassigned (e.g. a backup WAN)
+# board.d/02_network defaults to lan "lan1 lan2 lan3 sfp-lan" and
+# wan "wan sfp-wan" (a br-wan bridge); both are rewritten here by section
+# name, not by position.
+#
+# uci-defaults run again after every flash, including a sysupgrade that keeps
+# /etc/config. By then openwrt-config's roles/network owns br-lan (adds the
+# sfp-lan trunk) and has replaced `lan` with the VLAN interfaces, so this
+# runs once per install only: a marker in /etc/config/kleinbem skips it on
+# later flashes. The file is created here at runtime, so it isn't a package
+# conffile; /lib/upgrade/keep.d/kleinbem (in this overlay) keeps it across
+# sysupgrade.
+[ "$(uci -q get kleinbem.setup.network)" = "1" ] && exit 0
 
 # Network Setup
 uci set network.loopback=interface
@@ -10,25 +27,46 @@ uci set network.loopback.netmask='255.0.0.0'
 uci set network.globals=globals
 uci set network.globals.ula_prefix='fd12:3456:789a::/48'
 
-uci set network.@device[-1]=device
-uci set network.@device[-1].name='br-lan'
-uci set network.@device[-1].type='bridge'
-uci set network.@device[-1].ports='eth0'
-uci add_list network.@device[-1].ports='lan1'
-uci add_list network.@device[-1].ports='lan2'
-uci add_list network.@device[-1].ports='lan3'
+# Section id of the device named $1 (empty if none).
+dev_section() {
+	uci show network | sed -n "s/^network\.\([^.=]*\)\.name='$1'$/\1/p" | head -n1
+}
+
+BR=$(dev_section br-lan)
+[ -n "$BR" ] || BR=$(uci add network device)
+uci set "network.$BR.name"='br-lan'
+uci set "network.$BR.type"='bridge'
+uci -q delete "network.$BR.ports"
+for port in lan1 lan2 lan3; do
+	uci add_list "network.$BR.ports"="$port"
+done
+
+# Drop the default br-wan bridge: WAN is sfp-wan alone, the RJ45 `wan`
+# port stays out of every interface.
+WBR=$(dev_section br-wan)
+[ -n "$WBR" ] && uci delete "network.$WBR"
 
 uci set network.lan=interface
 uci set network.lan.device='br-lan'
 uci set network.lan.proto='static'
+uci -q delete network.lan.ipaddr
 uci set network.lan.ipaddr='192.168.1.1'
 uci set network.lan.netmask='255.255.255.0'
 
 uci set network.wan=interface
-uci set network.wan.device='eth1'
+uci set network.wan.device='sfp-wan'
 uci set network.wan.proto='dhcp'
+
+uci set network.wan6=interface
+uci set network.wan6.device='sfp-wan'
+uci set network.wan6.proto='dhcpv6'
 
 uci commit network
 uci commit system
+
+touch /etc/config/kleinbem
+uci set kleinbem.setup=setup
+uci set kleinbem.setup.network='1'
+uci commit kleinbem
 
 exit 0

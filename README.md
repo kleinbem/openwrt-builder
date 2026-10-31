@@ -54,7 +54,7 @@ And that's it! The final image will be in `bin/targets/...`.
 
 > [!IMPORTANT]
 > The BPI-R4 boots with its full 4 GiB since 2026-10-20 (`files/bpi-r4/boot/uEnv.txt` carries no `mem=` limit). The old `mem=2048M` cap only mattered for MT7988 **hardware flow offloading**, which our config keeps off for SQM/cake. If HW offload is ever enabled, re-test with 4 GiB first; a stale `mem=` in a saved U-Boot environment overrides uEnv.txt, and the Ansible common role asserts the board actually sees ~4 GiB (`expected_ram_mib`).
-> The BPI-R4's first-boot network layout (`eth0`/`eth1`, `lan1–3` into `br-lan`, `192.168.1.1` bench address) lives in `files/bpi-r4/etc/uci-defaults/` — it names R4 interfaces, so it is not a common overlay.
+> The BPI-R4's first-boot network layout lives in `files/bpi-r4/etc/uci-defaults/` — it names R4 interfaces, so it is not a common overlay. It uses the OpenWrt 25.12 names: WAN on `sfp-wan` (SFP1 cage, copper SFP+ module to the ONT), `lan1–3` into `br-lan` (`192.168.1.1` bench address), `sfp-lan` (SFP2) left for the R4↔R4 trunk that openwrt-config sets up, and the RJ45 `wan` port unassigned as a spare.
 
 ### Netgear Orbi RBR50 v1 / RBS50 v1 (`orbi-rbr50`, `orbi-rbs50`)
 
