@@ -11,8 +11,10 @@
 # uci-defaults run again after every flash, including a sysupgrade that keeps
 # /etc/config. By then openwrt-config's roles/network owns br-lan (adds the
 # sfp-lan trunk) and has replaced `lan` with the VLAN interfaces, so this
-# runs once per install only: a marker in /etc/config/kleinbem (kept with the
-# rest of /etc/config) skips it on later flashes.
+# runs once per install only: a marker in /etc/config/kleinbem skips it on
+# later flashes. The file is created here at runtime, so it isn't a package
+# conffile; /lib/upgrade/keep.d/kleinbem (in this overlay) keeps it across
+# sysupgrade.
 [ "$(uci -q get kleinbem.setup.network)" = "1" ] && exit 0
 
 # Network Setup
