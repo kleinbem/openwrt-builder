@@ -139,6 +139,7 @@ make image PROFILE="$BOARD" \
 # Some device recipes (e.g. the Netgear DNI factory image for the Orbis) have
 # no check-size step, so an oversized rootfs would silently overflow its slot.
 # Profiles that know their limit set IMAGE_MAX_BYTES.
+# no-link: not reported upstream yet.
 if [ -n "${IMAGE_MAX_BYTES:-}" ]; then
     echo "    Checking image size budget (${IMAGE_MAX_BYTES} bytes)..."
     while IFS= read -r img; do
