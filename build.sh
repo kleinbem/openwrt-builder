@@ -2,14 +2,9 @@
 set -euo pipefail
 
 # Usage: ./build.sh <profile_name> [device_name]
-#
-# device_name (optional) selects a per-device file overlay from
-# kleinbem-secrets/openwrt/per-device/<device_name>.yaml — currently used
-# for a stable dropbear host key, so re-flashing a from-scratch image
-# doesn't hand the device a fresh SSH identity every time (see
-# openwrt-config/ansible/ansible.cfg's host_key_checking note). Without a
-# device_name, dropbear falls back to its own generate-on-first-boot
-# behavior, same as before this option existed.
+# device_name adds kleinbem-secrets/openwrt/per-device/<device_name>.yaml, a
+# stable dropbear host key so a reflash keeps the SSH identity (Ansible checks
+# host keys). Without it dropbear generates a new key on first boot.
 PROFILE_NAME="${1:-}"
 DEVICE_NAME="${2:-}"
 
@@ -67,10 +62,8 @@ fi
 cd "$BUILDER_DIR_NAME"
 
 # --- 2.5 PREPARE SECRETS ---
-# kleinbem-secrets (cutover 2026-08-08, replaces openwrt-secrets). This
-# fallback only matters for a bare-metal (non-container) run of build.sh —
-# the containerized `just build` path always sets EXTERNAL_SECRETS_DIR and
-# doesn't mount kleinbem-secrets into the container at all.
+# Fallback for a bare-metal run only: the containerized `just build` sets
+# EXTERNAL_SECRETS_DIR and doesn't mount kleinbem-secrets.
 SECRETS_FILE="../../kleinbem-secrets/openwrt/firmware-files.yaml"
 DECRYPT_SCRIPT="../scripts/decrypt-secrets.sh"
 SECRETS_SOURCE=""
@@ -86,11 +79,8 @@ elif [ -f "$SECRETS_FILE" ] && [ -f "$DECRYPT_SCRIPT" ]; then
 
     "$DECRYPT_SCRIPT" "$SECRETS_FILE" "$SECRET_TMP"
 
-    # Per-device overlay (e.g. a stable dropbear host key) decrypted into
-    # the SAME temp dir, after the shared file — a colliding path (there
-    # isn't one today) would resolve to whichever decrypt-secrets.sh call
-    # ran last, i.e. this one wins, matching "per-device is more specific
-    # than shared" intent.
+    # Decrypted after the shared file into the same dir, so per-device wins
+    # on a colliding path.
     if [ -n "$DEVICE_NAME" ]; then
         DEVICE_SECRETS_FILE="../../kleinbem-secrets/openwrt/per-device/${DEVICE_NAME}.yaml"
         if [ -f "$DEVICE_SECRETS_FILE" ]; then
@@ -127,10 +117,8 @@ if [ -d "../files/${PROFILE_NAME}" ]; then
 fi
 
 # Layer 3: Secrets (Highest Priority - Overwrites defaults)
-# Skip cleanly when the source is empty — public/CI builds mount an empty
-# secrets dir (no kleinbem-secrets checkout), and under `set -e` a glob that
-# matches nothing would abort the whole build. `/.` copies contents incl.
-# dotfiles without relying on the shell glob.
+# CI builds mount an empty secrets dir, and an unmatched glob would abort
+# under `set -e`; `/.` copies contents incl. dotfiles without a glob.
 if [ -n "$SECRETS_SOURCE" ] && [ -d "$SECRETS_SOURCE" ] && [ -n "$(ls -A "$SECRETS_SOURCE" 2>/dev/null)" ]; then
     echo "    Applying decrypted secrets..."
     cp -r "$SECRETS_SOURCE"/. files_overlay/
@@ -148,10 +136,10 @@ make image PROFILE="$BOARD" \
            DISABLED_SERVICES="$DISABLED_SERVICES"
 
 # --- 4.5 SIZE GUARD (optional, per profile) ---
-# Some device recipes have no check-size step (e.g. the Netgear DNI factory
-# image for the Orbi units) — an oversized rootfs would silently overflow its
-# eMMC slot. Profiles that know their limit set IMAGE_MAX_BYTES and the
-# build fails loudly here instead of bricking at flash time.
+# Some device recipes (e.g. the Netgear DNI factory image for the Orbis) have
+# no check-size step, so an oversized rootfs would silently overflow its slot.
+# Profiles that know their limit set IMAGE_MAX_BYTES.
+# no-link: not reported upstream yet.
 if [ -n "${IMAGE_MAX_BYTES:-}" ]; then
     echo "    Checking image size budget (${IMAGE_MAX_BYTES} bytes)..."
     while IFS= read -r img; do
