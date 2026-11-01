@@ -10,12 +10,9 @@ secrets := env_var_or_default("KLEINBEM_SECRETS", "../kleinbem-secrets")
 default:
     @just --list
 
-# Build using Docker/Podman (Default). device is optional — selects a
-# stable per-device dropbear host key from kleinbem-secrets/openwrt/
-# per-device/<device>.yaml instead of letting dropbear generate a fresh
-# one on first boot (see ansible.cfg's host_key_checking note). Real
-# devices today: core-gateway, ap-upstairs (bpi-r4); the Orbi APs
-# (orbi-rbr50 / orbi-rbs50) get theirs when they are named in inventory.nix.
+# Optional device bakes in kleinbem-secrets/openwrt/per-device/<device>.yaml,
+# a stable dropbear host key, so a reflash keeps the SSH identity.
+# Build in Podman; device (optional) adds its stable SSH host key
 build profile device="": build-image
     #!/usr/bin/env bash
     set -e
@@ -27,9 +24,8 @@ build profile device="": build-image
     SECRET_TMP=$(mktemp -d)
     echo "Decrypting secrets on host to $SECRET_TMP..."
 
-    # 2. Decrypt on Host (requires YubiKey). The nix-shell wrapper guarantees
-    # python3 for decrypt-secrets.sh even outside the devshell. Reads from
-    # kleinbem-secrets (cutover 2026-08-08, replaces openwrt-secrets).
+    # 2. Decrypt on Host (requires YubiKey). nix-shell guarantees python3
+    # for decrypt-secrets.sh even outside the devshell.
     SECRETS_FILE="{{secrets}}/openwrt/firmware-files.yaml"
     if [ -f "$SECRETS_FILE" ]; then
         nix-shell -p python3 --run "./scripts/decrypt-secrets.sh \"$SECRETS_FILE\" \"$SECRET_TMP\""
@@ -37,11 +33,8 @@ build profile device="": build-image
         echo "Warning: Secrets file not found at $SECRETS_FILE."
     fi
 
-    # 2.5 Per-device overlay (stable dropbear host key etc), decrypted into
-    # the same temp dir so it lands in files_overlay/ alongside the shared
-    # secrets above — see build.sh's own per-device merge for why order
-    # here doesn't matter (last decrypt into a given path wins either way,
-    # and there's no overlap today).
+    # 2.5 Per-device overlay, decrypted into the same dir after the shared
+    # file, so it wins on a colliding path.
     if [ -n "{{device}}" ]; then
         DEVICE_SECRETS_FILE="{{secrets}}/openwrt/per-device/{{device}}.yaml"
         if [ -f "$DEVICE_SECRETS_FILE" ]; then
@@ -79,11 +72,10 @@ build profile device="": build-image
     # 5. Cleanup sensitive data
     rm -rf "$SECRET_TMP"
 
-# Writes kleinbem-secrets/openwrt/per-device/<device>.yaml, which
-# `build <profile> <device>` bakes into the image. Needs the device's
-# creation rule in kleinbem-secrets/.sops.yaml first. Encrypting only
-# needs the public recipients, so no YubiKey. Refuses to overwrite:
-# replacing a key is a rotation, do that by hand.
+# Writes kleinbem-secrets/openwrt/per-device/<device>.yaml for
+# `build <profile> <device>`. Needs the device's creation rule in
+# kleinbem-secrets/.sops.yaml first; no YubiKey (public recipients only).
+# Refuses to overwrite: a key rotation is done by hand.
 # New device: stable dropbear host key + its known_hosts line
 device-key device ip:
     #!/usr/bin/env bash

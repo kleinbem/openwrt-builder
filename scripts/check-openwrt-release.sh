@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-# Check every profiles/*.conf against the latest OpenWrt stable release and
-# open a GitHub issue (never a PR, never auto-applied) when a newer one is
-# available.
-#
-# Firmware for a physical router is not something to auto-bump the way a
-# Nix package hash is — a bad image can brick a device with no console. This
-# only ever *flags* an available update with the exact values needed; a
-# human still reviews and applies the bump by hand (see each profile's own
-# header comment for the process this mirrors).
-#
+# Opens a GitHub issue with the exact new values when a profile's OpenWrt
+# release is behind the latest stable. Never auto-applies: a bad image can
+# brick a router with no console, so a human does the bump.
 # Usage:  ./scripts/check-openwrt-release.sh [--dry-run]
 # Deps:   bash, curl, gh
 set -euo pipefail
@@ -31,10 +24,8 @@ LATEST=$(curl -fsSL "https://downloads.openwrt.org/releases/" |
 [[ -n $LATEST ]] || err "Could not determine latest OpenWrt release"
 log "Latest OpenWrt stable release: $LATEST"
 
-# Isolate each profile in its own subshell so one failure (e.g. a mirror
-# lagging behind the release listing) doesn't stop the rest from being
-# checked; failures are collected and turned into a nonzero exit at the end
-# so CI still goes red.
+# One subshell per profile so a failure (e.g. a lagging mirror) doesn't skip
+# the rest; CI still goes red at the end.
 FAILED=0
 for profile in profiles/*.conf; do
   name=$(basename "$profile" .conf)
@@ -49,9 +40,7 @@ for profile in profiles/*.conf; do
 
     log "$name: $OPENWRT_RELEASE → $LATEST available"
 
-    # Target platform (e.g. "mediatek/filogic") lives in BUILDER_URL between
-    # /targets/ and the imagebuilder filename — extract it generically so
-    # this works for any future profile, not just bpi-r4.
+    # Target platform (e.g. "mediatek/filogic") from BUILDER_URL.
     TARGET=$(grep -oP '(?<=/targets/)[^/]+/[^/]+(?=/openwrt-imagebuilder-)' <<<"$BUILDER_URL")
     [[ -n $TARGET ]] || {
       echo -e "\033[0;31m[ERROR]\033[0m  $name: could not parse target from BUILDER_URL" >&2
@@ -60,9 +49,7 @@ for profile in profiles/*.conf; do
 
     NEW_BUILDER_URL="${BUILDER_URL//$OPENWRT_RELEASE/$LATEST}"
     NEW_FILENAME=$(basename "$NEW_BUILDER_URL")
-    # Filename suffix after "openwrt-imagebuilder-<release>-" (e.g.
-    # "mediatek-filogic.Linux-x86_64.tar.zst") — board/arch-specific,
-    # derived generically rather than hardcoded per profile.
+    # e.g. "mediatek-filogic.Linux-x86_64.tar.zst"
     SUFFIX=$(basename "$BUILDER_URL" | sed "s/^openwrt-imagebuilder-${OPENWRT_RELEASE}-//")
     SUMS_URL="https://downloads.openwrt.org/releases/${LATEST}/targets/${TARGET}/sha256sums"
     NEW_HASH=$(curl -fsSL "$SUMS_URL" | grep " \*${NEW_FILENAME}\$" | awk '{print $1}')
@@ -80,17 +67,13 @@ for profile in profiles/*.conf; do
       exit 0
     fi
 
-    # A patch bump (x.y.Z) is safe to apply blind; a major/minor jump (x.Y or
-    # X.y) can carry breaking config changes, so call that out explicitly
-    # rather than presenting every bump as an equally mechanical diff.
+    # A major/minor jump can carry breaking config changes; flag it.
     JUMP_WARNING=""
     if [[ ${OPENWRT_RELEASE%.*} != "${LATEST%.*}" ]]; then
       JUMP_WARNING=$'\n> **\xe2\x9a\xa0\xef\xb8\x8f Major/minor version jump** (not a patch-only release) \xe2\x80\x94 review the [OpenWrt release notes](https://openwrt.org/releases/start) for breaking changes before applying; config/package compatibility across major/minor versions is not guaranteed.\n'
     fi
 
-    # BUILDER_URL is already parameterized by ${OPENWRT_RELEASE} in the file
-    # itself (see profile header), so only these two lines actually need
-    # to change — bumping OPENWRT_RELEASE alone re-resolves BUILDER_URL.
+    # BUILDER_URL uses ${OPENWRT_RELEASE}, so only two lines change.
     BODY_FILE=$(mktemp)
     cat > "$BODY_FILE" <<EOF
 OpenWrt **$LATEST** is available (\`$name\` is currently pinned to $OPENWRT_RELEASE).

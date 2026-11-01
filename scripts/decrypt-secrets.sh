@@ -1,17 +1,9 @@
 #!/usr/bin/env bash
 set -e
 
-# Decrypt kleinbem-secrets/openwrt/firmware-files.yaml's `files: [{path,
-# content}]` payload into a target directory for the ImageBuilder overlay.
-# Relocated here from openwrt-secrets/decrypt.sh (cutover 2026-08-08) — this
-# is build tooling, not secret storage, so it belongs with the consumer.
-#
-# Each item also accepts optional `encoding` ("base64", for binary content
-# like dropbear host keys — plain text otherwise) and `mode` (octal string,
-# e.g. "0600" — dropbear's init script refuses a host key file that isn't
-# exactly -rw-------, see openwrt-per-device-keys design note in
-# kleinbem-secrets/openwrt/per-device/).
-#
+# Writes a sops file's `files: [{path, content}]` into a target dir for the
+# ImageBuilder overlay. Optional per item: `encoding: base64` for binary
+# content (dropbear host keys) and `mode` as an octal string ("0600" for keys).
 # Usage: ./decrypt-secrets.sh <sops_file> <target_dir>
 SOPS_FILE="$1"
 TARGET_DIR="$2"
