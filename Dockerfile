@@ -3,9 +3,11 @@ FROM docker.io/library/ubuntu:24.04
 # Prevent interactive prompts
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install dependencies required by OpenWrt ImageBuilder
-RUN apt-get update && apt-get install -y \
+# Install dependencies required by OpenWrt ImageBuilder. ca-certificates is
+# listed because --no-install-recommends drops it and wget needs it for HTTPS.
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     libncurses5-dev \
     libncursesw5-dev \
     zlib1g-dev \
