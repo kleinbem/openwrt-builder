@@ -11,3 +11,15 @@ updates:
     groups:
       actions:
         patterns: ["*"]
+
+  # Base images (FROM lines). Majors such as ubuntu 24.04 -> 26.04 come alone.
+  - package-ecosystem: docker
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    groups:
+      docker:
+        patterns: ["*"]
+        update-types: [minor, patch]
