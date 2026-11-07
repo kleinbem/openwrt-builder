@@ -17,13 +17,13 @@
 
 - **Stable & reproducible.**
 - `Justfile`: Main entry point (`just build <profile>`).
-- `Dockerfile`: Provides the build environment (Ubuntu 22.04 + Tools).
+- `Dockerfile`: Provides the build environment (Ubuntu 26.04 + Tools).
 - `profiles/bpi-r4.conf`: Configured for Wi-Fi 7, SFP+, and Containers.
 
 ## Package Manifest Strategy
 
 - **Base:** `base-files`, `busybox`, `uci`, `dropbear`.
-- **Network:** `tailscale`, `dawn` (roaming), `wireguard`.
+- **Network:** `netbird`, `dawn` (roaming), `wireguard`.
 - **Virtualization:** `lxc`, `kmod-veth`, `kmod-macvlan`.
 - **Monitoring:** `prometheus-node-exporter-lua`.
 

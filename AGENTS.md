@@ -11,7 +11,7 @@ This repository is responsible for **building** custom OpenWrt firmware images u
 ## Key Files
 
 - `build.sh`: The main entry point. Downloads builder -> applies files -> runs `make image`.
-- `profiles/*.conf`: Shell scripts that define `BOARD`, `BUILDER_URL`, and `PACKAGES` variables.
+- `profiles/*.conf`: Shell scripts that define `BOARD`, `BUILDER_URL`, `BUILDER_SHA256` (the imagebuilder's line in the release target's `sha256sums`) and `PACKAGES`; optional `DISABLED_SERVICES` and `IMAGE_MAX_BYTES`. See `profiles/bpi-r4.conf`.
 - `files/`: Directory containing filesystem overlays.
   - `common/`: Applied to ALL images.
   - `<profile>/`: Applied only to that specific profile.
@@ -22,4 +22,4 @@ To build an image:
 
 1. Check `profiles/` for available targets.
 2. Run `just build <profile_name>`.
-3. Artifacts are in `bin/targets/...`.
+3. `just build` copies the images to `dist/`.

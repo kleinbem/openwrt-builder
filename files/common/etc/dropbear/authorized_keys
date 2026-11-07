@@ -2,9 +2,10 @@
 # (/etc/dropbear/authorized_keys), NOT /root/.ssh/authorized_keys.
 #
 # This placeholder is overwritten at build time by the secrets overlay
-# (openwrt-secrets, build.sh "Layer 3") — its files: entry MUST target
+# (kleinbem-secrets openwrt/firmware-files.yaml, build.sh "Layer 3") — its files: entry MUST target
 # path: etc/dropbear/authorized_keys. Without a real key baked in, the
 # router boots with NO key-based SSH and Ansible (root over SSH) can't
-# reach it. Add your key via: just secrets::edit secrets.yaml
+# reach it. Add your key from the openwrt/ conductor:
+#   just secrets::edit openwrt/firmware-files.yaml
 #
 # ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAI... user@host

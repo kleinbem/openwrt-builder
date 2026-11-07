@@ -12,6 +12,8 @@ openwrt-source/
 logs/
 *.log
 *.txt
+# Overlay files go into the image, .txt included (uEnv.txt).
+!files/**/*.txt
 debug_*.log
 logs_debug/
 .direnv/
