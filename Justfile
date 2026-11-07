@@ -20,8 +20,10 @@ build profile device="": build-image
     echo "Cleaning previous ImageBuilder artifacts..."
     rm -rf openwrt-imagebuilder-*
 
-    # 1. Prepare Secrets Directory
-    SECRET_TMP=$(mktemp -d)
+    # 1. Prepare Secrets Directory. XDG_RUNTIME_DIR is tmpfs; the trap wipes the
+    # plaintext (and build.sh's overlay copy) on every exit path.
+    SECRET_TMP=$(mktemp -d "${XDG_RUNTIME_DIR:-/tmp}/openwrt-secrets.XXXXXX")
+    trap 'rm -rf "$SECRET_TMP" openwrt-imagebuilder-*/files_overlay' EXIT
     echo "Decrypting secrets on host to $SECRET_TMP..."
 
     # 2. Decrypt on Host (requires YubiKey). nix-shell guarantees python3
@@ -69,9 +71,6 @@ build profile device="": build-image
     find openwrt-imagebuilder-*/bin/targets -name "sha256sums" -exec cp {} dist/ \;
     echo "✅ Firmware images copied to ./dist/"
 
-    # 5. Cleanup sensitive data
-    rm -rf "$SECRET_TMP"
-
 # Writes kleinbem-secrets/openwrt/per-device/<device>.yaml for
 # `build <profile> <device>`. Needs the device's creation rule in
 # kleinbem-secrets/.sops.yaml first; no YubiKey (public recipients only).
@@ -111,4 +110,4 @@ clean:
 
 # Validate scripts
 check:
-    shellcheck build.sh
+    shellcheck build.sh scripts/*.sh

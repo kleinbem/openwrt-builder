@@ -102,9 +102,11 @@ fi
 
 # --- 3. PREPARE FILES ---
 echo "[2/5] Merging Files..."
-# Create a temporary 'files' folder inside the builder
+# Create a temporary 'files' folder inside the builder. It gets the plaintext
+# secrets, so it goes on exit like the decrypt dir.
 rm -rf files_overlay
 mkdir -p files_overlay
+trap 'rm -rf "$PWD/files_overlay" ${SECRET_TMP:+"$SECRET_TMP"}' EXIT
 
 # Layer 1: Common files (SSH keys, etc.)
 if [ -d "../files/common" ]; then
@@ -133,7 +135,7 @@ echo "[4/5] Building Firmware for $BOARD..."
 make image PROFILE="$BOARD" \
            PACKAGES="$PACKAGES" \
            FILES="files_overlay" \
-           DISABLED_SERVICES="$DISABLED_SERVICES"
+           DISABLED_SERVICES="${DISABLED_SERVICES:-}"
 
 # --- 4.5 SIZE GUARD (optional, per profile) ---
 # Some device recipes (e.g. the Netgear DNI factory image for the Orbis) have
@@ -142,7 +144,9 @@ make image PROFILE="$BOARD" \
 # no-link: not reported upstream yet.
 if [ -n "${IMAGE_MAX_BYTES:-}" ]; then
     echo "    Checking image size budget (${IMAGE_MAX_BYTES} bytes)..."
+    checked=0
     while IFS= read -r img; do
+        checked=$((checked + 1))
         size=$(stat -c %s "$img")
         if [ "$size" -gt "$IMAGE_MAX_BYTES" ]; then
             echo "❌ Error: $(basename "$img") is ${size} bytes, over the ${IMAGE_MAX_BYTES}-byte budget — trim PACKAGES."
@@ -150,6 +154,11 @@ if [ -n "${IMAGE_MAX_BYTES:-}" ]; then
         fi
         echo "    ok: $(basename "$img") (${size} bytes)"
     done < <(find bin/targets -type f \( -name '*-factory.img' -o -name '*-sysupgrade.bin' -o -name '*-sysupgrade.itb' \))
+    # A renamed artefact suffix would otherwise skip the budget silently.
+    if [ "$checked" -eq 0 ]; then
+        echo "❌ Error: IMAGE_MAX_BYTES is set but no image matched the size check."
+        exit 1
+    fi
 fi
 
 # --- 5. FINISH ---
