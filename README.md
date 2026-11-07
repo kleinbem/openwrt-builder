@@ -40,7 +40,7 @@ just build bpi-r4
     - Generates the firmware image.
 5. **Cleanup**: Wipes temporary secrets.
 
-And that's it! `just build` copies the final images to `dist/`, which keeps earlier builds: `just clean` first when you need only the new one.
+And that's it! `just build` copies the final images to `dist/`. Earlier images with other names stay there and same-named ones are overwritten, so copy away any image you want to keep, and run `just clean` before the build when you want only the new one.
 
 ## Supported Profiles
 
