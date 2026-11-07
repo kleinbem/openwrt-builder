@@ -1,0 +1,121 @@
+name: OpenWrt Builder
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+  schedule:
+    # Mondays 05:00 UTC — weekly rebuild against the pinned release's package
+    # feeds. Firmware sources are checksum-pinned, so a bump is still manual;
+    # this catches a broken feed / missing package before a real deploy needs it.
+    - cron: "0 5 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Fast gate — fails in seconds on a script/profile mistake instead of after
+  # a ~15-minute firmware build.
+  validate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: shellcheck build script
+        run: |
+          sudo apt-get update && sudo apt-get install -y shellcheck
+          shellcheck build.sh
+
+      - name: Profile sanity (pins present + sha256 well-formed)
+        run: |
+          set -euo pipefail
+          for p in profiles/*.conf; do
+            # shellcheck disable=SC1090
+            ( source "$p"
+              : "${BUILDER_URL:?missing BUILDER_URL in $p}"
+              : "${BOARD:?missing BOARD in $p}"
+              : "${BUILDER_SHA256:?missing BUILDER_SHA256 in $p}"
+              echo "$BUILDER_SHA256" | grep -qE '^[0-9a-f]{64}$' \
+                || { echo "::error file=$p::BUILDER_SHA256 is not 64 hex chars"; exit 1; }
+              echo "  ok: $p" )
+          done
+
+  build-firmware:
+    needs: validate
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # Every profile in profiles/ — a public (no-secrets) build of each
+        # proves the pinned ImageBuilder + package selection still resolve.
+        profile: [bpi-r4, orbi-rbr50, orbi-rbs50]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install Tools (Just)
+        uses: extractions/setup-just@53165ef7e734c5c07cb06b3c8e7b647c5aa16db3 # v4.0.0
+        with:
+          just-version: 1.59.0
+
+      - name: Install Tools (Podman)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y podman
+
+      # The build recipe wipes openwrt-imagebuilder-* on every run, so cache
+      # the persistent package download dir instead (symlinked into the
+      # builder by build.sh).
+      - name: Cache package downloads
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: dl
+          key: ${{ runner.os }}-openwrt-dl-${{ matrix.profile }}-${{ hashFiles(format('profiles/{0}.conf', matrix.profile)) }}
+          restore-keys: |
+            ${{ runner.os }}-openwrt-dl-${{ matrix.profile }}-
+
+      - name: Build Firmware
+        # Runs WITHOUT secrets for public/CI builds — verifies the pinned
+        # ImageBuilder (sha256-checked) and package selection are valid.
+        run: just build ${{ matrix.profile }}
+
+      - name: Upload Artifacts
+        if: success()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: openwrt-${{ matrix.profile }}-images
+          path: dist/*
+
+  # Required check in github-config (matrix job names change with profiles/).
+  # Each leg's conclusion comes from the API: needs.build-firmware.result can
+  # say success when a leg was cancelled before it got a runner.
+  all-builds:
+    needs: [validate, build-firmware]
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      actions: read
+    steps:
+      - name: Every firmware build passed
+        env:
+          VALIDATE: ${{ needs.validate.result }}
+          BUILDS: ${{ needs.build-firmware.result }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          echo "validate: $VALIDATE, build-firmware: $BUILDS"
+          [ "$VALIDATE" = success ] && [ "$BUILDS" = success ] || exit 1
+          legs=$(gh run view "$GITHUB_RUN_ID" --repo "$GITHUB_REPOSITORY" \
+            --attempt "$GITHUB_RUN_ATTEMPT" --json jobs \
+            --jq '[.jobs[] | select(.name | startswith("build-firmware (")) | {name, conclusion}]')
+          echo "$legs" | jq -r '.[] | "\(.name): \(.conclusion)"'
+          echo "$legs" | jq -e 'length > 0 and all(.[]; .conclusion == "success")' >/dev/null

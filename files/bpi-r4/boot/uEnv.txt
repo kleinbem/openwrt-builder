@@ -1,0 +1,1 @@
+bootargs=console=ttyS0,115200 root=/dev/mmcblk0p5 rw rootwait
