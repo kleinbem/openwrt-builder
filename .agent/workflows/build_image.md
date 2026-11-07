@@ -18,4 +18,4 @@ To build an image for a specific board (e.g., `bpi-r4`):
    just build bpi-r4
    ```
 
-3. **Locate Artifact**: The output will be in `bin/targets/mediatek/filogic/`. Look for the `sysupgrade.itb` or `.img.gz` file.
+3. **Locate Artifact**: `just build` copies the images to `dist/`. Look for the `sysupgrade.itb` or `.img.gz` file.

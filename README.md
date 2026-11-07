@@ -2,7 +2,7 @@
 
 This repository contains a containerized build system designed to create custom OpenWrt images for various hardware architectures, with a focus on the **Banana Pi BPI-R4**.
 
-It uses **Podman/Docker** to provide a clean, reproducible build environment (Ubuntu 22.04) while securely handling decrypted secrets from the host using **YubiKey**.
+It uses **Podman/Docker** to provide a clean, reproducible build environment (Ubuntu 26.04) while securely handling decrypted secrets from the host using **YubiKey**.
 
 ## Prerequisites
 
@@ -40,7 +40,7 @@ just build bpi-r4
     - Generates the firmware image.
 5. **Cleanup**: Wipes temporary secrets.
 
-And that's it! The final image will be in `bin/targets/...`.
+And that's it! `just build` copies the final images to `dist/`.
 
 ## Supported Profiles
 
@@ -50,7 +50,7 @@ And that's it! The final image will be in `bin/targets/...`.
 - **Features**:
   - Wi-Fi 7 (MediaTek proprietary drivers)
   - 10G SFP+ support
-  - Tailscale & WireGuard pre-configured
+  - NetBird & WireGuard pre-configured
 
 > [!IMPORTANT]
 > The BPI-R4 boots with its full 4 GiB since 2026-10-20 (`files/bpi-r4/boot/uEnv.txt` carries no `mem=` limit). The old `mem=2048M` cap only mattered for MT7988 **hardware flow offloading**, which our config keeps off for SQM/cake. If HW offload is ever enabled, re-test with 4 GiB first; a stale `mem=` in a saved U-Boot environment overrides uEnv.txt, and the Ansible common role asserts the board actually sees ~4 GiB (`expected_ram_mib`).
