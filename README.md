@@ -40,7 +40,7 @@ just build bpi-r4
     - Generates the firmware image.
 5. **Cleanup**: Wipes temporary secrets.
 
-And that's it! `just build` copies the final images to `dist/`.
+And that's it! `just build` copies the final images to `dist/`, which keeps earlier builds: `just clean` first when you need only the new one.
 
 ## Supported Profiles
 
@@ -50,7 +50,7 @@ And that's it! `just build` copies the final images to `dist/`.
 - **Features**:
   - Wi-Fi 7 (MediaTek proprietary drivers)
   - 10G SFP+ support
-  - NetBird & WireGuard pre-configured
+  - NetBird & WireGuard installed (openwrt-config's `netbird` role enrolls the mesh)
 
 > [!IMPORTANT]
 > The BPI-R4 boots with its full 4 GiB since 2026-10-20 (`files/bpi-r4/boot/uEnv.txt` carries no `mem=` limit). The old `mem=2048M` cap only mattered for MT7988 **hardware flow offloading**, which our config keeps off for SQM/cake. If HW offload is ever enabled, re-test with 4 GiB first; a stale `mem=` in a saved U-Boot environment overrides uEnv.txt, and the Ansible common role asserts the board actually sees ~4 GiB (`expected_ram_mib`).
