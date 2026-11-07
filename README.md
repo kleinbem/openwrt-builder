@@ -32,13 +32,13 @@ just build bpi-r4
 ### What happens?
 
 1. **Cleanup**: Removes old Image Builder artifacts to prevent path pollution.
-2. **Decryption**: Asks for your YubiKey PIN to decrypt secrets (WiFi keys, WireGuard, etc.) into a temporary in-memory directory on the host.
+2. **Decryption**: Asks for your YubiKey PIN to decrypt secrets (WiFi keys, WireGuard, etc.) into a temporary directory under `$XDG_RUNTIME_DIR` (tmpfs; `/tmp` without one) on the host.
 3. **Container Start**: Starts a Podman container, mounting the source code and the decrypted secrets.
 4. **Build**:
     - Downloads the OpenWrt ImageBuilder.
     - Merges file overlays and secrets.
     - Generates the firmware image.
-5. **Cleanup**: Wipes temporary secrets.
+5. **Cleanup**: Wipes the decrypted secrets and the build overlay that held them, on success or failure.
 
 And that's it! The final image will be in `bin/targets/...`.
 

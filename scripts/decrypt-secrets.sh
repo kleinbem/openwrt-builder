@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
 
 # Writes a sops file's `files: [{path, content}]` into a target dir for the
 # ImageBuilder overlay. Optional per item: `encoding: base64` for binary
 # content (dropbear host keys) and `mode` as an octal string ("0600" for keys).
 # Usage: ./decrypt-secrets.sh <sops_file> <target_dir>
-SOPS_FILE="$1"
-TARGET_DIR="$2"
+SOPS_FILE="${1:-}"
+TARGET_DIR="${2:-}"
 
 if [ -z "$SOPS_FILE" ] || [ -z "$TARGET_DIR" ]; then
     echo "Usage: $0 <sops_file> <target_dir>"
@@ -24,7 +24,7 @@ echo "🔓 Decrypting secrets to $TARGET_DIR..."
 sops -d --output-type json "$SOPS_FILE" | python3 -c "
 import sys, json, os
 
-target_dir = '$TARGET_DIR'
+target_dir = os.path.abspath(sys.argv[1])
 try:
     data = json.load(sys.stdin)
 except json.JSONDecodeError as exc:
@@ -44,8 +44,8 @@ for item in data['files']:
         continue
 
     # Secure path check to prevent writing outside target_dir
-    full_path = os.path.join(target_dir, path)
-    if not os.path.abspath(full_path).startswith(os.path.abspath(target_dir)):
+    full_path = os.path.abspath(os.path.join(target_dir, path))
+    if full_path == target_dir or os.path.commonpath([full_path, target_dir]) != target_dir:
         print(f'⚠️  Skipping unsafe path: {path}')
         continue
 
@@ -62,6 +62,6 @@ for item in data['files']:
         os.chmod(full_path, int(mode, 8))
 
     print(f'-> 🔓 Wrote secret: {path}')
-"
+" "$TARGET_DIR"
 
 echo "✅ Secrets injected."
