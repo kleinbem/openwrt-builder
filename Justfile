@@ -47,7 +47,9 @@ build profile device="": build-image
         fi
     fi
 
-    # 3. Run Build in Container (no -t: must also work without a TTY in CI)
+    # 3. Run Build in Container (no -t: must also work without a TTY in CI).
+    # build.sh gets no device arg: step 2.5 already put the per-device overlay in
+    # /secrets, and build.sh only decrypts per-device itself on bare metal.
     echo "Starting Container Build..."
     mkdir -p dl
     podman run --rm -i \
